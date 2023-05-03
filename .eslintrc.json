@@ -29,6 +29,9 @@
     "react/no-unknown-property": ["error", { "ignore": ["css"] }],
 
     // suppress errors for missing 'import React' in files
-   "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+
+    // ignore props destructuring
+    "react/destructuring-assignment": "off"
   }
 }
