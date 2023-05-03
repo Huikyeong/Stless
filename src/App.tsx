@@ -1,7 +1,16 @@
 import React from 'react';
+import { css } from '@emotion/react';
 
 function App() {
-  return <div className='App'>stless</div>;
+  return (
+    <div
+      css={css`
+        display: flex;
+      `}
+    >
+      <h1>hello</h1>
+    </div>
+  );
 }
 
 export default App;

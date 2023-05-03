@@ -23,6 +23,9 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+
+    // emotion css props
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
   }
 }
