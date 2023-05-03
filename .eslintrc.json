@@ -26,6 +26,9 @@
     "prettier/prettier": ["error"],
 
     // emotion css props
-    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
+
+    // suppress errors for missing 'import React' in files
+   "react/react-in-jsx-scope": "off"
   }
 }
