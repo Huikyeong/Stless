@@ -42,6 +42,26 @@ function Header() {
         >
           Analysis
         </div>
+        <div
+          css={css`
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 6px;
+
+            padding: 10px 15px;
+            border-radius: 10px 10px 0px 0px;
+
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 22px;
+          `}
+        >
+          Recommend
+        </div>
       </div>
     </header>
   );
