@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import Header from '../components/Header';
+import Calendar from 'components/Calendar';
+import Header from 'components/Header';
 
 function Analysis() {
   return (
@@ -31,6 +32,7 @@ function Analysis() {
         `}
       >
         Analysis!
+        <Calendar />
       </div>
     </div>
   );
