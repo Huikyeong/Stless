@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { ReactComponent as LeftArrow } from 'assets/triangle-left.svg';
-import { ReactComponent as RightArrow } from 'assets/triangle-right.svg';
+import { ReactComponent as LeftArrow } from 'assets/icons/triangle-left.svg';
+import { ReactComponent as RightArrow } from 'assets/icons/triangle-right.svg';
 import ToggleSwitch from 'components/ToggleSwitch';
 import { useState } from 'react';
 import CalendarItem from './CalendarItem';
