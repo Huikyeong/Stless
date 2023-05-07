@@ -4,14 +4,17 @@ import { ReactComponent as LeftArrow } from 'assets/triangle-left.svg';
 import { ReactComponent as RightArrow } from 'assets/triangle-right.svg';
 import ToggleSwitch from 'components/ToggleSwitch';
 import { useState } from 'react';
+import CalendarItem from './CalendarItem';
 
 function Calendar() {
   const [calMode, setCalMode] = useState<'mon' | 'day'>('mon');
+  const dayList = [undefined, 1, 2, 3, 4, 5];
 
   return (
     <div
       css={css`
         display: flex;
+        align-items: center;
         gap: 20px;
 
         width: 100%;
@@ -32,12 +35,13 @@ function Calendar() {
             align-items: center;
             gap: 12px;
             font-weight: 800;
-            font-size: 24px;
+            font-size: 22px;
             letter-spacing: 0.05em;
           `}
         >
           <LeftArrow
             css={css`
+              width: 15px;
               cursor: pointer;
               &: hover {
                 opacity: 0.7;
@@ -47,6 +51,7 @@ function Calendar() {
           MAR
           <RightArrow
             css={css`
+              width: 15px;
               cursor: pointer;
               &: hover {
                 opacity: 0.7;
@@ -54,7 +59,53 @@ function Calendar() {
             `}
           />
         </div>
-        dfdf
+        <div
+          css={css`
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            height: 240px;
+            background: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+            border-radius: 15px;
+
+            padding: 10px 20px;
+          `}
+        >
+          <div
+            css={css`
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              width: 100%;
+              height: 25px;
+              border-bottom: 1px solid #f1f1f1;
+
+              font-weight: 400;
+              font-size: 15px;
+              color: #838383;
+            `}
+          >
+            <p>S</p>
+            <p>M</p>
+            <p>T</p>
+            <p>W</p>
+            <p>T</p>
+            <p>F</p>
+            <p>S</p>
+          </div>
+          <div
+            css={css`
+              display: flex;
+              flex-wrap: wrap;
+            `}
+          >
+            {dayList.map((day) => (
+              <CalendarItem key={day} num={day} />
+            ))}
+          </div>
+        </div>
       </div>
       <ToggleSwitch calMode={calMode} setCalMode={setCalMode} />
     </div>
