@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import Header from '../components/Header';
+import Test from './Test';
 
 function Recommend() {
   return (
@@ -30,7 +31,7 @@ function Recommend() {
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         `}
       >
-        Recommend!
+        <Test />
       </div>
     </div>
   );
