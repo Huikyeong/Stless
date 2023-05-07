@@ -22,7 +22,6 @@ function Recommend() {
     accept: 'cause',
     drop: (item: { text: string }) => {
       setSelectedTagList((prev) => [...prev, item.text]);
-      console.log('dropped!');
     },
   }));
 
@@ -92,14 +91,54 @@ function Recommend() {
               `}
             >
               I got stress <br /> when{' '}
+              {selectedTagList.length === 0 && (
+                <span
+                  css={css`
+                    color: #a7a7a7;
+                  `}
+                >
+                  Drag here!
+                </span>
+              )}
               <span
                 css={css`
-                  color: ${selectedTagList.length === 0 ? '#a7a7a7' : 'black'};
+                  display: flex;
+                  flex-wrap: wrap;
                 `}
               >
-                {selectedTagList.length === 0
-                  ? 'Drag here!'
-                  : selectedTagList.join(', ')}
+                {selectedTagList.map((tag, index) => (
+                  <div
+                    key={tag}
+                    css={css`
+                      display: flex;
+                      margin-right: 5px;
+                    `}
+                  >
+                    <div
+                      css={css`
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        color: black;
+                        font-weight: 600;
+
+                        cursor: pointer;
+                        &: hover {
+                          opacity: 0.5;
+                        }
+                      `}
+                      onClick={() =>
+                        setSelectedTagList((prev) =>
+                          prev.filter((selectedTag) => selectedTag !== tag),
+                        )
+                      }
+                    >
+                      {tag}
+                    </div>
+                    {selectedTagList.length - 1 === index ? '.' : ','}
+                  </div>
+                ))}
               </span>
             </div>
             <div
