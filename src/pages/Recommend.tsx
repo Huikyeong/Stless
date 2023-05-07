@@ -6,7 +6,7 @@ import Header from '../components/Header';
 
 function Recommend() {
   const selectedTagList: string[] = []; // After drop.
-  const tagList: string[] = []; // Before drop.
+  const tagList: string[] = ['exercise', 'in rainy day']; // Before drop.
   return (
     <div
       css={css`
@@ -109,12 +109,37 @@ function Recommend() {
               height: match-parent;
               margin: 2%;
               padding: 2%;
+              display: flex;
 
               background: #e9e9e9;
               border-radius: 15px;
             `}
           >
-            drag layout
+            {tagList.map((tag, index) => (
+              <div
+                key={index}
+                css={css`
+                  width: 88px;
+                  height: 31px;
+                  margin: 5px;
+
+                  background: #ffffff;
+                  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                  border-radius: 10px;
+
+                  font-family: 'Noto Sans';
+                  font-style: normal;
+                  font-weight: 400;
+                  font-size: 12px;
+                  line-height: 110%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                `}
+              >
+                {tag}
+              </div>
+            ))}
           </div>
         </div>
         <div
