@@ -1,7 +1,20 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ReactComponent as AnalysisIcon } from '../assets/icons/analysis.svg';
+import { ReactComponent as Logo } from '../assets/icons/stless.svg';
+import { ReactComponent as ThumbsupIcon } from '../assets/icons/thumbs-up.svg';
 
 function Header() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const onAnalysisTabClick = () => {
+    navigate('/analysis');
+  };
+  const onRecommendTabClick = () => {
+    navigate('/recommend');
+  };
   return (
     <header
       css={css`
@@ -15,7 +28,15 @@ function Header() {
         z-index: 1;
       `}
     >
-      logo
+      <Logo
+        css={css`
+          color: #000000;
+          font-size: 3.6rem;
+          font-weight: 800;
+          margin: auto;
+          margin-left: 10px;
+        `}
+      />
       <div
         css={css`
           display: flex;
@@ -38,8 +59,12 @@ function Header() {
             font-weight: 500;
             font-size: 16px;
             line-height: 22px;
+            opacity: ${location.pathname === '/analysis' ? 1 : 0.2};
+            cursor: pointer;
           `}
+          onClick={onAnalysisTabClick}
         >
+          <AnalysisIcon />
           Analysis
         </div>
         <div
@@ -58,8 +83,12 @@ function Header() {
             font-weight: 500;
             font-size: 16px;
             line-height: 22px;
+            opacity: ${location.pathname === '/analysis' ? 0.2 : 1};
+            cursor: pointer;
           `}
+          onClick={onRecommendTabClick}
         >
+          <ThumbsupIcon />
           Recommend
         </div>
       </div>
