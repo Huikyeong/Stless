@@ -1,13 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { ReactComponent as LeftArrow } from 'assets/icons/triangle-left.svg';
-import { ReactComponent as RightArrow } from 'assets/icons/triangle-right.svg';
 import CalendarItem from 'components/CalendarItem';
-import ToggleSwitch from 'components/ToggleSwitch';
-import { useState } from 'react';
 
 function Calendar() {
-  const [calMode, setCalMode] = useState<'mon' | 'day'>('mon');
   const dayList: Array<{ num: number; val: number | undefined } | undefined> = [
     undefined,
     undefined,
@@ -53,25 +48,7 @@ function Calendar() {
             letter-spacing: 0.05em;
           `}
         >
-          <LeftArrow
-            css={css`
-              width: 15px;
-              cursor: pointer;
-              &: hover {
-                opacity: 0.7;
-              }
-            `}
-          />
           MAR
-          <RightArrow
-            css={css`
-              width: 15px;
-              cursor: pointer;
-              &: hover {
-                opacity: 0.7;
-              }
-            `}
-          />
         </div>
         <div
           css={css`
@@ -122,7 +99,6 @@ function Calendar() {
           </div>
         </div>
       </div>
-      <ToggleSwitch calMode={calMode} setCalMode={setCalMode} />
     </div>
   );
 }
