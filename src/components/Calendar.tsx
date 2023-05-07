@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 function Calendar() {
   const [calMode, setCalMode] = useState<'mon' | 'day'>('mon');
-  const dayList: Array<{ num: number; val: number } | undefined> = [
+  const dayList: Array<{ num: number; val: number | undefined } | undefined> = [
     undefined,
     undefined,
     undefined,
@@ -16,8 +16,12 @@ function Calendar() {
     undefined,
   ];
   for (let i = 1; i <= 31; i += 1) {
-    const randVal = Math.random() * 5 - 2.5;
-    dayList.push({ num: i, val: randVal });
+    if (i > 7 && i < 15) {
+      const randVal = Math.random() * 5 - 2.5;
+      dayList.push({ num: i, val: randVal });
+    } else {
+      dayList.push({ num: i, val: undefined });
+    }
   }
 
   return (
