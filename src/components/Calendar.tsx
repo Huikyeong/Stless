@@ -1,14 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { ReactComponent as LeftArrow } from 'assets/icons/triangle-left.svg';
-import { ReactComponent as RightArrow } from 'assets/icons/triangle-right.svg';
-import ToggleSwitch from 'components/ToggleSwitch';
-import { useState } from 'react';
-import CalendarItem from './CalendarItem';
+import CalendarItem from 'components/CalendarItem';
 
 function Calendar() {
-  const [calMode, setCalMode] = useState<'mon' | 'day'>('mon');
-  const dayList: Array<number | undefined> = [
+  const dayList: Array<{ num: number; val: number | undefined } | undefined> = [
     undefined,
     undefined,
     undefined,
@@ -16,7 +11,12 @@ function Calendar() {
     undefined,
   ];
   for (let i = 1; i <= 31; i += 1) {
-    dayList.push(i);
+    if (i >= 7 && i <= 15) {
+      const randVal = Math.random() * 5 - 2.5;
+      dayList.push({ num: i, val: randVal });
+    } else {
+      dayList.push({ num: i, val: undefined });
+    }
   }
 
   return (
@@ -48,25 +48,7 @@ function Calendar() {
             letter-spacing: 0.05em;
           `}
         >
-          <LeftArrow
-            css={css`
-              width: 15px;
-              cursor: pointer;
-              &: hover {
-                opacity: 0.7;
-              }
-            `}
-          />
           MAR
-          <RightArrow
-            css={css`
-              width: 15px;
-              cursor: pointer;
-              &: hover {
-                opacity: 0.7;
-              }
-            `}
-          />
         </div>
         <div
           css={css`
@@ -107,17 +89,16 @@ function Calendar() {
             css={css`
               display: flex;
               flex-wrap: wrap;
-              row-gap: 3px;
+              row-gap: 2px;
               padding: 5px 0;
             `}
           >
-            {dayList.map((day) => (
-              <CalendarItem key={day} num={day} val={1} />
+            {dayList.map((day, index) => (
+              <CalendarItem key={index} info={day} />
             ))}
           </div>
         </div>
       </div>
-      <ToggleSwitch calMode={calMode} setCalMode={setCalMode} />
     </div>
   );
 }
