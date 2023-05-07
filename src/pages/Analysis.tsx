@@ -36,10 +36,10 @@ function Analysis() {
           css={css`
             box-sizing: border-box;
             display: flex;
-            align-items: center;
+            align-items: space-between;
             gap: 20px;
 
-            width: 1040px;
+            width: 1240px;
             height: 100%;
 
             padding-top: 30px;
@@ -49,7 +49,6 @@ function Analysis() {
             css={css`
               display: flex;
               flex-direction: column;
-              align-items: flex-end;
               gap: 50px;
               height: 100%;
             `}
@@ -78,7 +77,7 @@ function Analysis() {
                   },
                 ]}
                 layout={{
-                  width: 350,
+                  width: 300,
                   height: 150,
                   margin: {
                     l: 100,
@@ -106,7 +105,7 @@ function Analysis() {
                   },
                 ]}
                 layout={{
-                  width: 350,
+                  width: 300,
                   height: 150,
                   margin: {
                     l: 100,
@@ -120,7 +119,45 @@ function Analysis() {
               />
             </div>
           </div>
-          <div>line chart</div>
+          <div
+            css={css`
+              display: flex;
+              justify-content: flex-end;
+              align-items: center;
+              width: 100%;
+              height: 100%;
+            `}
+          >
+            <Plot
+              data={[
+                {
+                  x: [1, 2, 3],
+                  y: [2, 6, 3],
+                  type: 'scatter',
+                  mode: 'lines+markers',
+                  marker: { color: '#838383' },
+                },
+              ]}
+              layout={{
+                title: { text: 'Stress change over ~', xref: 'paper', x: 0.05 },
+                width: 870,
+                height: 700,
+                margin: {
+                  l: 50,
+                  r: 50,
+                  b: 50,
+                  t: 50,
+                  pad: 4,
+                },
+                xaxis: {
+                  rangeslider: {},
+                },
+                yaxis: {
+                  fixedrange: true,
+                },
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
