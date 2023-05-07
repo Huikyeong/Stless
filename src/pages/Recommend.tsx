@@ -2,18 +2,30 @@
 import { css } from '@emotion/react';
 import { ReactComponent as ArrowLeftIcon } from 'assets/icons/arrow-left.svg';
 import { ReactComponent as ClickLeftIcon } from 'assets/icons/click-left.svg';
+import DragItem from 'components/DragItem';
+import { useState } from 'react';
+import { useDrop } from 'react-dnd';
 import Header from '../components/Header';
 
 function Recommend() {
-  const selectedTagList: string[] = []; // After drop.
+  const [selectedTagList, setSelectedTagList] = useState<string[]>([]);
   const tagList: string[] = [
     'exercise',
     'in rainy day',
-    'dfdsfdfdfdfdfdfdfd',
-    'dfdsfdfdfdfdfdfdfd',
-    'dfdsfdfdfdfdfdfdfd',
-    'dfdsfdfdfdfdfdfdfd',
+    'hi',
+    'huikyeong',
+    'dataviz',
+    'nanoquiz',
   ]; // Before drop.
+
+  const [, drop] = useDrop(() => ({
+    accept: 'cause',
+    drop: (item: { text: string }) => {
+      setSelectedTagList((prev) => [...prev, item.text]);
+      console.log('dropped!');
+    },
+  }));
+
   return (
     <div
       css={css`
@@ -63,6 +75,7 @@ function Recommend() {
           >
             <div
               id='drop layout'
+              ref={drop}
               css={css`
                 box-sizing: border-box;
                 width: 320px;
@@ -81,9 +94,7 @@ function Recommend() {
               I got stress <br /> when{' '}
               <span
                 css={css`
-                  color: ${selectedTagList.length === 0
-                    ? '#a7a7a7'
-                    : '#ffffff'};
+                  color: ${selectedTagList.length === 0 ? '#a7a7a7' : 'black'};
                 `}
               >
                 {selectedTagList.length === 0
@@ -148,28 +159,11 @@ function Recommend() {
                   gap: 10px;
                 `}
               >
-                {tagList.map((tag, index) => (
-                  <div
-                    key={index}
-                    css={css`
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-
-                      height: 16px;
-                      padding: 5px 12px;
-
-                      background: #ffffff;
-                      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-                      border-radius: 10px;
-
-                      font-weight: 400;
-                      font-size: 12px;
-                    `}
-                  >
-                    {tag}
-                  </div>
-                ))}
+                {tagList
+                  .filter((tag) => !selectedTagList.includes(tag))
+                  .map((tag) => (
+                    <DragItem key={tag} text={tag} />
+                  ))}
               </div>
             </div>
           </div>

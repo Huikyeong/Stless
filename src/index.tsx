@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css, Global } from '@emotion/react';
 import React from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
@@ -21,14 +23,16 @@ root.render(
         }
       `}
     />
-    <RecoilRoot>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/analysis' element={<Analysis />} />
-          <Route path='/recommend' element={<Recommend />} />
-          <Route path='*' element={<Navigate to='/analysis' replace />} />
-        </Routes>
-      </BrowserRouter>
-    </RecoilRoot>
+    <DndProvider backend={HTML5Backend}>
+      <RecoilRoot>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/analysis' element={<Analysis />} />
+            <Route path='/recommend' element={<Recommend />} />
+            <Route path='*' element={<Navigate to='/analysis' replace />} />
+          </Routes>
+        </BrowserRouter>
+      </RecoilRoot>
+    </DndProvider>
   </React.StrictMode>,
 );
