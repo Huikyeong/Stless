@@ -1,5 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { ReactComponent as AnalysisIcon } from '../assets/icons/analysis.svg';
+import { ReactComponent as ThumbsupIcon } from '../assets/icons/thumbs-up.svg';
 
 function Header() {
   return (
@@ -40,6 +42,7 @@ function Header() {
             line-height: 22px;
           `}
         >
+          <AnalysisIcon />
           Analysis
         </div>
         <div
@@ -60,6 +63,7 @@ function Header() {
             line-height: 22px;
           `}
         >
+          <ThumbsupIcon />
           Recommend
         </div>
       </div>
