@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useRecoilCallback } from 'recoil';
+import { useRecoilCallback, useRecoilValue } from 'recoil';
 import { selectedRangeAtom } from 'recoils';
 import { colors } from 'utils/style';
 
@@ -19,6 +19,14 @@ function CalendarItem(props: {
       />
     );
   }
+
+  const selectedRange = useRecoilValue(selectedRangeAtom);
+
+  const isSelected =
+    selectedRange.start &&
+    selectedRange.end &&
+    selectedRange.start <= props.info.num &&
+    selectedRange.end >= props.info.num;
 
   // value에 따라서 color 매칭
   let backColor;
@@ -40,6 +48,7 @@ function CalendarItem(props: {
     ({ set, snapshot }) =>
       (date: number) => {
         const prevRange = snapshot.getLoadable(selectedRangeAtom).getValue();
+        console.log(prevRange);
         if (
           prevRange.start === undefined ||
           (prevRange.start && prevRange.end)
@@ -80,6 +89,9 @@ function CalendarItem(props: {
           font-size: 18px;
           letter-spacing: -0.1em;
           background-color: ${backColor};
+
+          ${isSelected ? `outline: 2px solid black;` : undefined}
+
           ${props.info.val
             ? `color: white;
             cursor: pointer;`
