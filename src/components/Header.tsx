@@ -1,13 +1,14 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ReactComponent as AnalysisIcon } from '../assets/icons/analysis.svg';
 import { ReactComponent as Logo } from '../assets/icons/stless.svg';
 import { ReactComponent as ThumbsupIcon } from '../assets/icons/thumbs-up.svg';
 
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const onAnalysisTabClick = () => {
     navigate('/analysis');
   };
@@ -58,6 +59,7 @@ function Header() {
             font-weight: 500;
             font-size: 16px;
             line-height: 22px;
+            opacity: ${location.pathname === '/analysis' ? 1 : 0.2};
             cursor: pointer;
           `}
           onClick={onAnalysisTabClick}
@@ -81,6 +83,7 @@ function Header() {
             font-weight: 500;
             font-size: 16px;
             line-height: 22px;
+            opacity: ${location.pathname === '/analysis' ? 0.2 : 1};
             cursor: pointer;
           `}
           onClick={onRecommendTabClick}
