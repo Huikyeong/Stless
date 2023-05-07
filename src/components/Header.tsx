@@ -27,7 +27,15 @@ function Header() {
         z-index: 1;
       `}
     >
-      <Logo />
+      <Logo
+        css={css`
+          color: #000000;
+          font-size: 3.6rem;
+          font-weight: 800;
+          margin: auto;
+          margin-left: 10px;
+        `}
+      />
       <div
         css={css`
           display: flex;
@@ -50,6 +58,7 @@ function Header() {
             font-weight: 500;
             font-size: 16px;
             line-height: 22px;
+            cursor: pointer;
           `}
           onClick={onAnalysisTabClick}
         >
@@ -72,6 +81,7 @@ function Header() {
             font-weight: 500;
             font-size: 16px;
             line-height: 22px;
+            cursor: pointer;
           `}
           onClick={onRecommendTabClick}
         >
