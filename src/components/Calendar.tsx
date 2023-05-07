@@ -25,9 +25,6 @@ function Calendar() {
         display: flex;
         align-items: center;
         gap: 20px;
-
-        width: 100%;
-        height: 100%;
       `}
     >
       <div
@@ -35,21 +32,18 @@ function Calendar() {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 15px;
+          gap: 10px;
         `}
       >
-        <div
+        <p
           css={css`
-            display: flex;
-            align-items: center;
-            gap: 12px;
             font-weight: 800;
             font-size: 22px;
             letter-spacing: 0.05em;
           `}
         >
           MAR
-        </div>
+        </p>
         <div
           css={css`
             box-sizing: border-box;
