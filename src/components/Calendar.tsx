@@ -8,7 +8,16 @@ import CalendarItem from './CalendarItem';
 
 function Calendar() {
   const [calMode, setCalMode] = useState<'mon' | 'day'>('mon');
-  const dayList = [undefined, 1, 2, 3, 4, 5];
+  const dayList: Array<number | undefined> = [
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+  ];
+  for (let i = 1; i <= 31; i += 1) {
+    dayList.push(i);
+  }
 
   return (
     <div
@@ -65,7 +74,6 @@ function Calendar() {
             display: flex;
             flex-direction: column;
             width: 300px;
-            height: 240px;
             background: #ffffff;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
             border-radius: 15px;
@@ -99,10 +107,12 @@ function Calendar() {
             css={css`
               display: flex;
               flex-wrap: wrap;
+              row-gap: 3px;
+              padding: 5px 0;
             `}
           >
             {dayList.map((day) => (
-              <CalendarItem key={day} num={day} />
+              <CalendarItem key={day} num={day} val={1} />
             ))}
           </div>
         </div>

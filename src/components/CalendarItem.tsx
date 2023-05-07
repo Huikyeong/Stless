@@ -1,7 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-function CalendarItem(props: { num: number | undefined }) {
+function CalendarItem(props: {
+  num: number | undefined;
+  val: number | undefined;
+}) {
+  // value에 따라서 color 매칭
   return (
     <div
       css={css`
@@ -21,12 +25,15 @@ function CalendarItem(props: { num: number | undefined }) {
             width: 30px;
             height: 30px;
             border-radius: 30px;
-            background: #a92222;
 
             font-weight: 200;
             font-size: 18px;
             letter-spacing: -0.1em;
-            color: white;
+            ${props.val
+              ? `color: white;
+            background: #a92222;
+            cursor: pointer;`
+              : `color: #b4b4b4;`}
           `}
         >
           {props.num}
