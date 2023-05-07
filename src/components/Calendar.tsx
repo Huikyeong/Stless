@@ -16,7 +16,7 @@ function Calendar() {
     undefined,
   ];
   for (let i = 1; i <= 31; i += 1) {
-    if (i > 7 && i < 15) {
+    if (i >= 7 && i <= 15) {
       const randVal = Math.random() * 5 - 2.5;
       dayList.push({ num: i, val: randVal });
     } else {
@@ -112,7 +112,7 @@ function Calendar() {
             css={css`
               display: flex;
               flex-wrap: wrap;
-              row-gap: 3px;
+              row-gap: 2px;
               padding: 5px 0;
             `}
           >

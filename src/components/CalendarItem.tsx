@@ -22,11 +22,25 @@ function CalendarItem(props: {
 
   const selectedRange = useRecoilValue(selectedRangeAtom);
 
-  const isSelected =
-    selectedRange.start &&
-    selectedRange.end &&
-    selectedRange.start <= props.info.num &&
-    selectedRange.end >= props.info.num;
+  const getOutlineStyle = (day: number) => {
+    if (selectedRange.start === undefined || selectedRange.end === undefined) {
+      return undefined;
+    }
+
+    if (selectedRange.start < day && selectedRange.end > day) {
+      return `border-top: 1.5px solid black; border-bottom: 1.5px solid black;`;
+    }
+    if (selectedRange.start === day && selectedRange.end === day) {
+      return `border: 1.5px solid black; border-radius: 36px;`;
+    }
+    if (selectedRange.start === day) {
+      return `border-top: 1.5px solid black; border-bottom: 1.5px solid black; border-left: 1.5px solid black; border-radius: 36px 0 0 36px;`;
+    }
+    if (selectedRange.end === day) {
+      return `border-top: 1.5px solid black; border-bottom: 1.5px solid black; border-right: 1.5px solid black; border-radius: 0 36px 36px 0;`;
+    }
+    return undefined;
+  };
 
   // value에 따라서 color 매칭
   let backColor;
@@ -48,7 +62,6 @@ function CalendarItem(props: {
     ({ set, snapshot }) =>
       (date: number) => {
         const prevRange = snapshot.getLoadable(selectedRangeAtom).getValue();
-        console.log(prevRange);
         if (
           prevRange.start === undefined ||
           (prevRange.start && prevRange.end)
@@ -74,6 +87,10 @@ function CalendarItem(props: {
         align-items: center;
 
         width: calc(260px / 7);
+        height: 36px;
+
+        box-sizing: border-box;
+        ${getOutlineStyle(props.info.num)}
       `}
     >
       <div
@@ -89,8 +106,6 @@ function CalendarItem(props: {
           font-size: 18px;
           letter-spacing: -0.1em;
           background-color: ${backColor};
-
-          ${isSelected ? `outline: 2px solid black;` : undefined}
 
           ${props.info.val
             ? `color: white;
