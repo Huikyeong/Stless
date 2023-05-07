@@ -2,8 +2,10 @@
 import { css, Global } from '@emotion/react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route, redirect } from 'react-router-dom';
 import './index.css';
 import Analysis from './pages/Analysis';
+import Recommend from './pages/Recommend';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -18,6 +20,11 @@ root.render(
         }
       `}
     />
-    <Analysis />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/analysis' element={<Analysis />} />
+        <Route path='/recommend' element={<Recommend />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 );

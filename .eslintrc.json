@@ -32,6 +32,24 @@
     "react/react-in-jsx-scope": "off",
 
     // ignore props destructuring
-    "react/destructuring-assignment": "off"
+    "react/destructuring-assignment": "off",
+
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+
+    "import/prefer-default-export": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": [
+          "src"
+        ],
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
   }
 }

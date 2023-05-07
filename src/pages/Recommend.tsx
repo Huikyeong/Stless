@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import Calendar from 'components/Calendar';
-import Header from 'components/Header';
+import Header from '../components/Header';
 
-function Analysis() {
+function Recommend() {
   return (
     <div
       css={css`
@@ -31,11 +30,10 @@ function Analysis() {
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         `}
       >
-        Analysis!
-        <Calendar />
+        Recommend!
       </div>
     </div>
   );
 }
 
-export default Analysis;
+export default Recommend;
