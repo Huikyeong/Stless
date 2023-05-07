@@ -2,9 +2,20 @@
 import { css } from '@emotion/react';
 import Calendar from 'components/Calendar';
 import Header from 'components/Header';
+import * as dfd from 'danfojs';
 import Plot from 'react-plotly.js';
 
 function Analysis() {
+  /* eslint-disable */
+  const someTextContent = require('assets/datas/stress_p703.csv');
+  dfd
+    .readCSV(someTextContent)
+    .then((df: dfd.DataFrame) => {
+      df.print();
+      console.log(Date.now(), 'df head?');
+    })
+    .catch((err) => console.log(err));
+
   return (
     <div
       css={css`
