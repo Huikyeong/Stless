@@ -2,13 +2,13 @@
 import { css } from '@emotion/react';
 import { ReactComponent as LeftArrow } from 'assets/icons/triangle-left.svg';
 import { ReactComponent as RightArrow } from 'assets/icons/triangle-right.svg';
+import CalendarItem from 'components/CalendarItem';
 import ToggleSwitch from 'components/ToggleSwitch';
 import { useState } from 'react';
-import CalendarItem from './CalendarItem';
 
 function Calendar() {
   const [calMode, setCalMode] = useState<'mon' | 'day'>('mon');
-  const dayList: Array<number | undefined> = [
+  const dayList: Array<{ num: number; val: number } | undefined> = [
     undefined,
     undefined,
     undefined,
@@ -16,7 +16,8 @@ function Calendar() {
     undefined,
   ];
   for (let i = 1; i <= 31; i += 1) {
-    dayList.push(i);
+    const randVal = Math.random() * 5 - 2.5;
+    dayList.push({ num: i, val: randVal });
   }
 
   return (
@@ -111,8 +112,8 @@ function Calendar() {
               padding: 5px 0;
             `}
           >
-            {dayList.map((day) => (
-              <CalendarItem key={day} num={day} val={1} />
+            {dayList.map((day, index) => (
+              <CalendarItem key={index} info={day} />
             ))}
           </div>
         </div>
