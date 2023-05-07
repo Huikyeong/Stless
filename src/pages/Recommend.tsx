@@ -2,11 +2,29 @@
 import { css } from '@emotion/react';
 import { ReactComponent as ArrowLeftIcon } from 'assets/icons/arrow-left.svg';
 import { ReactComponent as ClickLeftIcon } from 'assets/icons/click-left.svg';
+import DragItem from 'components/DragItem';
+import { useState } from 'react';
+import { useDrop } from 'react-dnd';
 import Header from '../components/Header';
 
 function Recommend() {
-  const selectedTagList: string[] = []; // After drop.
-  const tagList: string[] = ['exercise', 'in rainy day']; // Before drop.
+  const [selectedTagList, setSelectedTagList] = useState<string[]>([]);
+  const tagList: string[] = [
+    'exercise',
+    'in rainy day',
+    'hi',
+    'huikyeong',
+    'dataviz',
+    'nanoquiz',
+  ]; // Before drop.
+
+  const [, drop] = useDrop(() => ({
+    accept: 'cause',
+    drop: (item: { text: string }) => {
+      setSelectedTagList((prev) => [...prev, item.text]);
+    },
+  }));
+
   return (
     <div
       css={css`
@@ -35,121 +53,168 @@ function Recommend() {
         `}
       >
         <div
-          id='tag layout'
           css={css`
-            width: 100%;
-            height: 30%;
+            box-sizing: border-box;
             display: flex;
+            flex-direction: column;
+
+            width: 1240px;
+            padding-top: 30px;
           `}
         >
           <div
-            id='drop layout'
+            id='tag layout'
             css={css`
-              width: 312px;
-              height: match-parent;
-              margin: 2%;
-              padding: 2%;
-
-              font-family: 'Noto Sans';
-              font-style: normal;
-              font-weight: 300;
-              font-size: 16px;
-              line-height: 24px;
-
-              background: #ffffff;
-              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-              border-radius: 15px;
+              display: flex;
+              justify-content: center;
+              width: 100%;
+              min-height: 200px;
+              gap: 40px;
             `}
           >
-            I got stress <br /> when{' '}
-            <span
+            <div
+              id='drop layout'
+              ref={drop}
               css={css`
-                color: ${selectedTagList.length === 0 ? '#a7a7a7' : '#ffffff'};
+                box-sizing: border-box;
+                width: 320px;
+                height: 100%;
+                padding: 15px 20px;
+
+                font-weight: 300;
+                font-size: 16px;
+                line-height: 24px;
+
+                background: #ffffff;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+                border-radius: 15px;
               `}
             >
-              {selectedTagList.length === 0
-                ? 'Drag here!'
-                : selectedTagList.join(', ')}
-            </span>
-          </div>
-          <div
-            id='guide layout'
-            css={css`
-              margin-top: 2%;
-              margin-bottom: 2%;
-              padding: 2%;
-              flex-direction: column;
-
-              font-family: 'Noto Sans';
-              font-style: normal;
-              font-weight: 400;
-              font-size: 8px;
-              line-height: 110%;
-              /* or 15px */
-
-              display: flex;
-              align-items: center;
-              text-align: center;
-
-              color: #a7a7a7;
-            `}
-          >
-            <ClickLeftIcon />
-            <ArrowLeftIcon />
-            drag
-            <br />
-            and
-            <br />
-            drop
-          </div>
-          <div
-            id='drag layout'
-            css={css`
-              width: 558px;
-              height: match-parent;
-              margin: 2%;
-              padding: 2%;
-              display: flex;
-
-              background: #e9e9e9;
-              border-radius: 15px;
-            `}
-          >
-            {tagList.map((tag, index) => (
-              <div
-                key={index}
+              I got stress <br /> when{' '}
+              {selectedTagList.length === 0 && (
+                <span
+                  css={css`
+                    color: #a7a7a7;
+                  `}
+                >
+                  Drag here!
+                </span>
+              )}
+              <span
                 css={css`
-                  width: 88px;
-                  height: 31px;
-                  margin: 5px;
-
-                  background: #ffffff;
-                  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-                  border-radius: 10px;
-
-                  font-family: 'Noto Sans';
-                  font-style: normal;
-                  font-weight: 400;
-                  font-size: 12px;
-                  line-height: 110%;
                   display: flex;
-                  justify-content: center;
-                  align-items: center;
+                  flex-wrap: wrap;
                 `}
               >
-                {tag}
+                {selectedTagList.map((tag, index) => (
+                  <div
+                    key={tag}
+                    css={css`
+                      display: flex;
+                      margin-right: 5px;
+                    `}
+                  >
+                    <div
+                      css={css`
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        color: black;
+                        font-weight: 600;
+
+                        cursor: pointer;
+                        &: hover {
+                          opacity: 0.5;
+                        }
+                      `}
+                      onClick={() =>
+                        setSelectedTagList((prev) =>
+                          prev.filter((selectedTag) => selectedTag !== tag),
+                        )
+                      }
+                    >
+                      {tag}
+                    </div>
+                    {selectedTagList.length - 1 === index ? '.' : ','}
+                  </div>
+                ))}
+              </span>
+            </div>
+            <div
+              id='guide layout'
+              css={css`
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+
+                height: 100%;
+
+                font-weight: 400;
+                font-size: 8px;
+                line-height: 110%;
+
+                color: #a7a7a7;
+              `}
+            >
+              <ClickLeftIcon
+                css={css`
+                  position: relative;
+                  top: 5px;
+                  width: 28px;
+                  height: 28px;
+                `}
+              />
+              <ArrowLeftIcon />
+              drag
+              <br />
+              and
+              <br />
+              drop
+            </div>
+            <div
+              id='drag layout'
+              css={css`
+                box-sizing: border-box;
+                display: flex;
+                gap: 10px;
+
+                width: 540px;
+                height: 100%;
+                padding: 15px 20px;
+
+                background: #e9e9e9;
+                border-radius: 15px;
+              `}
+            >
+              <div
+                css={css`
+                  display: flex;
+                  flex-wrap: wrap;
+                  width: 100%;
+                  height: min-content;
+                  gap: 10px;
+                `}
+              >
+                {tagList
+                  .filter((tag) => !selectedTagList.includes(tag))
+                  .map((tag) => (
+                    <DragItem key={tag} text={tag} />
+                  ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-        <div
-          id='sankey layout'
-          css={css`
-            width: 100%;
-            height: 70%;
-          `}
-        >
-          sankey layout!
+          <div
+            id='sankey layout'
+            css={css`
+              width: 100%;
+              height: 70%;
+            `}
+          >
+            sankey layout!
+          </div>
         </div>
       </div>
     </div>
