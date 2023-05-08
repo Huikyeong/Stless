@@ -46,6 +46,10 @@ function LineGraph() {
             text: 'Stress change over 2023.05.08 ~ 2023.05.15',
             xref: 'paper',
             x: 0.0,
+            font: {
+              family: 'Noto Sans',
+              size: 20,
+            },
           },
           width: 800,
           height: 650,
