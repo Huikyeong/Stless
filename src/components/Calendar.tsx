@@ -21,7 +21,6 @@ function Calendar() {
       dayList.push({ num: i, val: undefined });
     }
   }
-  console.log(dayList);
 
   return (
     <div
