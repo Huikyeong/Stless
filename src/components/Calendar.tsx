@@ -1,8 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import CalendarItem from 'components/CalendarItem';
+import stressSummary from '../assets/datas/stress_summary_p703.json';
 
 function Calendar() {
+  const stress = stressSummary.data.map((d) => d.summary);
+  console.log(stress);
   const dayList: Array<{ num: number; val: number | undefined } | undefined> = [
     undefined,
     undefined,
@@ -12,12 +15,13 @@ function Calendar() {
   ];
   for (let i = 1; i <= 31; i += 1) {
     if (i >= 7 && i <= 15) {
-      const randVal = Math.random() * 5 - 2.5;
-      dayList.push({ num: i, val: randVal });
+      const stressVal = stress[i - 7];
+      dayList.push({ num: i, val: stressVal });
     } else {
       dayList.push({ num: i, val: undefined });
     }
   }
+  console.log(dayList);
 
   return (
     <div
