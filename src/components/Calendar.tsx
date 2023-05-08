@@ -5,7 +5,7 @@ import stressSummary from '../assets/datas/stress_summary_p703.json';
 
 function Calendar() {
   const stress = stressSummary.data.map((d) => d.summary);
-  console.log(stress);
+
   const dayList: Array<{ num: number; val: number | undefined } | undefined> = [
     undefined,
     undefined,
