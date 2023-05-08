@@ -1,0 +1,18 @@
+[
+    {
+        "category": "sleep early",
+        "value": 10
+    },
+    {
+        "category": "in shiny day",
+        "value": 5
+    },
+    {
+        "category": "exercise",
+        "value": 3
+    },
+    {
+        "category": "use phone less",
+        "value": 1
+    }
+]

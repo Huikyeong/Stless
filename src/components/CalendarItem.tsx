@@ -107,7 +107,7 @@ function CalendarItem(props: {
           letter-spacing: -0.1em;
           background-color: ${backColor};
 
-          ${props.info.val
+          ${props.info.val !== undefined
             ? `color: white;
             cursor: pointer;`
             : `color: #b4b4b4;`}

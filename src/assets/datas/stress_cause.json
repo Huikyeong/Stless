@@ -1,0 +1,18 @@
+[
+    {
+        "category": "study",
+        "value": 10
+    },
+    {
+        "category": "sleep late",
+        "value": 5
+    },
+    {
+        "category": "wake up early",
+        "value": 3
+    },
+    {
+        "category": "in windy day",
+        "value": 1
+    }
+]
