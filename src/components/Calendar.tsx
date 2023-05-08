@@ -1,10 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import CalendarItem from 'components/CalendarItem';
-import stressSummary from '../assets/datas/stress_summary_p703.json';
+import stressSummary from '../assets/datas/stress_summary.json';
 
 function Calendar() {
-  const stress = stressSummary.data.map((d) => d.summary);
+  const stress = stressSummary.map((d) => d.summary);
 
   const dayList: Array<{ num: number; val: number | undefined } | undefined> = [
     undefined,
