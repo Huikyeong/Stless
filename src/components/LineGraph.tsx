@@ -11,7 +11,7 @@ function LineGraph() {
   const selectedRange = useRecoilValue(selectedRangeAtom);
   const [df, setDf] = useState<dfd.DataFrame>(new dfd.DataFrame());
   const [dfStress, setDfStress] = useState<dfd.DataFrame>(new dfd.DataFrame());
-  console.log(dfStress);
+
   if (dfStress.size == 0) {
     const someTextContent = require('assets/datas/stress_p703.csv');
     dfd
@@ -88,6 +88,7 @@ function LineGraph() {
             fixedrange: true,
             showgrid: false,
             zeroline: false,
+            range: [-3.5, 3.5],
           },
         }}
       />
