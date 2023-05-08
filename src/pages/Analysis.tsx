@@ -2,23 +2,13 @@
 import { css } from '@emotion/react';
 import Calendar from 'components/Calendar';
 import Header from 'components/Header';
+import LineGraph from 'components/LineGraph';
 import * as dfd from 'danfojs';
 import { react } from 'plotly.js';
-import { useState } from 'react';
 import Plot from 'react-plotly.js';
 
 function Analysis() {
   /* eslint-disable */
-  const [df, setDf] = useState<dfd.DataFrame>(new dfd.DataFrame());
-  if (df.size == 0) {
-    const someTextContent = require('assets/datas/stress_p703.csv');
-    dfd
-      .readCSV(someTextContent)
-      .then((df: dfd.DataFrame) => {
-        setDf(df);
-      })
-      .catch((err) => console.log(err));
-  }
 
   return (
     <div
@@ -143,42 +133,7 @@ function Analysis() {
               height: 100%;
             `}
           >
-            <Plot
-              data={[
-                {
-                  x: df['date']?.values,
-                  y: df['Stress']?.values,
-                  type: 'scatter',
-                  mode: 'lines',
-                  marker: { color: '#838383' },
-                  line: { shape: 'spline', smoothing: 0.2 },
-                },
-              ]}
-              layout={{
-                title: {
-                  text: 'Stress change over 2023.05.08 ~ 2023.05.15',
-                  xref: 'paper',
-                  x: 0.01,
-                },
-                width: 870,
-                height: 700,
-                margin: {
-                  l: 50,
-                  r: 50,
-                  b: 50,
-                  t: 50,
-                  pad: 4,
-                },
-                xaxis: {
-                  rangeslider: {},
-                },
-                yaxis: {
-                  fixedrange: true,
-                  showgrid: false,
-                  zeroline: false,
-                },
-              }}
-            />
+            <LineGraph />
           </div>
         </div>
       </div>
