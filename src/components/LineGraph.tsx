@@ -23,11 +23,9 @@ function LineGraph() {
       })
       .catch((err) => console.log(err));
   }
-  console.log(dfStress);
 
   useEffect(() => {
     if (selectedRange.start && selectedRange.end) {
-      console.log(dfStress);
       setDf(
         dfStress
           .query(
