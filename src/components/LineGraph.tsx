@@ -11,6 +11,10 @@ function LineGraph() {
   const selectedRange = useRecoilValue(selectedRangeAtom);
   const [df, setDf] = useState<dfd.DataFrame>(new dfd.DataFrame());
   const [dfStress, setDfStress] = useState<dfd.DataFrame>(new dfd.DataFrame());
+  const [dateRange, setDateRange] = useState<[number, number]>([
+    selectedRange.start ?? 7,
+    selectedRange.end ?? 14,
+  ]);
 
   if (dfStress.size == 0) {
     const someTextContent = require('assets/datas/stress_p703.csv');
@@ -35,6 +39,7 @@ function LineGraph() {
           )
           .resetIndex(),
       );
+      setDateRange([selectedRange.start, selectedRange.end]);
     }
   }, [selectedRange]);
 
@@ -51,6 +56,17 @@ function LineGraph() {
         padding: 10px 20px;
       `}
     >
+      <p
+        css={css`
+          font-weight: 800;
+          font-size: 22px;
+          letter-spacing: 0.05em;
+        `}
+      >
+        Stress change over 2023.05.
+        {dateRange[0].toString().padStart(2, '0')} ~ 2023.05.
+        {dateRange[1].toString().padStart(2, '0')}
+      </p>
       <Plot
         data={[
           {
@@ -63,15 +79,6 @@ function LineGraph() {
           },
         ]}
         layout={{
-          title: {
-            text: 'Stress change over 2023.05.08 ~ 2023.05.15',
-            xref: 'paper',
-            x: 0.0,
-            font: {
-              family: 'Noto Sans',
-              size: 20,
-            },
-          },
           width: 800,
           height: 650,
           margin: {
