@@ -1,21 +1,44 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as dfd from 'danfojs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
+import { useRecoilValue } from 'recoil';
+import { selectedRangeAtom } from 'recoils';
 
 function LineGraph() {
   /* eslint-disable */
+  const selectedRange = useRecoilValue(selectedRangeAtom);
   const [df, setDf] = useState<dfd.DataFrame>(new dfd.DataFrame());
-  if (df.size == 0) {
+  const [dfStress, setDfStress] = useState<dfd.DataFrame>(new dfd.DataFrame());
+
+  if (df.size == 0 && dfStress.size == 0) {
     const someTextContent = require('assets/datas/stress_p703.csv');
     dfd
       .readCSV(someTextContent)
       .then((df: dfd.DataFrame) => {
+        df = df.addColumn('day', dfd.toDateTime(df['date']).dayOfMonth());
+        setDfStress(df);
         setDf(df);
       })
       .catch((err) => console.log(err));
   }
+  console.log(dfStress);
+
+  useEffect(() => {
+    if (selectedRange.start && selectedRange.end) {
+      console.log(dfStress);
+      setDf(
+        dfStress
+          .query(
+            dfStress['day']
+              .gt(selectedRange.start - 1)
+              .and(dfStress['day'].lt(selectedRange.end + 1)),
+          )
+          .resetIndex(),
+      );
+    }
+  }, [selectedRange]);
 
   return (
     <div
