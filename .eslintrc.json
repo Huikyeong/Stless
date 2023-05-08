@@ -23,7 +23,12 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "prettier/prettier": ["error"],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
 
     // emotion css props
     "react/no-unknown-property": ["error", { "ignore": ["css"] }],
