@@ -24,6 +24,16 @@ function BarGraph() {
         gap: 10px;
       `}
     >
+      <p
+        css={css`
+          font-weight: 1000;
+          font-size: 17px;
+          letter-spacing: 0.05em;
+          color: #e26464;
+        `}
+      >
+        Get <b>From...</b>
+      </p>
       <Plot
         data={[
           {
@@ -50,6 +60,16 @@ function BarGraph() {
           colorway: ['#E26464'],
         }}
       />
+      <p
+        css={css`
+          font-weight: 1000;
+          font-size: 17px;
+          letter-spacing: 0.05em;
+          color: #6496e2;
+        `}
+      >
+        Released <b>by...</b>
+      </p>
       <Plot
         data={[
           {
