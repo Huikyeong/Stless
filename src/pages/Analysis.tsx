@@ -1,20 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import BarGraph from 'components/BarGraph';
 import Calendar from 'components/Calendar';
 import Header from 'components/Header';
-import * as dfd from 'danfojs';
+import LineGraph from 'components/LineGraph';
 import Plot from 'react-plotly.js';
 
 function Analysis() {
   /* eslint-disable */
-  const someTextContent = require('assets/datas/stress_p703.csv');
-  dfd
-    .readCSV(someTextContent)
-    .then((df: dfd.DataFrame) => {
-      df.print();
-      console.log(Date.now(), 'df head?');
-    })
-    .catch((err) => console.log(err));
 
   return (
     <div
@@ -65,109 +58,18 @@ function Analysis() {
             `}
           >
             <Calendar />
-            <div
-              css={css`
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-              `}
-            >
-              <Plot
-                data={[
-                  {
-                    y: [
-                      'giraffes',
-                      'orangutans',
-                      'monkeys',
-                      'huikyeong',
-                      'cheolhwan',
-                    ],
-                    x: [5, 14, 16, 20, 23],
-                    type: 'bar',
-                    orientation: 'h',
-                  },
-                ]}
-                layout={{
-                  width: 300,
-                  height: 150,
-                  margin: {
-                    l: 100,
-                    r: 0,
-                    b: 40,
-                    t: 0,
-                    pad: 4,
-                  },
-                  colorway: ['#E26464'],
-                }}
-              />
-              <Plot
-                data={[
-                  {
-                    y: [
-                      'giraffes',
-                      'orangutans',
-                      'monkeys',
-                      'huikyeong',
-                      'cheolhwan',
-                    ],
-                    x: [5, 14, 16, 20, 23],
-                    type: 'bar',
-                    orientation: 'h',
-                  },
-                ]}
-                layout={{
-                  width: 300,
-                  height: 150,
-                  margin: {
-                    l: 100,
-                    r: 0,
-                    b: 40,
-                    t: 0,
-                    pad: 4,
-                  },
-                  colorway: ['#6496E2'],
-                }}
-              />
-            </div>
+            <BarGraph />
           </div>
           <div
             css={css`
               display: flex;
               justify-content: flex-end;
-              align-items: center;
+              align-items: flex-start;
               width: 100%;
               height: 100%;
             `}
           >
-            <Plot
-              data={[
-                {
-                  x: [1, 2, 3],
-                  y: [2, 6, 3],
-                  type: 'scatter',
-                  mode: 'lines+markers',
-                  marker: { color: '#838383' },
-                },
-              ]}
-              layout={{
-                title: { text: 'Stress change over ~', xref: 'paper', x: 0.05 },
-                width: 870,
-                height: 700,
-                margin: {
-                  l: 50,
-                  r: 50,
-                  b: 50,
-                  t: 50,
-                  pad: 4,
-                },
-                xaxis: {
-                  rangeslider: {},
-                },
-                yaxis: {
-                  fixedrange: true,
-                },
-              }}
-            />
+            <LineGraph />
           </div>
         </div>
       </div>
