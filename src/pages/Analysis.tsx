@@ -3,18 +3,22 @@ import { css } from '@emotion/react';
 import Calendar from 'components/Calendar';
 import Header from 'components/Header';
 import * as dfd from 'danfojs';
+import { react } from 'plotly.js';
+import { useState } from 'react';
 import Plot from 'react-plotly.js';
 
 function Analysis() {
   /* eslint-disable */
-  const someTextContent = require('assets/datas/stress_p703.csv');
-  dfd
-    .readCSV(someTextContent)
-    .then((df: dfd.DataFrame) => {
-      df.print();
-      console.log(Date.now(), 'df head?');
-    })
-    .catch((err) => console.log(err));
+  const [df, setDf] = useState<dfd.DataFrame>(new dfd.DataFrame());
+  if (df.size == 0) {
+    const someTextContent = require('assets/datas/stress_p703.csv');
+    dfd
+      .readCSV(someTextContent)
+      .then((df: dfd.DataFrame) => {
+        setDf(df);
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div
@@ -134,7 +138,7 @@ function Analysis() {
             css={css`
               display: flex;
               justify-content: flex-end;
-              align-items: center;
+              align-items: flex-start;
               width: 100%;
               height: 100%;
             `}
@@ -142,15 +146,20 @@ function Analysis() {
             <Plot
               data={[
                 {
-                  x: [1, 2, 3],
-                  y: [2, 6, 3],
+                  x: df['date']?.values,
+                  y: df['Stress']?.values,
                   type: 'scatter',
-                  mode: 'lines+markers',
+                  mode: 'lines',
                   marker: { color: '#838383' },
+                  line: { shape: 'spline', smoothing: 0.2 },
                 },
               ]}
               layout={{
-                title: { text: 'Stress change over ~', xref: 'paper', x: 0.05 },
+                title: {
+                  text: 'Stress change over 2023.05.08 ~ 2023.05.15',
+                  xref: 'paper',
+                  x: 0.01,
+                },
                 width: 870,
                 height: 700,
                 margin: {
@@ -165,6 +174,8 @@ function Analysis() {
                 },
                 yaxis: {
                   fixedrange: true,
+                  showgrid: false,
+                  zeroline: false,
                 },
               }}
             />
