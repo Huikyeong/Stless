@@ -269,17 +269,24 @@ function Recommend() {
                     pad: 15,
                     thickness: 30,
                     line: {
-                      color: 'black',
+                      color: '#FFFFFF',
                       width: 0.5,
                     },
-                    label: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
-                    color: ['blue', 'blue', 'blue', 'blue', 'blue', 'blue'],
+                    label: ['A1', 'A2', 'A3', 'B1', 'B2', 'B2'],
+                    color: [
+                      '#E4C6C6',
+                      '#E4C6C6',
+                      '#E4C6C6',
+                      '#B3CAED',
+                      '#B3CAED',
+                      '#B3CAED',
+                    ],
                   },
 
                   link: {
-                    source: [0, 1, 0, 2, 3, 3],
-                    target: [2, 3, 3, 4, 4, 5],
-                    value: [8, 4, 2, 8, 4, 2],
+                    source: [0, 1, 1, 2, 2],
+                    target: [3, 4, 5, 3, 5],
+                    value: [3, 4, 5, 5, 3],
                   },
                 },
               ]}
