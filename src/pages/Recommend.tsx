@@ -12,11 +12,16 @@ function Recommend() {
   const [selectedTagList, setSelectedTagList] = useState<string[]>([]);
   const tagList: string[] = [
     'exercise',
+    'study',
+    'use phone a lot',
+    'use phone less',
+    'in shiny day',
     'in rainy day',
-    'hi',
-    'huikyeong',
-    'dataviz',
-    'nanoquiz',
+    'in windy day',
+    'wake up late',
+    'wake up early',
+    'sleep late',
+    'sleep early',
   ]; // Before drop.
 
   const [, drop] = useDrop(() => ({
@@ -69,7 +74,7 @@ function Recommend() {
               display: flex;
               justify-content: center;
               width: 100%;
-              min-height: 200px;
+              height: fit-content;
               gap: 40px;
             `}
           >
@@ -79,8 +84,9 @@ function Recommend() {
               css={css`
                 box-sizing: border-box;
                 width: 320px;
-                height: 100%;
-                padding: 20px 28px;
+                min-height: 200px;
+                height: fit-content;
+                padding: 20px 28px 28px;
 
                 font-weight: 300;
                 font-size: 18px;
@@ -115,6 +121,16 @@ function Recommend() {
                       margin-right: 5px;
                     `}
                   >
+                    {selectedTagList.length - 1 === index &&
+                      selectedTagList.length > 1 && (
+                        <p
+                          css={css`
+                            margin-right: 7px;
+                          `}
+                        >
+                          and
+                        </p>
+                      )}
                     <div
                       css={css`
                         position: relative;
