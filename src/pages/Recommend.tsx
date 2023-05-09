@@ -79,11 +79,11 @@ function Recommend() {
                 box-sizing: border-box;
                 width: 320px;
                 height: 100%;
-                padding: 15px 20px;
+                padding: 20px 28px;
 
                 font-weight: 300;
-                font-size: 16px;
-                line-height: 24px;
+                font-size: 18px;
+                line-height: 28px;
 
                 background: #ffffff;
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
