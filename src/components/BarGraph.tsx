@@ -55,8 +55,15 @@ function BarGraph() {
           },
           xaxis: {
             visible: false,
+            fixedrange: true,
+          },
+          yaxis: {
+            fixedrange: true,
           },
           colorway: ['#E26464'],
+        }}
+        config={{
+          displayModeBar: false,
         }}
       />
       <p
@@ -90,8 +97,15 @@ function BarGraph() {
           },
           xaxis: {
             visible: false,
+            fixedrange: true,
+          },
+          yaxis: {
+            fixedrange: true,
           },
           colorway: ['#6496E2'],
+        }}
+        config={{
+          displayModeBar: false,
         }}
       />
     </div>
