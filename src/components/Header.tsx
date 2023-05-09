@@ -22,10 +22,10 @@ function Header() {
         justify-content: space-between;
         align-items: flex-end;
 
-        max-width: 1240px;
+        flex-shrink: 0;
+        max-width: 1140px;
         width: 100%;
-        height: 60px;
-        z-index: 1;
+        height: 55px;
       `}
     >
       <Logo
@@ -47,48 +47,54 @@ function Header() {
           css={css`
             display: flex;
             justify-content: center;
-            align-items: flex-end;
-            gap: 6px;
+            align-items: center;
+            gap: 7px;
 
-            padding: 10px 15px;
+            padding: 9px 15px;
             border-radius: 10px 10px 0px 0px;
 
             background-color: white;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
             font-weight: 500;
-            font-size: 16px;
-            line-height: 22px;
-            opacity: ${location.pathname === '/analysis' ? 1 : 0.2};
+            font-size: 14px;
+            opacity: ${location.pathname === '/analysis' ? 1 : 0.3};
+            &: hover {
+              opacity: ${location.pathname === '/analysis' ? 1 : 0.7};
+            }
             cursor: pointer;
+            transition: all 0.15s;
           `}
           onClick={onAnalysisTabClick}
         >
-          <AnalysisIcon />
+          <AnalysisIcon width={14} height={14} />
           Analysis
         </div>
         <div
           css={css`
             display: flex;
             justify-content: center;
-            align-items: flex-end;
-            gap: 6px;
+            align-items: center;
+            gap: 7px;
 
-            padding: 10px 15px;
+            padding: 8px 15px;
             border-radius: 10px 10px 0px 0px;
 
             background-color: white;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 
             font-weight: 500;
-            font-size: 16px;
-            line-height: 22px;
-            opacity: ${location.pathname === '/analysis' ? 0.2 : 1};
+            font-size: 14px;
+            opacity: ${location.pathname === '/recommend' ? 1 : 0.3};
+            &: hover {
+              opacity: ${location.pathname === '/recommend' ? 1 : 0.7};
+            }
             cursor: pointer;
+            transition: all 0.15s;
           `}
           onClick={onRecommendTabClick}
         >
-          <ThumbsupIcon />
+          <ThumbsupIcon width={16} height={16} />
           Recommend
         </div>
       </div>
