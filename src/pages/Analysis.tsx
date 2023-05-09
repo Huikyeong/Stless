@@ -43,7 +43,7 @@ function Analysis() {
             align-items: space-between;
             gap: 20px;
 
-            width: 1240px;
+            width: 1140px;
             height: 100%;
 
             padding-top: 30px;
@@ -53,7 +53,7 @@ function Analysis() {
             css={css`
               display: flex;
               flex-direction: column;
-              gap: 50px;
+              gap: 40px;
               height: 100%;
             `}
           >

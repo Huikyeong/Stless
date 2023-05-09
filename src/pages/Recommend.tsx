@@ -58,7 +58,7 @@ function Recommend() {
             display: flex;
             flex-direction: column;
 
-            width: 1240px;
+            width: 1140px;
             padding-top: 30px;
           `}
         >
