@@ -116,16 +116,20 @@ function Recommend() {
                   >
                     <div
                       css={css`
+                        position: relative;
                         display: flex;
-                        justify-content: center;
                         align-items: center;
 
                         color: black;
                         font-weight: 600;
 
                         cursor: pointer;
-                        &: hover {
-                          opacity: 0.5;
+                        &: hover > p {
+                          opacity: 0.3;
+                        }
+                        &: hover > div {
+                          width: 100%;
+                          opacity: 1;
                         }
                       `}
                       onClick={() =>
@@ -134,7 +138,18 @@ function Recommend() {
                         )
                       }
                     >
-                      {tag}
+                      <div
+                        css={css`
+                          position: absolute;
+                          width: 0%;
+                          height: 2px;
+                          border-radius: 2px;
+                          background: #c84242;
+                          opacity: 0;
+                          transition: width 0.3s ease;
+                        `}
+                      />
+                      <p>{tag}</p>
                     </div>
                     {selectedTagList.length - 1 === index ? '.' : ','}
                   </div>
