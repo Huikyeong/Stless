@@ -241,18 +241,7 @@ function Recommend() {
               Sankey <b>Diagram</b>
             </p>
           </div>
-          <div
-            css={css`
-              box-sizing: border-box;
-              display: flex;
-              flex-direction: column;
-              background: #ffffff;
-              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-              border-radius: 15px;
-
-              padding: 10px 20px;
-            `}
-          >
+          <div>
             <Plot
               data={[
                 {
@@ -277,7 +266,10 @@ function Recommend() {
                   },
                 },
               ]}
-              layout={{}}
+              layout={{
+                width: 800,
+                height: 400,
+              }}
             />
           </div>
         </div>
