@@ -30,6 +30,7 @@ function Analysis() {
 
           width: 100%;
           height: 100%;
+          overflow-y: scroll;
 
           background: white;
           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -44,7 +45,7 @@ function Analysis() {
 
             width: 1140px;
 
-            padding-top: 30px;
+            padding: 30px 0 50px 0;
           `}
         >
           <div
