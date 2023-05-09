@@ -25,7 +25,7 @@ root.render(
     />
     <DndProvider backend={HTML5Backend}>
       <RecoilRoot>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path='/analysis' element={<Analysis />} />
             <Route path='/recommend' element={<Recommend />} />

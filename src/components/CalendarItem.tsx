@@ -23,21 +23,28 @@ function CalendarItem(props: {
   const selectedRange = useRecoilValue(selectedRangeAtom);
 
   const getOutlineStyle = (day: number) => {
-    if (selectedRange.start === undefined || selectedRange.end === undefined) {
+    if (selectedRange.start === undefined) {
+      return undefined;
+    }
+
+    if (selectedRange.end === undefined) {
+      if (selectedRange.start === day) {
+        return `border: 1.5px dashed #b4b4b4; border-radius: 36px;`;
+      }
       return undefined;
     }
 
     if (selectedRange.start < day && selectedRange.end > day) {
-      return `border-top: 1.5px solid black; border-bottom: 1.5px solid black;`;
+      return `border-top: 1.5px solid #b4b4b4; border-bottom: 1.5px solid #b4b4b4;`;
     }
     if (selectedRange.start === day && selectedRange.end === day) {
-      return `border: 1.5px solid black; border-radius: 36px;`;
+      return `border: 1.5px solid #b4b4b4; border-radius: 36px;`;
     }
     if (selectedRange.start === day) {
-      return `border-top: 1.5px solid black; border-bottom: 1.5px solid black; border-left: 1.5px solid black; border-radius: 36px 0 0 36px;`;
+      return `border-top: 1.5px solid #b4b4b4; border-bottom: 1.5px solid #b4b4b4; border-left: 1.5px solid #b4b4b4; border-radius: 36px 0 0 36px;`;
     }
     if (selectedRange.end === day) {
-      return `border-top: 1.5px solid black; border-bottom: 1.5px solid black; border-right: 1.5px solid black; border-radius: 0 36px 36px 0;`;
+      return `border-top: 1.5px solid #b4b4b4; border-bottom: 1.5px solid #b4b4b4; border-right: 1.5px solid #b4b4b4; border-radius: 0 36px 36px 0;`;
     }
     return undefined;
   };

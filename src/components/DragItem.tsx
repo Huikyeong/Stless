@@ -1,13 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
-import { useDrag } from 'react-dnd';
+import { DragSourceMonitor, useDrag } from 'react-dnd';
 
 function DragItem(props: { text: string }) {
   const [{ opacity }, dragRef] = useDrag(
     () => ({
       type: 'cause',
       item: { text: props.text },
-      collect: (monitor: any) => ({
+      collect: (monitor: DragSourceMonitor) => ({
         opacity: monitor.isDragging() ? 0.5 : 1,
       }),
     }),

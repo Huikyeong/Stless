@@ -27,8 +27,7 @@ function BarGraph() {
       <p
         css={css`
           font-weight: 1000;
-          font-size: 17px;
-          letter-spacing: 0.05em;
+          font-size: 16px;
           color: #e26464;
         `}
       >
@@ -45,12 +44,12 @@ function BarGraph() {
           },
         ]}
         layout={{
-          width: 300,
-          height: 150,
+          width: 280,
+          height: 120,
           margin: {
             l: 100,
             r: 0,
-            b: 40,
+            b: 10,
             t: 0,
             pad: 4,
           },
@@ -63,8 +62,7 @@ function BarGraph() {
       <p
         css={css`
           font-weight: 1000;
-          font-size: 17px;
-          letter-spacing: 0.05em;
+          font-size: 16px;
           color: #6496e2;
         `}
       >
@@ -81,12 +79,12 @@ function BarGraph() {
           },
         ]}
         layout={{
-          width: 300,
-          height: 150,
+          width: 280,
+          height: 110,
           margin: {
             l: 100,
             r: 0,
-            b: 40,
+            b: 0,
             t: 0,
             pad: 4,
           },

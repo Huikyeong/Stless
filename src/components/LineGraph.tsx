@@ -46,59 +46,73 @@ function LineGraph() {
   return (
     <div
       css={css`
-        box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        background: #ffffff;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-        border-radius: 15px;
-
-        padding: 10px 20px;
+        align-items: center;
+        gap: 12px;
       `}
     >
       <p
         css={css`
-          font-weight: 800;
-          font-size: 22px;
-          letter-spacing: 0.05em;
+          font-weight: 400;
+          font-size: 18px;
+          margin: 2px;
         `}
       >
-        Stress change over 2023.05.
-        {dateRange[0].toString().padStart(2, '0')} ~ 2023.05.
-        {dateRange[1].toString().padStart(2, '0')}
+        Stress change over{' '}
+        <b>
+          2023.05.
+          {dateRange[0].toString().padStart(2, '0')} ~ 2023.05.
+          {dateRange[1].toString().padStart(2, '0')}
+        </b>
       </p>
-      <Plot
-        data={[
-          {
-            x: df['date']?.values,
-            y: df['Stress']?.values,
-            type: 'scatter',
-            mode: 'lines',
-            marker: { color: '#838383' },
-            line: { shape: 'spline', smoothing: 0.2 },
-          },
-        ]}
-        layout={{
-          width: 800,
-          height: 650,
-          margin: {
-            l: 50,
-            r: 50,
-            b: 50,
-            t: 50,
-            pad: 4,
-          },
-          xaxis: {
-            rangeslider: {},
-          },
-          yaxis: {
-            fixedrange: true,
-            showgrid: false,
-            zeroline: false,
-            range: [-3.5, 3.5],
-          },
-        }}
-      />
+      <div
+        css={css`
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+
+          height: 100%;
+          background: #ffffff;
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+          border-radius: 15px;
+
+          padding: 0px 40px 50px;
+        `}
+      >
+        <Plot
+          data={[
+            {
+              x: df['date']?.values,
+              y: df['Stress']?.values,
+              type: 'scatter',
+              mode: 'lines',
+              marker: { color: '#838383' },
+              line: { shape: 'spline', smoothing: 0.2 },
+            },
+          ]}
+          layout={{
+            width: 710,
+            height: 570,
+            margin: {
+              l: 20,
+              r: 0,
+              b: 0,
+              t: 50,
+              pad: 4,
+            },
+            xaxis: {
+              rangeslider: {},
+            },
+            yaxis: {
+              fixedrange: true,
+              showgrid: false,
+              zeroline: false,
+              range: [-3.5, 3.5],
+            },
+          }}
+        />
+      </div>
     </div>
   );
 }
