@@ -245,6 +245,19 @@ function Recommend() {
               height: 70%;
             `}
           >
+            <p
+              css={css`
+                font-weight: 1000;
+                font-size: 25px;
+                letter-spacing: 0.05em;
+                display: flex;
+                justify-content: center;
+              `}
+            >
+              Sankey <b>Diagram</b>
+            </p>
+          </div>
+          <div>
             <Plot
               data={[
                 {
@@ -270,10 +283,8 @@ function Recommend() {
                 },
               ]}
               layout={{
-                title: 'Basic Sankey',
-                font: {
-                  size: 10,
-                },
+                width: 800,
+                height: 400,
               }}
             />
           </div>
