@@ -5,6 +5,7 @@ import { ReactComponent as ClickLeftIcon } from 'assets/icons/click-left.svg';
 import DragItem from 'components/DragItem';
 import { useState } from 'react';
 import { useDrop } from 'react-dnd';
+import Plot from 'react-plotly.js';
 import Header from '../components/Header';
 
 function Recommend() {
@@ -213,7 +214,56 @@ function Recommend() {
               height: 70%;
             `}
           >
-            sankey layout!
+            <p
+              css={css`
+                font-weight: 1000;
+                font-size: 25px;
+                letter-spacing: 0.05em;
+                display: flex;
+                justify-content: center;
+              `}
+            >
+              Sankey <b>Diagram</b>
+            </p>
+          </div>
+          <div
+            css={css`
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: column;
+              background: #ffffff;
+              box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+              border-radius: 15px;
+
+              padding: 10px 20px;
+            `}
+          >
+            <Plot
+              data={[
+                {
+                  type: 'sankey',
+                  orientation: 'v',
+
+                  node: {
+                    pad: 15,
+                    thickness: 30,
+                    line: {
+                      color: 'black',
+                      width: 0.5,
+                    },
+                    label: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'],
+                    color: ['blue', 'blue', 'blue', 'blue', 'blue', 'blue'],
+                  },
+
+                  link: {
+                    source: [0, 1, 0, 2, 3, 3],
+                    target: [2, 3, 3, 4, 4, 5],
+                    value: [8, 4, 2, 8, 4, 2],
+                  },
+                },
+              ]}
+              layout={{}}
+            />
           </div>
         </div>
       </div>
