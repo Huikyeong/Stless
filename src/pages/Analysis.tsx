@@ -4,7 +4,6 @@ import BarGraph from 'components/BarGraph';
 import Calendar from 'components/Calendar';
 import Header from 'components/Header';
 import LineGraph from 'components/LineGraph';
-import Plot from 'react-plotly.js';
 
 function Analysis() {
   /* eslint-disable */
@@ -43,8 +42,7 @@ function Analysis() {
             align-items: space-between;
             gap: 20px;
 
-            width: 1240px;
-            height: 100%;
+            width: 1140px;
 
             padding-top: 30px;
           `}
@@ -53,8 +51,7 @@ function Analysis() {
             css={css`
               display: flex;
               flex-direction: column;
-              gap: 50px;
-              height: 100%;
+              gap: 40px;
             `}
           >
             <Calendar />

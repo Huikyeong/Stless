@@ -58,7 +58,7 @@ function Recommend() {
             display: flex;
             flex-direction: column;
 
-            width: 1240px;
+            width: 1140px;
             padding-top: 30px;
           `}
         >
@@ -79,11 +79,11 @@ function Recommend() {
                 box-sizing: border-box;
                 width: 320px;
                 height: 100%;
-                padding: 15px 20px;
+                padding: 20px 28px;
 
                 font-weight: 300;
-                font-size: 16px;
-                line-height: 24px;
+                font-size: 18px;
+                line-height: 28px;
 
                 background: #ffffff;
                 box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
@@ -116,16 +116,20 @@ function Recommend() {
                   >
                     <div
                       css={css`
+                        position: relative;
                         display: flex;
-                        justify-content: center;
                         align-items: center;
 
                         color: black;
                         font-weight: 600;
 
                         cursor: pointer;
-                        &: hover {
-                          opacity: 0.5;
+                        &: hover > p {
+                          opacity: 0.3;
+                        }
+                        &: hover > div {
+                          width: 100%;
+                          opacity: 1;
                         }
                       `}
                       onClick={() =>
@@ -134,7 +138,18 @@ function Recommend() {
                         )
                       }
                     >
-                      {tag}
+                      <div
+                        css={css`
+                          position: absolute;
+                          width: 0%;
+                          height: 2px;
+                          border-radius: 2px;
+                          background: #c84242;
+                          opacity: 0;
+                          transition: width 0.3s ease;
+                        `}
+                      />
+                      <p>{tag}</p>
                     </div>
                     {selectedTagList.length - 1 === index ? '.' : ','}
                   </div>
