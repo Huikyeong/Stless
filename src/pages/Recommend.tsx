@@ -64,9 +64,9 @@ function Recommend() {
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-
+            gap: 30px;
             width: 1140px;
-            padding: 30px 0 50px;
+            padding: 50px 0 50px;
           `}
         >
           <div
@@ -242,59 +242,90 @@ function Recommend() {
           <div
             id='sankey layout'
             css={css`
+              display: flex;
+              flex-direction: column;
+              align-items: center;
               width: 100%;
               height: 70%;
             `}
           >
             <p
               css={css`
-                font-weight: 1000;
-                font-size: 25px;
-                letter-spacing: 0.05em;
+                font-weight: 400;
+                font-size: 14px;
+                display: flex;
+                color: gray;
+              `}
+            >
+              cause factors
+            </p>
+            <div
+              css={css`
                 display: flex;
                 justify-content: center;
               `}
             >
-              Sankey <b>Diagram</b>
-            </p>
-          </div>
-          <div>
-            <Plot
-              data={[
-                {
-                  type: 'sankey',
-                  orientation: 'v',
+              <Plot
+                data={[
+                  {
+                    type: 'sankey',
+                    orientation: 'v',
 
-                  node: {
-                    pad: 15,
-                    thickness: 30,
-                    line: {
-                      color: '#FFFFFF',
-                      width: 0.5,
+                    node: {
+                      pad: 15,
+                      thickness: 30,
+                      line: {
+                        color: '#FFFFFF',
+                        width: 0.5,
+                      },
+                      label: [
+                        'study',
+                        'sleep late',
+                        'wake up early',
+                        'sleep early',
+                        'in shiny day',
+                        'use phone less',
+                      ],
+                      color: [
+                        '#E4C6C6',
+                        '#E4C6C6',
+                        '#E4C6C6',
+                        '#B3CAED',
+                        '#B3CAED',
+                        '#B3CAED',
+                      ],
                     },
-                    label: ['A1', 'A2', 'A3', 'B1', 'B2', 'B2'],
-                    color: [
-                      '#E4C6C6',
-                      '#E4C6C6',
-                      '#E4C6C6',
-                      '#B3CAED',
-                      '#B3CAED',
-                      '#B3CAED',
-                    ],
-                  },
 
-                  link: {
-                    source: [0, 1, 1, 2, 2],
-                    target: [3, 4, 5, 3, 5],
-                    value: [3, 4, 5, 5, 3],
+                    link: {
+                      source: [0, 1, 1, 2, 2],
+                      target: [3, 4, 5, 3, 5],
+                      value: [3, 4, 5, 5, 3],
+                    },
                   },
-                },
-              ]}
-              layout={{
-                width: 800,
-                height: 400,
-              }}
-            />
+                ]}
+                layout={{
+                  width: 900,
+                  height: 400,
+                  margin: {
+                    l: 0,
+                    r: 0,
+                    b: 10,
+                    t: 10,
+                    pad: 4,
+                  },
+                }}
+              />
+            </div>
+            <p
+              css={css`
+                font-weight: 400;
+                font-size: 14px;
+                display: flex;
+                color: gray;
+              `}
+            >
+              solution factors
+            </p>
           </div>
         </div>
       </div>
