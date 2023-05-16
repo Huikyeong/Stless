@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import CalendarItem from 'components/CalendarItem';
 import stressSummary from '../assets/datas/stress_summary.json';
 
-function Calendar() {
+function Calendar(props: { className?: string }) {
   const stress = stressSummary.map((d) => d.summary);
 
   const dayList: Array<{ num: number; val: number | undefined } | undefined> = [
@@ -29,6 +29,7 @@ function Calendar() {
         align-items: center;
         gap: 20px;
       `}
+      className={props.className}
     >
       <div
         css={css`

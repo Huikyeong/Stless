@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css, Global } from '@emotion/react';
+import Onboarding from 'pages/Onboarding';
 import React from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -29,6 +30,7 @@ root.render(
           <Routes>
             <Route path='/analysis' element={<Analysis />} />
             <Route path='/recommend' element={<Recommend />} />
+            <Route path='/onboard' element={<Onboarding />} />
             <Route path='*' element={<Navigate to='/analysis' replace />} />
           </Routes>
         </BrowserRouter>
