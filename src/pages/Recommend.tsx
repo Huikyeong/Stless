@@ -331,6 +331,18 @@ function Recommend() {
           </div>
         </div>
       </div>
+      {/* guide page */}
+      <div
+        css={css`
+          position: fixed;
+          display: ${isGuideOn ? `flex` : `none`};
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.5);
+        `}
+      >
+        hi
+      </div>
       <GuideBtn
         isGuideOn={isGuideOn}
         onClickHandler={() => setIsGuideOn(!isGuideOn)}
