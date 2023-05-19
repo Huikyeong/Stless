@@ -341,45 +341,47 @@ function Onboarding() {
             >
               Done
             </button>
-            <div
-              css={css`
-                position: absolute;
-                left: 120px;
-                display: flex;
-                align-items: center;
-                opacity: 0.8;
-              `}
-            >
+            {isRangeDone && (
               <div
                 css={css`
-                  position: relative;
-                  width: 0;
-                  height: 0;
-                  border-bottom: 5px solid transparent;
-                  border-top: 5px solid transparent;
-                  border-left: 7px solid transparent;
-                  border-right: 7px solid black;
-                `}
-              />
-              <p
-                css={css`
-                  box-sizing: border-box;
-                  padding: 8px 15px;
-                  border-radius: 5px;
+                  position: absolute;
+                  left: 120px;
                   display: flex;
-                  flex-wrap: wrap;
-                  text-align: center;
-                  width: 180px;
-                  background: black;
-                  color: white;
-                  font-weight: 400;
-                  font-size: 12px;
-                  white-space: pre-line;
+                  align-items: center;
+                  opacity: 0.8;
                 `}
               >
-                {`Nice job!\nLet's go find out more about your stress.`}
-              </p>
-            </div>
+                <div
+                  css={css`
+                    position: relative;
+                    width: 0;
+                    height: 0;
+                    border-bottom: 5px solid transparent;
+                    border-top: 5px solid transparent;
+                    border-left: 7px solid transparent;
+                    border-right: 7px solid black;
+                  `}
+                />
+                <p
+                  css={css`
+                    box-sizing: border-box;
+                    padding: 8px 15px;
+                    border-radius: 5px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    text-align: center;
+                    width: 180px;
+                    background: black;
+                    color: white;
+                    font-weight: 400;
+                    font-size: 12px;
+                    white-space: pre-line;
+                  `}
+                >
+                  {`Nice job!\nLet's go find out more about your stress.`}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

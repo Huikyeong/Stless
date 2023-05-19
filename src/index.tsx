@@ -31,7 +31,7 @@ root.render(
             <Route path='/analysis' element={<Analysis />} />
             <Route path='/recommend' element={<Recommend />} />
             <Route path='/onboard' element={<Onboarding />} />
-            <Route path='*' element={<Navigate to='/analysis' replace />} />
+            <Route path='*' element={<Navigate to='/onboard' replace />} />
           </Routes>
         </BrowserRouter>
       </RecoilRoot>
