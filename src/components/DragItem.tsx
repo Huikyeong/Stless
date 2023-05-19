@@ -22,7 +22,7 @@ function DragItem(props: { text: string }) {
         justify-content: center;
         align-items: center;
 
-        height: 16px;
+        height: 15px;
         padding: 5px 12px;
 
         background: #ffffff;

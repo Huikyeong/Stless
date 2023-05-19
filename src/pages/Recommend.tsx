@@ -74,33 +74,57 @@ function Recommend() {
           <div
             id='tag layout'
             css={css`
+              position: relative;
               display: flex;
               justify-content: center;
               width: 100%;
               height: fit-content;
-              gap: 40px;
+              gap: 20px;
             `}
           >
+            {/* <div
+              css={css`
+                position: absolute;
+                left: 90px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                align-self: flex-end;
+                font-weight: 300;
+                font-size: 13px;
+              `}
+            >
+              <div
+                css={css`
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 100%;
+                  background: #8da9c4;
+                `}
+              />
+              you
+            </div> */}
             <div
               id='drop layout'
               ref={drop}
               css={css`
                 box-sizing: border-box;
-                width: 320px;
-                min-height: 200px;
+                width: 280px;
+                min-height: 140px;
                 height: fit-content;
-                padding: 20px 28px 28px;
+                padding: 18px 25px 25px;
 
                 font-weight: 300;
-                font-size: 18px;
-                line-height: 28px;
+                font-size: 15px;
+                line-height: 24px;
 
                 background: #ffffff;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+                border: 1px solid #e9e9e9;
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
                 border-radius: 15px;
               `}
             >
-              I got stress <br /> when{' '}
+              I got stress when{' '}
               {selectedTagList.length === 0 && (
                 <span
                   css={css`
@@ -216,7 +240,7 @@ function Recommend() {
                 display: flex;
                 gap: 10px;
 
-                width: 540px;
+                width: 430px;
                 height: 100%;
                 padding: 15px 20px;
 
@@ -230,7 +254,7 @@ function Recommend() {
                   flex-wrap: wrap;
                   width: 100%;
                   height: min-content;
-                  gap: 10px;
+                  gap: 8px;
                 `}
               >
                 {tagList
@@ -306,8 +330,8 @@ function Recommend() {
                   },
                 ]}
                 layout={{
-                  width: 900,
-                  height: 400,
+                  width: 800,
+                  height: 350,
                   margin: {
                     l: 0,
                     r: 0,
