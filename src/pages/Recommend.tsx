@@ -3,12 +3,14 @@ import { css } from '@emotion/react';
 import { ReactComponent as ArrowLeftIcon } from 'assets/icons/arrow-left.svg';
 import { ReactComponent as ClickLeftIcon } from 'assets/icons/click-left.svg';
 import DragItem from 'components/DragItem';
+import GuideBtn from 'components/GuideBtn';
 import { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import Plot from 'react-plotly.js';
 import Header from '../components/Header';
 
 function Recommend() {
+  const [isGuideOn, setIsGuideOn] = useState(false);
   const [selectedTagList, setSelectedTagList] = useState<string[]>([]);
   const tagList: string[] = [
     'exercise',
@@ -329,6 +331,22 @@ function Recommend() {
           </div>
         </div>
       </div>
+      {/* guide page */}
+      <div
+        css={css`
+          position: fixed;
+          display: ${isGuideOn ? `flex` : `none`};
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.5);
+        `}
+      >
+        hi
+      </div>
+      <GuideBtn
+        isGuideOn={isGuideOn}
+        onClickHandler={() => setIsGuideOn(!isGuideOn)}
+      />
     </div>
   );
 }

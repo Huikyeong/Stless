@@ -48,7 +48,9 @@
 
     "import/no-unresolved": "off",
 
-    "no-nested-ternary": "off"
+    "no-nested-ternary": "off",
+
+    "react/require-default-props": "off"
   },
   "settings": {
     "import/resolver": {

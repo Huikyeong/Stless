@@ -30,11 +30,8 @@ function Header() {
     >
       <Logo
         css={css`
-          color: #000000;
-          font-size: 3.6rem;
-          font-weight: 800;
-          margin: auto;
-          margin-left: 10px;
+          align-self: center;
+          width: 90px;
         `}
       />
       <div

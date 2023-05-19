@@ -2,11 +2,14 @@
 import { css } from '@emotion/react';
 import BarGraph from 'components/BarGraph';
 import Calendar from 'components/Calendar';
+import GuideBtn from 'components/GuideBtn';
 import Header from 'components/Header';
 import LineGraph from 'components/LineGraph';
+import { useState } from 'react';
 
 function Analysis() {
   /* eslint-disable */
+  const [isGuideOn, setIsGuideOn] = useState(false);
 
   return (
     <div
@@ -71,6 +74,23 @@ function Analysis() {
           </div>
         </div>
       </div>
+      {/* guide page */}
+      <div
+        css={css`
+          position: fixed;
+          display: ${isGuideOn ? `flex` : `none`};
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.5);
+        `}
+      >
+        hi
+      </div>
+      {/* floating guide button */}
+      <GuideBtn
+        isGuideOn={isGuideOn}
+        onClickHandler={() => setIsGuideOn(!isGuideOn)}
+      />
     </div>
   );
 }
