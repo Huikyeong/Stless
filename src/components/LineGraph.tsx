@@ -5,37 +5,58 @@ import { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import { useRecoilValue } from 'recoil';
 import { selectedRangeAtom } from 'recoils';
+import stressCauses from '../assets/datas/stress_cause.json';
+import stressSolutions from '../assets/datas/stress_solution.json';
 
 function LineGraph() {
   /* eslint-disable */
   const selectedRange = useRecoilValue(selectedRangeAtom);
-  const [df, setDf] = useState<dfd.DataFrame>(new dfd.DataFrame());
   const [dfStress, setDfStress] = useState<dfd.DataFrame>(new dfd.DataFrame());
+  const [dfStressQuery, setDfStressQuery] = useState<dfd.DataFrame>(
+    new dfd.DataFrame(),
+  );
+  const [dfActivity, setDfActivity] = useState<dfd.DataFrame>(
+    new dfd.DataFrame(),
+  );
+  const [dfActivityQuery, setDfActivityQuery] = useState<dfd.DataFrame>(
+    new dfd.DataFrame(),
+  );
   const [dateRange, setDateRange] = useState<[number, number]>([
     selectedRange.start ?? 7,
     selectedRange.end ?? 14,
   ]);
 
-  if (dfStress.size == 0) {
-    const someTextContent = require('assets/datas/stress_p703.csv');
+  if (dfStressQuery.size == 0) {
+    const rawStress = require('assets/datas/stress_p0703.csv');
     dfd
-      .readCSV(someTextContent)
+      .readCSV(rawStress)
       .then((df: dfd.DataFrame) => {
         df = df.addColumn('day', dfd.toDateTime(df['date']).dayOfMonth());
+        setDfStressQuery(df);
         setDfStress(df);
-        setDf(df);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  if (dfActivityQuery.size == 0) {
+    const rawDetected = require('assets/datas/detected_p0703.csv');
+    dfd
+      .readCSV(rawDetected)
+      .then((df: dfd.DataFrame) => {
+        setDfActivity(df);
+        setDfActivityQuery(df);
       })
       .catch((err) => console.log(err));
   }
 
   useEffect(() => {
-    if (dfStress.size > 0 && selectedRange.start && selectedRange.end) {
-      setDf(
-        dfStress
+    if (dfStressQuery.size > 0 && selectedRange.start && selectedRange.end) {
+      setDfStress(
+        dfStressQuery
           .query(
-            dfStress['day']
+            dfStressQuery['day']
               .gt(selectedRange.start - 1)
-              .and(dfStress['day'].lt(selectedRange.end + 1)),
+              .and(dfStressQuery['day'].lt(selectedRange.end + 1)),
           )
           .resetIndex(),
       );
@@ -83,13 +104,14 @@ function LineGraph() {
         <Plot
           data={[
             {
-              x: df['date']?.values,
-              y: df['Stress']?.values,
+              x: dfStress['date']?.values,
+              y: dfStress['Stress']?.values,
               type: 'scatter',
               mode: 'lines',
               marker: { color: '#838383' },
               line: { shape: 'spline', smoothing: 0.2 },
             },
+            {},
           ]}
           layout={{
             width: 710,
