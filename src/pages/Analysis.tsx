@@ -44,10 +44,10 @@ function Analysis() {
           css={css`
             box-sizing: border-box;
             display: flex;
-            align-items: space-between;
-            gap: 20px;
+            align-items: center;
+            gap: 30px;
 
-            width: 1140px;
+            // width: 1140px;
 
             padding: 30px 0 50px 0;
           `}
@@ -56,23 +56,13 @@ function Analysis() {
             css={css`
               display: flex;
               flex-direction: column;
-              gap: 40px;
+              gap: 30px;
             `}
           >
             <Calendar />
             <BarGraph />
           </div>
-          <div
-            css={css`
-              display: flex;
-              justify-content: flex-end;
-              align-items: flex-start;
-              width: 100%;
-              height: 100%;
-            `}
-          >
-            <LineGraph hover={hover} click={click} />
-          </div>
+          <LineGraph hover={hover} click={click} />
         </div>
       </div>
       {/* guide page */}

@@ -115,17 +115,24 @@ function LineGraph(props: Props) {
   return (
     <div
       css={css`
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 12px;
+        align-items: flex-end;
+
+        height: 100%;
+        background: #ffffff;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ededed;
+        border-radius: 15px;
+
+        padding: 20px 40px 50px;
       `}
     >
       <p
         css={css`
           font-weight: 400;
-          font-size: 18px;
-          margin: 2px;
+          font-size: 16px;
         `}
       >
         Stress change over{' '}
@@ -135,54 +142,39 @@ function LineGraph(props: Props) {
           {dateRange[1].toString().padStart(2, '0')}
         </b>
       </p>
-      <div
-        css={css`
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: column;
-
-          height: 100%;
-          background: #ffffff;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-          border-radius: 15px;
-
-          padding: 0px 40px 50px;
-        `}
-      >
-        <Plot
-          data={[
-            {
-              x: dfStressQuery['date']?.values,
-              y: dfStressQuery['Stress']?.values,
-              type: 'scatter',
-              mode: 'lines',
-              marker: { color: '#838383' },
-              line: { shape: 'spline', smoothing: 0.2 },
-            },
-          ]}
-          layout={{
-            width: 710,
-            height: 570,
-            margin: {
-              l: 20,
-              r: 0,
-              b: 0,
-              t: 50,
-              pad: 4,
-            },
-            xaxis: {
-              rangeslider: {},
-            },
-            yaxis: {
-              fixedrange: true,
-              showgrid: false,
-              zeroline: false,
-              range: [-3.5, 3.5],
-            },
-            shapes: dfActivityQuery,
-          }}
-        />
-      </div>
+      <Plot
+        data={[
+          {
+            x: dfStressQuery['date']?.values,
+            y: dfStressQuery['Stress']?.values,
+            type: 'scatter',
+            mode: 'lines',
+            marker: { color: '#838383' },
+            line: { shape: 'spline', smoothing: 0.2 },
+          },
+        ]}
+        layout={{
+          width: 710,
+          height: 550,
+          margin: {
+            l: 20,
+            r: 10,
+            b: 0,
+            t: 20,
+            pad: 4,
+          },
+          xaxis: {
+            rangeslider: {},
+          },
+          yaxis: {
+            fixedrange: true,
+            showgrid: false,
+            zeroline: false,
+            range: [-3.5, 3.5],
+          },
+          shapes: dfActivityQuery,
+        }}
+      />
     </div>
   );
 }
