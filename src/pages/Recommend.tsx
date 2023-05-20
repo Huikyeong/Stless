@@ -42,6 +42,7 @@ function Recommend() {
 
         width: 100vw;
         height: 100vh;
+        overflow-y: overlay;
 
         background: #f5f5f5;
       `}
@@ -55,10 +56,6 @@ function Recommend() {
 
           width: 100%;
           height: 100%;
-          overflow-y: scroll;
-
-          background: white;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         `}
       >
         <div
