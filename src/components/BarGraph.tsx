@@ -29,7 +29,7 @@ function BarGraph() {
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 20px;
           background: white;
           box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
           border: 1px solid #ededed;

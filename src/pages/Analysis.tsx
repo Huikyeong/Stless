@@ -49,14 +49,14 @@ function Analysis() {
 
             // width: 1140px;
 
-            padding: 30px 0 50px 0;
+            padding: 20px 20px 20px;
           `}
         >
           <div
             css={css`
               display: flex;
               flex-direction: column;
-              gap: 30px;
+              gap: 20px;
             `}
           >
             <Calendar />
