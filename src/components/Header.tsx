@@ -52,7 +52,7 @@ function Header() {
 
             background: ${location.pathname === '/analysis'
               ? colors.black
-              : '#f5f5f5'};
+              : colors.bg};
             color: ${location.pathname === '/analysis'
               ? 'white'
               : colors.black};
@@ -81,7 +81,7 @@ function Header() {
 
             background: ${location.pathname === '/recommend'
               ? colors.black
-              : '#f5f5f5'};
+              : colors.bg};
             color: ${location.pathname === '/recommend'
               ? 'white'
               : colors.black};

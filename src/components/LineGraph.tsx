@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import { useRecoilValue } from 'recoil';
 import { selectedRangeAtom } from 'recoils';
+import { colors } from 'utils/style';
 
 interface Props {
   hover: Activity;
@@ -133,6 +134,7 @@ function LineGraph(props: Props) {
         css={css`
           font-weight: 400;
           font-size: 16px;
+          color: ${colors.black};
         `}
       >
         Stress change over{' '}

@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import CalendarItem from 'components/CalendarItem';
+import { colors } from 'utils/style';
 import stressSummary from '../assets/datas/stress_summary.json';
 
 function Calendar(props: { className?: string }) {
@@ -60,6 +61,7 @@ function Calendar(props: { className?: string }) {
               font-size: 14px;
               letter-spacing: 0.05em;
               margin-bottom: 8px;
+              color: ${colors.black};
             `}
           >
             MAR, 2022

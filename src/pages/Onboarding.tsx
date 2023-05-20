@@ -26,7 +26,7 @@ function Onboarding() {
         height: 100vh;
         overflow-y: overlay;
 
-        background: #f5f5f5;
+        background: ${colors.bg};
       `}
     >
       <header

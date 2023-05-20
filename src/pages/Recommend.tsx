@@ -7,6 +7,7 @@ import GuideBtn from 'components/GuideBtn';
 import { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import Plot from 'react-plotly.js';
+import { colors } from 'utils/style';
 import Header from '../components/Header';
 
 function Recommend() {
@@ -44,7 +45,7 @@ function Recommend() {
         height: 100vh;
         overflow-y: overlay;
 
-        background: #f5f5f5;
+        background: ${colors.bg};
       `}
     >
       <Header />
@@ -52,6 +53,7 @@ function Recommend() {
         css={css`
           display: flex;
           flex-direction: column;
+          justify-content: center;
           align-items: center;
 
           width: 100%;
@@ -63,9 +65,11 @@ function Recommend() {
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            width: 1140px;
-            padding: 50px 0 50px;
+            gap: 20px;
+            padding: 30px 60px 30px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 15px;
           `}
         >
           <div
@@ -79,28 +83,6 @@ function Recommend() {
               gap: 20px;
             `}
           >
-            {/* <div
-              css={css`
-                position: absolute;
-                left: 90px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                align-self: flex-end;
-                font-weight: 300;
-                font-size: 13px;
-              `}
-            >
-              <div
-                css={css`
-                  width: 50px;
-                  height: 50px;
-                  border-radius: 100%;
-                  background: #8da9c4;
-                `}
-              />
-              you
-            </div> */}
             <div
               id='drop layout'
               ref={drop}
@@ -117,8 +99,9 @@ function Recommend() {
 
                 background: #ffffff;
                 border: 1px solid #e9e9e9;
-                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+                // box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
                 border-radius: 15px;
+                color: ${colors.black};
               `}
             >
               I got stress when{' '}
@@ -161,7 +144,7 @@ function Recommend() {
                         display: flex;
                         align-items: center;
 
-                        color: black;
+                        color: ${colors.black};
                         font-weight: 600;
 
                         cursor: pointer;
@@ -269,19 +252,9 @@ function Recommend() {
               flex-direction: column;
               align-items: center;
               width: 100%;
-              height: 70%;
+              height: 65%;
             `}
           >
-            <p
-              css={css`
-                font-weight: 400;
-                font-size: 14px;
-                display: flex;
-                color: gray;
-              `}
-            >
-              cause factors
-            </p>
             <div
               css={css`
                 display: flex;
@@ -339,16 +312,29 @@ function Recommend() {
                 }}
               />
             </div>
-            <p
-              css={css`
-                font-weight: 400;
-                font-size: 14px;
-                display: flex;
-                color: gray;
-              `}
-            >
-              solution factors
-            </p>
+          </div>
+          <div
+            css={css`
+              box-sizing: border-box;
+              width: 360px;
+              min-height: 100px;
+              height: fit-content;
+              padding: 18px 25px 25px;
+              display: flex;
+              justify-content: flex-end;
+              align-self: flex-end;
+              font-weight: 300;
+              font-size: 15px;
+              line-height: 24px;
+
+              background: ${colors.black};
+              border: 1px solid #e9e9e9;
+              // box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+              border-radius: 15px;
+              color: white;
+            `}
+          >
+            you can
           </div>
         </div>
       </div>

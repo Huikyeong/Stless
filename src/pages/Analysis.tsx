@@ -6,6 +6,7 @@ import GuideBtn from 'components/GuideBtn';
 import Header from 'components/Header';
 import LineGraph from 'components/LineGraph';
 import { useState } from 'react';
+import { colors } from 'utils/style';
 
 export type Activity = 'exercise' | 'study' | 'phone' | 'sleep' | '';
 
@@ -26,7 +27,7 @@ function Analysis() {
         height: 100vh;
         overflow-y: overlay;
 
-        background: #f5f5f5;
+        background: ${colors.bg};
       `}
     >
       <Header />
@@ -47,9 +48,7 @@ function Analysis() {
             align-items: center;
             gap: 30px;
 
-            // width: 1140px;
-
-            padding: 20px 20px 20px;
+            padding: 30px 20px 20px;
           `}
         >
           <div

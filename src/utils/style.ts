@@ -8,4 +8,5 @@ export const colors = {
   hitmap5: '#FED4D4',
 
   black: '#3b3a39',
+  bg: '#F0F0F0',
 };
