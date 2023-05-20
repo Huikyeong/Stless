@@ -1,14 +1,21 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as dfd from 'danfojs';
+import { Activity } from 'pages/Analysis';
 import { Shape } from 'plotly.js';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import { useRecoilValue } from 'recoil';
 import { selectedRangeAtom } from 'recoils';
 
-function LineGraph() {
+interface Props {
+  hover: Activity;
+  click: Activity;
+}
+
+function LineGraph(props: Props) {
   /* eslint-disable */
+  const { hover, click } = props;
   const selectedRange = useRecoilValue(selectedRangeAtom);
   const [dfStress, setDfStress] = useState<dfd.DataFrame>(new dfd.DataFrame());
   const [dfStressQuery, setDfStressQuery] = useState<dfd.DataFrame>(
@@ -20,6 +27,19 @@ function LineGraph() {
     selectedRange.start ?? 7,
     selectedRange.end ?? 14,
   ]);
+
+  const onbBarIntercationChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setDfActivityQuery(
+        dfActivityQuery.map((shape) => {
+          shape.opacity =
+            shape.name == click ? 0.8 : shape.name == hover ? 0.6 : 0.4;
+          return shape;
+        }),
+      );
+    },
+    [hover, click],
+  );
 
   if (dfStressQuery.size == 0) {
     const rawStress = require('assets/datas/stress_p0703.csv');
