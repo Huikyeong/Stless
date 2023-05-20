@@ -33,18 +33,19 @@ function Onboarding() {
         css={css`
           display: flex;
           justify-content: space-between;
-          align-items: flex-end;
+          align-items: center;
 
           flex-shrink: 0;
-          max-width: 1140px;
+          max-width: 1040px;
           width: 100%;
-          height: 55px;
+          height: 40px;
+          padding-top: 30px;
         `}
       >
         <Logo
           css={css`
             align-self: center;
-            width: 90px;
+            width: 100px;
           `}
         />
       </header>
