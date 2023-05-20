@@ -7,9 +7,13 @@ import Header from 'components/Header';
 import LineGraph from 'components/LineGraph';
 import { useState } from 'react';
 
+export type Activity = 'exercise' | 'study' | 'phone' | 'sleep' | '';
+
 function Analysis() {
   /* eslint-disable */
   const [isGuideOn, setIsGuideOn] = useState(false);
+  const [hover, setHover] = useState<Activity>('');
+  const [click, setClick] = useState<Activity>('');
 
   return (
     <div
@@ -70,7 +74,7 @@ function Analysis() {
               height: 100%;
             `}
           >
-            <LineGraph />
+            <LineGraph hover={hover} click={click} />
           </div>
         </div>
       </div>
