@@ -5,8 +5,6 @@ import { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import { useRecoilValue } from 'recoil';
 import { selectedRangeAtom } from 'recoils';
-import stressCauses from '../assets/datas/stress_cause.json';
-import stressSolutions from '../assets/datas/stress_solution.json';
 
 function LineGraph() {
   /* eslint-disable */
@@ -50,15 +48,28 @@ function LineGraph() {
   }
 
   useEffect(() => {
-    if (dfStressQuery.size > 0 && selectedRange.start && selectedRange.end) {
-      setDfStress(
-        dfStressQuery
+    if (
+      dfStressQuery.size > 0 &&
+      dfActivityQuery.size > 0 &&
+      selectedRange.start &&
+      selectedRange.end
+    ) {
+      console.log(dfStress['date'].values);
+      setDfStressQuery(
+        dfStress
           .query(
-            dfStressQuery['day']
+            dfStress['day']
               .gt(selectedRange.start - 1)
-              .and(dfStressQuery['day'].lt(selectedRange.end + 1)),
+              .and(dfStress['day'].lt(selectedRange.end + 1)),
           )
           .resetIndex(),
+      );
+      setDfActivityQuery(
+        dfActivity.query(
+          dfActivity['start']
+            .gt(selectedRange.start - 1)
+            .and(dfActivity['end'].lt(selectedRange.end + 1)),
+        ),
       );
       setDateRange([selectedRange.start, selectedRange.end]);
     }
@@ -104,14 +115,13 @@ function LineGraph() {
         <Plot
           data={[
             {
-              x: dfStress['date']?.values,
-              y: dfStress['Stress']?.values,
+              x: dfStressQuery['date']?.values,
+              y: dfStressQuery['Stress']?.values,
               type: 'scatter',
               mode: 'lines',
               marker: { color: '#838383' },
               line: { shape: 'spline', smoothing: 0.2 },
             },
-            {},
           ]}
           layout={{
             width: 710,
@@ -132,6 +142,22 @@ function LineGraph() {
               zeroline: false,
               range: [-3.5, 3.5],
             },
+            shapes: [
+              {
+                type: 'rect',
+                name: 'exercise',
+                layer: 'below',
+                x0: '2019-05-10 16:37:17',
+                x1: '2019-05-12 13:38:36',
+                y0: -3.5,
+                y1: 3.5,
+                fillcolor: '#6496E2',
+                opacity: 0.4,
+                line: {
+                  color: 'rgba(0,0,0,0)',
+                },
+              },
+            ],
           }}
         />
       </div>
