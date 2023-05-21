@@ -4,29 +4,33 @@ import React from 'react';
 import Plot from 'react-plotly.js';
 import sankeyFullData from '../assets/datas/sankey.json';
 
-const tagList: string[] = Array.from(
-  new Set(sankeyFullData.map((v) => v.source)),
-);
+const getSankeyData = (getTagList: string[]) => {
+  return getTagList.length !== 0
+    ? sankeyFullData.filter((v) => getTagList.includes(v.source))
+    : sankeyFullData;
+};
 
-const effectGetMap = new Map<string, number>();
-sankeyFullData.forEach((v) => {
-  if (effectGetMap.has(v.source))
-    effectGetMap.set(v.source, effectGetMap.get(v.source)! + v.value);
-  else effectGetMap.set(v.source, v.value);
-});
+const makeGetTagList: (getTagList: string[]) => string[] = (
+  getTagList: string[],
+) => {
+  const sankeyData = getSankeyData(getTagList);
 
-const initGetTagList: string[] = Array.from(effectGetMap)
-  .sort((a, b) => b[1] - a[1])
-  .slice(0, 3)
-  .map((item) => item[0]);
+  const effectGetMap = new Map<string, number>();
+  sankeyData.forEach((v) => {
+    if (effectGetMap.has(v.source))
+      effectGetMap.set(v.source, effectGetMap.get(v.source)! + v.value);
+    else effectGetMap.set(v.source, v.value);
+  });
+
+  return Array.from(effectGetMap)
+    .sort((a, b) => b[1] - a[1])
+    .map((item) => item[0]);
+};
 
 const makeReleaseTagList: (getTagList: string[]) => string[] = (
   getTagList: string[],
 ) => {
-  const sankeyData =
-    getTagList.length !== 0
-      ? sankeyFullData.filter((v) => getTagList.includes(v.source))
-      : sankeyFullData;
+  const sankeyData = getSankeyData(getTagList);
 
   const effectReleaseMap = new Map<string, number>();
   sankeyData.forEach((v) => {
@@ -40,16 +44,19 @@ const makeReleaseTagList: (getTagList: string[]) => string[] = (
     .map((item) => item[0]);
 };
 
+const tagList: string[] = Array.from(
+  new Set(sankeyFullData.map((v) => v.source)),
+);
+
+const initGetTagList: string[] = makeGetTagList([]).slice(0, 3);
+
 const initReleaseTagList: string[] = makeReleaseTagList(initGetTagList);
 
 function SankeyDiagram(props: { selectedTagList: string[] }) {
   /* eslint-disable */
-  const sankeyData =
-    props.selectedTagList.length !== 0
-      ? sankeyFullData.filter((v) => props.selectedTagList.includes(v.source))
-      : sankeyFullData;
-  const sources = Array.from(new Set(sankeyData.map((v) => v.source)));
-  const targets = Array.from(new Set(sankeyData.map((v) => v.target)));
+  const sankeyData = getSankeyData(props.selectedTagList);
+  const sources = makeGetTagList(props.selectedTagList);
+  const targets = makeReleaseTagList(props.selectedTagList);
   const values = sankeyData.map((v) => v.value);
 
   const sourceMap = new Map<string, number>();
@@ -80,6 +87,7 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
               type: 'sankey',
               orientation: 'v',
               arrangement: 'fixed',
+              hoverinfo: 'skip',
               node: {
                 pad: 60,
                 thickness: 30,
@@ -111,6 +119,9 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
               t: 10,
               pad: 4,
             },
+          }}
+          config={{
+            displayModeBar: false,
           }}
         />
       </div>

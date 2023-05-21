@@ -11,7 +11,7 @@ import {
   initGetTagList,
   initReleaseTagList,
 } from 'components/SankeyDiagram';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { colors } from 'utils/style';
 import Header from '../components/Header';
@@ -23,10 +23,13 @@ function Recommend() {
   const [releaseTagList, setReleaseTagList] =
     useState<string[]>(initReleaseTagList);
 
+  useEffect(() => {
+    setReleaseTagList(makeReleaseTagList(selectedTagList));
+  }, [selectedTagList]);
+
   const [, drop] = useDrop(() => ({
     accept: 'cause',
     drop: (item: { text: string }) => {
-      setReleaseTagList(makeReleaseTagList([...selectedTagList, item.text]));
       setSelectedTagList((prev) => [...prev, item.text]);
     },
   }));
@@ -154,13 +157,6 @@ function Recommend() {
                         }
                       `}
                       onClick={() => {
-                        setReleaseTagList(
-                          makeReleaseTagList(
-                            selectedTagList.filter(
-                              (selectedTag) => selectedTag !== tag,
-                            ),
-                          ),
-                        );
                         setSelectedTagList((prev) =>
                           prev.filter((selectedTag) => selectedTag !== tag),
                         );
