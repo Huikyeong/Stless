@@ -53,11 +53,12 @@ function Recommend() {
         css={css`
           display: flex;
           flex-direction: column;
-          justify-content: center;
+          justify-content: flex-start;
           align-items: center;
 
           width: 100%;
           height: 100%;
+          padding-top: 30px;
         `}
       >
         <div
@@ -249,41 +250,43 @@ function Recommend() {
           <div
             css={css`
               box-sizing: border-box;
-              width: 360px;
-              min-height: 100px;
               height: fit-content;
-              padding: 18px 25px 25px;
+              padding: 18px 25px;
               display: flex;
-              justify-content: flex-end;
+              flex-direction: column;
+              jutify-content: flex-center;
+              align-items: flex-end;
               align-self: flex-end;
               font-weight: 300;
               font-size: 15px;
-              line-height: 24px;
+              line-height: 22px;
 
               background: ${colors.black};
               border: 1px solid #e9e9e9;
-              // box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
               border-radius: 15px;
               color: white;
             `}
           >
-            you can
+            You were able to release stress through
             <span
               css={css`
                 display: flex;
+                justify-content: flex-end;
                 flex-wrap: wrap;
               `}
             >
-              {releaseTagList.map((tag, index) => (
+              {releaseTagList.slice(0, 4).map((tag, index) => (
                 <div
                   key={tag}
                   css={css`
                     display: flex;
+
                     margin-right: 5px;
                   `}
                 >
                   {releaseTagList.length - 1 === index &&
-                    releaseTagList.length > 1 && (
+                    releaseTagList.length > 1 &&
+                    releaseTagList.length < 4 && (
                       <p
                         css={css`
                           margin-right: 7px;
@@ -313,7 +316,17 @@ function Recommend() {
                         transition: width 0.3s ease;
                       `}
                     />
-                    <p>{tag}</p>
+                    {index === 3 ? (
+                      <p
+                        css={css`
+                          font-weight: 400;
+                        `}
+                      >
+                        etc
+                      </p>
+                    ) : (
+                      <p>{tag}</p>
+                    )}
                   </div>
                   {releaseTagList.length - 1 === index ? '.' : ','}
                 </div>
