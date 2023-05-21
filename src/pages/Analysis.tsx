@@ -5,16 +5,30 @@ import Calendar from 'components/Calendar';
 import GuideBtn from 'components/GuideBtn';
 import Header from 'components/Header';
 import LineGraph from 'components/LineGraph';
-import { useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
+import { useRecoilCallback } from 'recoil';
+import { selectedRangeAtom } from 'recoils';
 import { colors } from 'utils/style';
 
 export type Activity = 'exercise' | 'study' | 'phone' | 'sleep' | '';
+export type ActItem = { name: Activity; type?: 'release' | 'get' };
 
 function Analysis() {
   /* eslint-disable */
   const [isGuideOn, setIsGuideOn] = useState(false);
-  const [hover, setHover] = useState<Activity>('');
-  const [click, setClick] = useState<Activity>('');
+  const [hover, setHover] = useState<ActItem>({ name: '' });
+  const [click, setClick] = useState<ActItem>({ name: '' });
+
+  const setInitialDateRange = useRecoilCallback(({ snapshot, set }) => () => {
+    const selectedRange = snapshot.getLoadable(selectedRangeAtom).getValue();
+    if (selectedRange.start === undefined || selectedRange.end === undefined) {
+      set(selectedRangeAtom, { start: 7, end: 14 });
+    }
+  });
+
+  useLayoutEffect(() => {
+    setInitialDateRange();
+  }, [])
 
   return (
     <div
@@ -59,7 +73,7 @@ function Analysis() {
             `}
           >
             <Calendar />
-            <BarGraph />
+            <BarGraph setHover={setHover} setClick={setClick} />
           </div>
           <LineGraph hover={hover} click={click} />
         </div>

@@ -4,15 +4,15 @@
         "value": 10
     },
     {
-        "category": "sleep late",
+        "category": "sleep",
         "value": 5
     },
     {
-        "category": "wake up early",
+        "category": "exercise",
         "value": 3
     },
     {
-        "category": "in windy day",
+        "category": "phone",
         "value": 1
     }
 ]
