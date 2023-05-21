@@ -1,10 +1,10 @@
 [
     {
-        "category": "sleep early",
+        "category": "sleep",
         "value": 10
     },
     {
-        "category": "in shiny day",
+        "category": "study",
         "value": 5
     },
     {
@@ -12,7 +12,7 @@
         "value": 3
     },
     {
-        "category": "use phone less",
+        "category": "phone",
         "value": 1
     }
 ]

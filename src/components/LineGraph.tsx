@@ -1,17 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as dfd from 'danfojs';
-import { Activity } from 'pages/Analysis';
+import { ActItem } from 'pages/Analysis';
 import { Shape } from 'plotly.js';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import { useRecoilValue } from 'recoil';
 import { selectedRangeAtom } from 'recoils';
 import { colors } from 'utils/style';
 
 interface Props {
-  hover: Activity;
-  click: Activity;
+  hover: ActItem;
+  click: ActItem;
 }
 
 function LineGraph(props: Props) {
@@ -29,20 +29,36 @@ function LineGraph(props: Props) {
     selectedRange.end ?? 14,
   ]);
 
-  const onbBarIntercationChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setDfActivityQuery(
-        dfActivityQuery.map((shape) => {
-          shape.opacity =
-            shape.name == click ? 0.8 : shape.name == hover ? 0.6 : 0.4;
-          return shape;
-        }),
-      );
-    },
-    [hover, click],
-  );
+  useEffect(() => {
+    setDfActivityQuery(
+      dfActivityQuery.map((shape) => {
+        if (
+          shape.name === click.name &&
+          ((click.type === 'release' && shape.fillcolor === '#6496e2') ||
+            (click.type === 'get' && shape.fillcolor === '#e26464'))
+        ) {
+          shape.opacity = 0.8;
+        } else if (
+          shape.name === hover.name &&
+          ((click.type === 'release' && shape.fillcolor === '#6496e2') ||
+            (click.type === 'get' && shape.fillcolor === '#e26464'))
+        ) {
+          shape.opacity = 0.5;
+        } else {
+          shape.opacity = 0.2;
+        }
+        shape.opacity =
+          shape.name === click.name
+            ? 0.8
+            : shape.name === hover.name
+            ? 0.5
+            : 0.2;
+        return shape;
+      }),
+    );
+  }, [hover, click]);
 
-  if (dfStressQuery.size == 0) {
+  if (dfStressQuery.size === 0) {
     const rawStress = require('assets/datas/stress_p0703.csv');
     dfd
       .readCSV(rawStress)
@@ -54,7 +70,7 @@ function LineGraph(props: Props) {
       .catch((err) => console.log(err));
   }
 
-  if (dfActivityQuery.length == 0) {
+  if (dfActivityQuery.length === 0) {
     const rawDetected = require('assets/datas/detected_p0703.csv');
     dfd
       .readCSV(rawDetected)
@@ -67,10 +83,10 @@ function LineGraph(props: Props) {
             y0: -3.5,
             y1: 3.5,
             fillcolor:
-              df.iloc({ rows: [i] })['type'].values[0] == 'release'
+              df.iloc({ rows: [i] })['type'].values[0] === 'release'
                 ? '#6496E2'
                 : '#E26464',
-            opacity: 0.4,
+            opacity: 0.2,
             line: {
               color: 'rgba(0,0,0,0)',
             },

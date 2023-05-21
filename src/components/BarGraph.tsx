@@ -1,10 +1,17 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { ActItem, Activity } from 'pages/Analysis';
+import { Dispatch, SetStateAction } from 'react';
 import Plot from 'react-plotly.js';
 import stressCauses from '../assets/datas/stress_cause.json';
 import stressSolutions from '../assets/datas/stress_solution.json';
 
-function BarGraph() {
+function BarGraph(props: {
+  // hover: Activity;
+  // click: Activity;
+  setHover: Dispatch<SetStateAction<ActItem>>;
+  setClick: Dispatch<SetStateAction<ActItem>>;
+}) {
   /* eslint-disable */
   const compare = (
     a: { category: String; value: number },
@@ -47,11 +54,11 @@ function BarGraph() {
           Get <b>From...</b>
         </p>
         <Plot
+          divId='causePlot'
           data={[
             {
               y: yCauses,
               x: xCauses,
-              hoverinfo: 'skip',
               type: 'bar',
               orientation: 'h',
               text: yCauses,
@@ -83,6 +90,25 @@ function BarGraph() {
           config={{
             displayModeBar: false,
           }}
+          onClick={(data) => {
+            if (data.points) {
+              const point = data.points[0];
+              console.log(point.y);
+              props.setClick((prev) =>
+                prev.name === point.y
+                  ? { name: '' }
+                  : { name: point.y as Activity, type: 'get' },
+              );
+            }
+          }}
+          onHover={(data) => {
+            if (data.points) {
+              const point = data.points[0];
+              console.log(point.y);
+              props.setHover({ name: point.y as Activity, type: 'get' });
+            }
+          }}
+          onUnhover={() => props.setHover({ name: '' })}
         />
       </div>
       <div
@@ -108,11 +134,11 @@ function BarGraph() {
           Released <b>by...</b>
         </p>
         <Plot
+          divId='solutionPlot'
           data={[
             {
               y: ySolution,
               x: xSolution,
-              hoverinfo: 'skip',
               type: 'bar',
               orientation: 'h',
               text: ySolution,
@@ -144,6 +170,25 @@ function BarGraph() {
           config={{
             displayModeBar: false,
           }}
+          onClick={(data) => {
+            if (data.points) {
+              const point = data.points[0];
+              console.log(point.y);
+              props.setClick((prev) =>
+                prev.name === point.y
+                  ? { name: '' }
+                  : { name: point.y as Activity, type: 'release' },
+              );
+            }
+          }}
+          onHover={(data) => {
+            if (data.points) {
+              const point = data.points[0];
+              console.log(point.y);
+              props.setHover({ name: point.y as Activity, type: 'release' });
+            }
+          }}
+          onUnhover={() => props.setHover({ name: '' })}
         />
       </div>
     </div>

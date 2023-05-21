@@ -9,12 +9,13 @@ import { useState } from 'react';
 import { colors } from 'utils/style';
 
 export type Activity = 'exercise' | 'study' | 'phone' | 'sleep' | '';
+export type ActItem = { name: Activity; type?: 'release' | 'get' };
 
 function Analysis() {
   /* eslint-disable */
   const [isGuideOn, setIsGuideOn] = useState(false);
-  const [hover, setHover] = useState<Activity>('');
-  const [click, setClick] = useState<Activity>('');
+  const [hover, setHover] = useState<ActItem>({ name: '' });
+  const [click, setClick] = useState<ActItem>({ name: '' });
 
   return (
     <div
@@ -59,7 +60,7 @@ function Analysis() {
             `}
           >
             <Calendar />
-            <BarGraph />
+            <BarGraph setHover={setHover} setClick={setClick} />
           </div>
           <LineGraph hover={hover} click={click} />
         </div>
