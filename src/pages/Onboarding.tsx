@@ -85,7 +85,7 @@ function Onboarding() {
               <div
                 css={css`
                   position: absolute;
-                  right: 320px;
+                  right: 280px;
                   display: flex;
                   align-items: center;
                   opacity: 0.8;
@@ -128,7 +128,7 @@ function Onboarding() {
                 <div
                   css={css`
                     position: absolute;
-                    right: 320px;
+                    right: 280px;
                     top: 200px;
                     display: flex;
                     align-items: center;
