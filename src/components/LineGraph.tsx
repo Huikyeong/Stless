@@ -33,26 +33,20 @@ function LineGraph(props: Props) {
     setDfActivityQuery(
       dfActivityQuery.map((shape) => {
         if (
-          shape.name === click.name &&
-          ((click.type === 'release' && shape.fillcolor === '#6496e2') ||
-            (click.type === 'get' && shape.fillcolor === '#e26464'))
+          shape.name?.includes(click.name) &&
+          click.type !== undefined &&
+          shape.name.includes(click.type)
         ) {
           shape.opacity = 0.8;
         } else if (
-          shape.name === hover.name &&
-          ((click.type === 'release' && shape.fillcolor === '#6496e2') ||
-            (click.type === 'get' && shape.fillcolor === '#e26464'))
+          shape.name?.includes(hover.name) &&
+          hover.type !== undefined &&
+          shape.name.includes(hover.type)
         ) {
           shape.opacity = 0.5;
         } else {
           shape.opacity = 0.2;
         }
-        shape.opacity =
-          shape.name === click.name
-            ? 0.8
-            : shape.name === hover.name
-            ? 0.5
-            : 0.2;
         return shape;
       }),
     );
@@ -91,7 +85,7 @@ function LineGraph(props: Props) {
               color: 'rgba(0,0,0,0)',
             },
           };
-          shape.name = df.iloc({ rows: [i] })['activity'].values[0];
+          shape.name = df.iloc({ rows: [i] })['activity'].values[0] + '-' + df.iloc({ rows: [i] })['type'].values[0];
           shape.x0 = df.iloc({ rows: [i] })['start'].values[0];
           shape.x1 = df.iloc({ rows: [i] })['end'].values[0];
           shapes.push(shape);
