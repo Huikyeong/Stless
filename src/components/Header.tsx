@@ -1,9 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ReactComponent as AnalysisIcon } from '../assets/icons/analysis.svg';
+import { colors } from 'utils/style';
 import { ReactComponent as Logo } from '../assets/icons/stless.svg';
-import { ReactComponent as ThumbsupIcon } from '../assets/icons/thumbs-up.svg';
 
 function Header() {
   const navigate = useNavigate();
@@ -20,24 +19,25 @@ function Header() {
       css={css`
         display: flex;
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
 
         flex-shrink: 0;
-        max-width: 1140px;
+        max-width: 1040px;
         width: 100%;
-        height: 55px;
+        height: 40px;
+        padding-top: 30px;
       `}
     >
       <Logo
         css={css`
-          align-self: center;
-          width: 90px;
+          width: 100px;
         `}
       />
       <div
         css={css`
           display: flex;
           gap: 10px;
+          height: 32px;
         `}
       >
         <div
@@ -47,24 +47,26 @@ function Header() {
             align-items: center;
             gap: 7px;
 
-            padding: 9px 15px;
-            border-radius: 10px 10px 0px 0px;
+            padding: 0px 15px;
+            border-radius: 30px;
 
-            background-color: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
+            background: ${location.pathname === '/analysis'
+              ? colors.black
+              : colors.bg};
+            color: ${location.pathname === '/analysis'
+              ? 'white'
+              : colors.black};
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
             opacity: ${location.pathname === '/analysis' ? 1 : 0.3};
             &: hover {
               opacity: ${location.pathname === '/analysis' ? 1 : 0.7};
             }
             cursor: pointer;
-            transition: all 0.15s;
+            transition: all 0.2s;
           `}
           onClick={onAnalysisTabClick}
         >
-          <AnalysisIcon width={14} height={14} />
           Analysis
         </div>
         <div
@@ -74,14 +76,17 @@ function Header() {
             align-items: center;
             gap: 7px;
 
-            padding: 8px 15px;
-            border-radius: 10px 10px 0px 0px;
+            padding: 0px 15px;
+            border-radius: 30px;
 
-            background-color: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-
+            background: ${location.pathname === '/recommend'
+              ? colors.black
+              : colors.bg};
+            color: ${location.pathname === '/recommend'
+              ? 'white'
+              : colors.black};
             font-weight: 500;
-            font-size: 14px;
+            font-size: 13px;
             opacity: ${location.pathname === '/recommend' ? 1 : 0.3};
             &: hover {
               opacity: ${location.pathname === '/recommend' ? 1 : 0.7};
@@ -91,7 +96,6 @@ function Header() {
           `}
           onClick={onRecommendTabClick}
         >
-          <ThumbsupIcon width={16} height={16} />
           Recommend
         </div>
       </div>

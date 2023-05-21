@@ -24,26 +24,28 @@ function Onboarding() {
 
         width: 100vw;
         height: 100vh;
+        overflow-y: overlay;
 
-        background: #f5f5f5;
+        background: ${colors.bg};
       `}
     >
       <header
         css={css`
           display: flex;
           justify-content: space-between;
-          align-items: flex-end;
+          align-items: center;
 
           flex-shrink: 0;
-          max-width: 1140px;
+          max-width: 1040px;
           width: 100%;
-          height: 55px;
+          height: 40px;
+          padding-top: 30px;
         `}
       >
         <Logo
           css={css`
             align-self: center;
-            width: 90px;
+            width: 100px;
           `}
         />
       </header>
@@ -55,10 +57,6 @@ function Onboarding() {
 
           width: 100%;
           height: 100%;
-          overflow-y: scroll;
-
-          background: white;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         `}
       >
         <div

@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import CalendarItem from 'components/CalendarItem';
+import { colors } from 'utils/style';
 import stressSummary from '../assets/datas/stress_summary.json';
 
 function Calendar(props: { className?: string }) {
@@ -39,28 +40,32 @@ function Calendar(props: { className?: string }) {
           gap: 10px;
         `}
       >
-        <p
-          css={css`
-            font-weight: 800;
-            font-size: 22px;
-            letter-spacing: 0.05em;
-          `}
-        >
-          MAR
-        </p>
         <div
           css={css`
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            width: 300px;
+            align-items: center;
+            width: 260px;
             background: #ffffff;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ededed;
             border-radius: 15px;
 
-            padding: 10px 20px;
+            padding: 10px 15px;
           `}
         >
+          <p
+            css={css`
+              font-weight: 800;
+              font-size: 14px;
+              letter-spacing: 0.05em;
+              margin-bottom: 8px;
+              color: ${colors.black};
+            `}
+          >
+            MAR, 2022
+          </p>
           <div
             css={css`
               display: flex;
@@ -71,7 +76,7 @@ function Calendar(props: { className?: string }) {
               border-bottom: 1px solid #f1f1f1;
 
               font-weight: 400;
-              font-size: 15px;
+              font-size: 12px;
               color: #838383;
             `}
           >
@@ -87,7 +92,7 @@ function Calendar(props: { className?: string }) {
             css={css`
               display: flex;
               flex-wrap: wrap;
-              row-gap: 2px;
+              row-gap: 1px;
               padding: 5px 0;
             `}
           >

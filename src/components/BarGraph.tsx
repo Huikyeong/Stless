@@ -24,90 +24,128 @@ function BarGraph() {
         gap: 10px;
       `}
     >
-      <p
+      <div
         css={css`
-          font-weight: 1000;
-          font-size: 16px;
-          color: #e26464;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          background: white;
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+          border: 1px solid #ededed;
+          border-radius: 15px;
+          padding: 15px 0 15px 20px;
         `}
       >
-        Get <b>From...</b>
-      </p>
-      <Plot
-        data={[
-          {
-            y: yCauses,
-            x: xCauses,
-            hoverinfo: 'skip',
-            type: 'bar',
-            orientation: 'h',
-          },
-        ]}
-        layout={{
-          width: 280,
-          height: 120,
-          margin: {
-            l: 100,
-            r: 0,
-            b: 10,
-            t: 0,
-            pad: 4,
-          },
-          xaxis: {
-            visible: false,
-            fixedrange: true,
-          },
-          yaxis: {
-            fixedrange: true,
-          },
-          colorway: ['#E26464'],
-        }}
-        config={{
-          displayModeBar: false,
-        }}
-      />
-      <p
+        <p
+          css={css`
+            font-weight: 1000;
+            font-size: 14px;
+            color: #e26464;
+          `}
+        >
+          Get <b>From...</b>
+        </p>
+        <Plot
+          data={[
+            {
+              y: yCauses,
+              x: xCauses,
+              hoverinfo: 'skip',
+              type: 'bar',
+              orientation: 'h',
+              text: yCauses,
+              textposition: 'outside',
+            },
+          ]}
+          layout={{
+            width: 240,
+            height: 100,
+            margin: {
+              l: 0,
+              r: 0,
+              b: 0,
+              t: 0,
+              pad: 4,
+            },
+            xaxis: {
+              visible: false,
+              fixedrange: true,
+              range: [0, 15],
+            },
+            yaxis: {
+              visible: false,
+              fixedrange: true,
+            },
+            colorway: ['#E26464'],
+            font: { size: 10 },
+          }}
+          config={{
+            displayModeBar: false,
+          }}
+        />
+      </div>
+      <div
         css={css`
-          font-weight: 1000;
-          font-size: 16px;
-          color: #6496e2;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          background: white;
+          box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+          border: 1px solid #ededed;
+          border-radius: 15px;
+          padding: 15px 0 15px 20px;
         `}
       >
-        Released <b>by...</b>
-      </p>
-      <Plot
-        data={[
-          {
-            y: ySolution,
-            x: xSolution,
-            hoverinfo: 'skip',
-            type: 'bar',
-            orientation: 'h',
-          },
-        ]}
-        layout={{
-          width: 280,
-          height: 110,
-          margin: {
-            l: 100,
-            r: 0,
-            b: 0,
-            t: 0,
-            pad: 4,
-          },
-          xaxis: {
-            visible: false,
-            fixedrange: true,
-          },
-          yaxis: {
-            fixedrange: true,
-          },
-          colorway: ['#6496E2'],
-        }}
-        config={{
-          displayModeBar: false,
-        }}
-      />
+        <p
+          css={css`
+            font-weight: 1000;
+            font-size: 14px;
+            color: #6496e2;
+          `}
+        >
+          Released <b>by...</b>
+        </p>
+        <Plot
+          data={[
+            {
+              y: ySolution,
+              x: xSolution,
+              hoverinfo: 'skip',
+              type: 'bar',
+              orientation: 'h',
+              text: ySolution,
+              textposition: 'outside',
+            },
+          ]}
+          layout={{
+            width: 240,
+            height: 100,
+            margin: {
+              l: 0,
+              r: 0,
+              b: 0,
+              t: 0,
+              pad: 4,
+            },
+            xaxis: {
+              visible: false,
+              fixedrange: true,
+              range: [0, 15],
+            },
+            yaxis: {
+              visible: false,
+              fixedrange: true,
+            },
+            colorway: ['#6496E2'],
+            font: { size: 10 },
+          }}
+          config={{
+            displayModeBar: false,
+          }}
+        />
+      </div>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import GuideBtn from 'components/GuideBtn';
 import { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import Plot from 'react-plotly.js';
+import { colors } from 'utils/style';
 import Header from '../components/Header';
 
 function Recommend() {
@@ -42,8 +43,9 @@ function Recommend() {
 
         width: 100vw;
         height: 100vh;
+        overflow-y: overlay;
 
-        background: #f5f5f5;
+        background: ${colors.bg};
       `}
     >
       <Header />
@@ -51,14 +53,11 @@ function Recommend() {
         css={css`
           display: flex;
           flex-direction: column;
+          justify-content: center;
           align-items: center;
 
           width: 100%;
           height: 100%;
-          overflow-y: scroll;
-
-          background: white;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         `}
       >
         <div
@@ -66,19 +65,22 @@ function Recommend() {
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            width: 1140px;
-            padding: 50px 0 50px;
+            gap: 20px;
+            padding: 30px 60px 30px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 15px;
           `}
         >
           <div
             id='tag layout'
             css={css`
+              position: relative;
               display: flex;
               justify-content: center;
               width: 100%;
               height: fit-content;
-              gap: 40px;
+              gap: 20px;
             `}
           >
             <div
@@ -86,21 +88,23 @@ function Recommend() {
               ref={drop}
               css={css`
                 box-sizing: border-box;
-                width: 320px;
-                min-height: 200px;
+                width: 280px;
+                min-height: 140px;
                 height: fit-content;
-                padding: 20px 28px 28px;
+                padding: 18px 25px 25px;
 
                 font-weight: 300;
-                font-size: 18px;
-                line-height: 28px;
+                font-size: 15px;
+                line-height: 24px;
 
                 background: #ffffff;
-                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+                border: 1px solid #e9e9e9;
+                // box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
                 border-radius: 15px;
+                color: ${colors.black};
               `}
             >
-              I got stress <br /> when{' '}
+              I got stress when{' '}
               {selectedTagList.length === 0 && (
                 <span
                   css={css`
@@ -140,7 +144,7 @@ function Recommend() {
                         display: flex;
                         align-items: center;
 
-                        color: black;
+                        color: ${colors.black};
                         font-weight: 600;
 
                         cursor: pointer;
@@ -216,7 +220,7 @@ function Recommend() {
                 display: flex;
                 gap: 10px;
 
-                width: 540px;
+                width: 430px;
                 height: 100%;
                 padding: 15px 20px;
 
@@ -230,7 +234,7 @@ function Recommend() {
                   flex-wrap: wrap;
                   width: 100%;
                   height: min-content;
-                  gap: 10px;
+                  gap: 8px;
                 `}
               >
                 {tagList
@@ -248,19 +252,9 @@ function Recommend() {
               flex-direction: column;
               align-items: center;
               width: 100%;
-              height: 70%;
+              height: 65%;
             `}
           >
-            <p
-              css={css`
-                font-weight: 400;
-                font-size: 14px;
-                display: flex;
-                color: gray;
-              `}
-            >
-              cause factors
-            </p>
             <div
               css={css`
                 display: flex;
@@ -306,8 +300,8 @@ function Recommend() {
                   },
                 ]}
                 layout={{
-                  width: 900,
-                  height: 400,
+                  width: 800,
+                  height: 350,
                   margin: {
                     l: 0,
                     r: 0,
@@ -318,16 +312,29 @@ function Recommend() {
                 }}
               />
             </div>
-            <p
-              css={css`
-                font-weight: 400;
-                font-size: 14px;
-                display: flex;
-                color: gray;
-              `}
-            >
-              solution factors
-            </p>
+          </div>
+          <div
+            css={css`
+              box-sizing: border-box;
+              width: 360px;
+              min-height: 100px;
+              height: fit-content;
+              padding: 18px 25px 25px;
+              display: flex;
+              justify-content: flex-end;
+              align-self: flex-end;
+              font-weight: 300;
+              font-size: 15px;
+              line-height: 24px;
+
+              background: ${colors.black};
+              border: 1px solid #e9e9e9;
+              // box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+              border-radius: 15px;
+              color: white;
+            `}
+          >
+            you can
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import GuideBtn from 'components/GuideBtn';
 import Header from 'components/Header';
 import LineGraph from 'components/LineGraph';
 import { useState } from 'react';
+import { colors } from 'utils/style';
 
 export type Activity = 'exercise' | 'study' | 'phone' | 'sleep' | '';
 
@@ -24,8 +25,9 @@ function Analysis() {
 
         width: 100vw;
         height: 100vh;
+        overflow-y: overlay;
 
-        background: #f5f5f5;
+        background: ${colors.bg};
       `}
     >
       <Header />
@@ -37,45 +39,29 @@ function Analysis() {
 
           width: 100%;
           height: 100%;
-          overflow-y: scroll;
-
-          background: white;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         `}
       >
         <div
           css={css`
             box-sizing: border-box;
             display: flex;
-            align-items: space-between;
-            gap: 20px;
+            align-items: center;
+            gap: 30px;
 
-            width: 1140px;
-
-            padding: 30px 0 50px 0;
+            padding: 30px 20px 20px;
           `}
         >
           <div
             css={css`
               display: flex;
               flex-direction: column;
-              gap: 40px;
+              gap: 20px;
             `}
           >
             <Calendar />
             <BarGraph />
           </div>
-          <div
-            css={css`
-              display: flex;
-              justify-content: flex-end;
-              align-items: flex-start;
-              width: 100%;
-              height: 100%;
-            `}
-          >
-            <LineGraph hover={hover} click={click} />
-          </div>
+          <LineGraph hover={hover} click={click} />
         </div>
       </div>
       {/* guide page */}

@@ -6,4 +6,7 @@ export const colors = {
   hitmap3: '#D47B7B',
   hitmap4: '#E9A8A8',
   hitmap5: '#FED4D4',
+
+  black: '#3b3a39',
+  bg: '#F0F0F0',
 };

@@ -14,7 +14,7 @@ function CalendarItem(props: {
           display: flex;
           justify-content: center;
           align-items: center;
-          width: calc(260px / 7);
+          width: calc(228px / 7);
         `}
       />
     );
@@ -93,8 +93,8 @@ function CalendarItem(props: {
         justify-content: center;
         align-items: center;
 
-        width: calc(260px / 7);
-        height: 36px;
+        width: calc(228px / 7);
+        height: 32px;
 
         box-sizing: border-box;
         ${getOutlineStyle(props.info.num)}
@@ -105,12 +105,12 @@ function CalendarItem(props: {
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 30px;
-          height: 30px;
+          width: 28px;
+          height: 28px;
           border-radius: 30px;
 
           font-weight: 200;
-          font-size: 18px;
+          font-size: 16px;
           letter-spacing: -0.1em;
           background-color: ${backColor};
 
