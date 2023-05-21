@@ -7,8 +7,8 @@ import stressCauses from '../assets/datas/stress_cause.json';
 import stressSolutions from '../assets/datas/stress_solution.json';
 
 function BarGraph(props: {
-  // hover: Activity;
-  // click: Activity;
+  hover: ActItem;
+  click: ActItem;
   setHover: Dispatch<SetStateAction<ActItem>>;
   setClick: Dispatch<SetStateAction<ActItem>>;
 }) {
@@ -22,6 +22,22 @@ function BarGraph(props: {
   const xCauses = stressCauses.sort(compare).map((d) => d.value);
   const ySolution = stressSolutions.sort(compare).map((d) => d.category);
   const xSolution = stressSolutions.sort(compare).map((d) => d.value);
+
+  const causeColor = yCauses.map((name) =>
+    name === props.click.name && props.click.type === 'get'
+      ? '#bd2b2b'
+      : name === props.hover.name && props.hover.type === 'get'
+      ? '#d43b3b'
+      : '#E26464',
+  );
+
+  const solutionColor = ySolution.map((name) =>
+    name === props.click.name && props.click.type === 'release'
+      ? '#1f55a6'
+      : name === props.hover.name && props.hover.type === 'release'
+      ? '#4476c2'
+      : '#6496E2',
+  );
 
   return (
     <div
@@ -63,6 +79,7 @@ function BarGraph(props: {
               orientation: 'h',
               text: yCauses,
               textposition: 'outside',
+              marker: { color: causeColor },
             },
           ]}
           layout={{
@@ -84,7 +101,7 @@ function BarGraph(props: {
               visible: false,
               fixedrange: true,
             },
-            colorway: ['#E26464'],
+            // colorway: ['#E26464'],
             font: { size: 10 },
           }}
           config={{
@@ -143,6 +160,7 @@ function BarGraph(props: {
               orientation: 'h',
               text: ySolution,
               textposition: 'outside',
+              marker: {color: solutionColor}
             },
           ]}
           layout={{
@@ -164,7 +182,6 @@ function BarGraph(props: {
               visible: false,
               fixedrange: true,
             },
-            colorway: ['#6496E2'],
             font: { size: 10 },
           }}
           config={{
