@@ -2,6 +2,7 @@
 import { css } from '@emotion/react';
 import { ReactComponent as ArrowLeftIcon } from 'assets/icons/arrow-left.svg';
 import { ReactComponent as ClickLeftIcon } from 'assets/icons/click-left.svg';
+import { ReactComponent as SankeyPlaceholder } from 'assets/images/placeholder_sankey.svg';
 import DragItem from 'components/DragItem';
 import GuideBtn from 'components/GuideBtn';
 import {
@@ -246,7 +247,17 @@ function Recommend() {
               </div>
             </div>
           </div>
-          <SankeyDiagram selectedTagList={selectedTagList} />
+          {selectedTagList.length === 0 ? (
+            <SankeyPlaceholder
+              css={css`
+                width: 800px;
+                height: 330px;
+                align-self: center;
+              `}
+            />
+          ) : (
+            <SankeyDiagram selectedTagList={selectedTagList} />
+          )}
           <div
             css={css`
               box-sizing: border-box;
