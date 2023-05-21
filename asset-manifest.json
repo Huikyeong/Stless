@@ -1,19 +1,20 @@
 {
   "files": {
     "main.css": "/Stless/static/css/main.ee7008df.css",
-    "main.js": "/Stless/static/js/main.90f3d43b.js",
+    "main.js": "/Stless/static/js/main.38c3a88e.js",
+    "static/media/placeholder_sankey.svg": "/Stless/static/media/placeholder_sankey.097d2205c724c4ce76d23c831bfb9ca6.svg",
     "static/media/stless.svg": "/Stless/static/media/stless.ae263495a121361044c1de10bcd90e83.svg",
     "static/media/click-left.svg": "/Stless/static/media/click-left.0fe9582ce39e1033c8b26990685e2f10.svg",
-    "static/media/thumbs-up.svg": "/Stless/static/media/thumbs-up.2e097571a833a24b04db0d42ba939acf.svg",
-    "static/media/stress_p703.csv": "/Stless/static/media/stress_p703.096197906e32ede226fc.csv",
+    "static/media/stress_p0703.csv": "/Stless/static/media/stress_p0703.096197906e32ede226fc.csv",
+    "static/media/help-circle.svg": "/Stless/static/media/help-circle.979494dbbf31d8b299ed09f6045724b0.svg",
+    "static/media/detected_p0703.csv": "/Stless/static/media/detected_p0703.a0c0e93b27b41d4d91b2.csv",
     "index.html": "/Stless/index.html",
     "static/media/arrow-left.svg": "/Stless/static/media/arrow-left.8d914ac0e19d313186d4ca4846d9144e.svg",
-    "static/media/analysis.svg": "/Stless/static/media/analysis.723ed8b7b20b6e3bdc3c8dd606e0c8f5.svg",
     "main.ee7008df.css.map": "/Stless/static/css/main.ee7008df.css.map",
-    "main.90f3d43b.js.map": "/Stless/static/js/main.90f3d43b.js.map"
+    "main.38c3a88e.js.map": "/Stless/static/js/main.38c3a88e.js.map"
   },
   "entrypoints": [
     "static/css/main.ee7008df.css",
-    "static/js/main.90f3d43b.js"
+    "static/js/main.38c3a88e.js"
   ]
 }
