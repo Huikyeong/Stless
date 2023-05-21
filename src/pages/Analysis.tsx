@@ -73,7 +73,7 @@ function Analysis() {
             `}
           >
             <Calendar />
-            <BarGraph setHover={setHover} setClick={setClick} />
+            <BarGraph hover={hover} click={click} setHover={setHover} setClick={setClick} />
           </div>
           <LineGraph hover={hover} click={click} />
         </div>
