@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Stless/static/css/main.ee7008df.css",
-    "main.js": "/Stless/static/js/main.274343b4.js",
+    "main.js": "/Stless/static/js/main.bb2ce288.js",
     "static/media/placeholder_sankey.svg": "/Stless/static/media/placeholder_sankey.097d2205c724c4ce76d23c831bfb9ca6.svg",
     "static/media/stless.svg": "/Stless/static/media/stless.ae263495a121361044c1de10bcd90e83.svg",
     "static/media/click-left.svg": "/Stless/static/media/click-left.0fe9582ce39e1033c8b26990685e2f10.svg",
@@ -11,10 +11,10 @@
     "index.html": "/Stless/index.html",
     "static/media/arrow-left.svg": "/Stless/static/media/arrow-left.8d914ac0e19d313186d4ca4846d9144e.svg",
     "main.ee7008df.css.map": "/Stless/static/css/main.ee7008df.css.map",
-    "main.274343b4.js.map": "/Stless/static/js/main.274343b4.js.map"
+    "main.bb2ce288.js.map": "/Stless/static/js/main.bb2ce288.js.map"
   },
   "entrypoints": [
     "static/css/main.ee7008df.css",
-    "static/js/main.274343b4.js"
+    "static/js/main.bb2ce288.js"
   ]
 }
