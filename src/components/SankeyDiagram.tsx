@@ -5,9 +5,7 @@ import Plot from 'react-plotly.js';
 import sankeyFullData from '../assets/datas/sankey.json';
 
 const getSankeyData = (getTagList: string[]) => {
-  return getTagList.length !== 0
-    ? sankeyFullData.filter((v) => getTagList.includes(v.source))
-    : sankeyFullData;
+  return sankeyFullData.filter((v) => getTagList.includes(v.source));
 };
 
 const makeGetTagList: (getTagList: string[]) => string[] = (
