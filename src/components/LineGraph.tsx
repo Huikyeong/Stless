@@ -58,8 +58,19 @@ function LineGraph(props: Props) {
       .readCSV(rawStress)
       .then((df: dfd.DataFrame) => {
         df = df.addColumn('day', dfd.toDateTime(df['date']).dayOfMonth());
-        setDfStressQuery(df);
         setDfStress(df);
+        // setDfStressQuery(df);
+        if (selectedRange.start && selectedRange.end) {
+          setDfStressQuery(
+            df
+              .query(
+                df['day']
+                  .gt(selectedRange.start - 1)
+                  .and(df['day'].lt(selectedRange.end + 1)),
+              )
+              .resetIndex(),
+          );
+        }
       })
       .catch((err) => console.log(err));
   }
@@ -85,13 +96,23 @@ function LineGraph(props: Props) {
               color: 'rgba(0,0,0,0)',
             },
           };
-          shape.name = df.iloc({ rows: [i] })['activity'].values[0] + '-' + df.iloc({ rows: [i] })['type'].values[0];
+          shape.name =
+            df.iloc({ rows: [i] })['activity'].values[0] +
+            '-' +
+            df.iloc({ rows: [i] })['type'].values[0];
           shape.x0 = df.iloc({ rows: [i] })['start'].values[0];
           shape.x1 = df.iloc({ rows: [i] })['end'].values[0];
           shapes.push(shape);
         }
         setDfActivity(shapes);
-        setDfActivityQuery(shapes);
+        // setDfActivityQuery(shapes);
+        setDfActivityQuery(
+          shapes.filter(
+            (shape) =>
+              new Date(shape.x0!).getDate() > selectedRange.start! - 1 &&
+              new Date(shape.x1!).getDate() < selectedRange.end! + 1,
+          ),
+        );
       })
       .catch((err) => console.log(err));
   }
