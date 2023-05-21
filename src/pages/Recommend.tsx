@@ -4,28 +4,15 @@ import { ReactComponent as ArrowLeftIcon } from 'assets/icons/arrow-left.svg';
 import { ReactComponent as ClickLeftIcon } from 'assets/icons/click-left.svg';
 import DragItem from 'components/DragItem';
 import GuideBtn from 'components/GuideBtn';
+import { SankeyDiagram, tagList, initTagList } from 'components/SankeyDiagram';
 import { useState } from 'react';
 import { useDrop } from 'react-dnd';
-import Plot from 'react-plotly.js';
 import { colors } from 'utils/style';
 import Header from '../components/Header';
 
 function Recommend() {
   const [isGuideOn, setIsGuideOn] = useState(false);
-  const [selectedTagList, setSelectedTagList] = useState<string[]>([]);
-  const tagList: string[] = [
-    'exercise',
-    'study',
-    'use phone a lot',
-    'use phone less',
-    'in shiny day',
-    'in rainy day',
-    'in windy day',
-    'wake up late',
-    'wake up early',
-    'sleep late',
-    'sleep early',
-  ]; // Before drop.
+  const [selectedTagList, setSelectedTagList] = useState<string[]>(initTagList);
 
   const [, drop] = useDrop(() => ({
     accept: 'cause',
@@ -245,74 +232,7 @@ function Recommend() {
               </div>
             </div>
           </div>
-          <div
-            id='sankey layout'
-            css={css`
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              width: 100%;
-              height: 65%;
-            `}
-          >
-            <div
-              css={css`
-                display: flex;
-                justify-content: center;
-              `}
-            >
-              <Plot
-                data={[
-                  {
-                    type: 'sankey',
-                    orientation: 'v',
-
-                    node: {
-                      pad: 15,
-                      thickness: 30,
-                      line: {
-                        color: '#FFFFFF',
-                        width: 0.5,
-                      },
-                      label: [
-                        'study',
-                        'sleep late',
-                        'wake up early',
-                        'sleep early',
-                        'in shiny day',
-                        'use phone less',
-                      ],
-                      color: [
-                        '#E4C6C6',
-                        '#E4C6C6',
-                        '#E4C6C6',
-                        '#B3CAED',
-                        '#B3CAED',
-                        '#B3CAED',
-                      ],
-                    },
-
-                    link: {
-                      source: [0, 1, 1, 1, 2, 2],
-                      target: [3, 3, 4, 5, 3, 5],
-                      value: [3, 4, 3, 5, 5, 3],
-                    },
-                  },
-                ]}
-                layout={{
-                  width: 800,
-                  height: 350,
-                  margin: {
-                    l: 0,
-                    r: 0,
-                    b: 10,
-                    t: 10,
-                    pad: 4,
-                  },
-                }}
-              />
-            </div>
-          </div>
+          <SankeyDiagram selectedTagList={selectedTagList} />
           <div
             css={css`
               box-sizing: border-box;
