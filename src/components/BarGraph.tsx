@@ -160,7 +160,7 @@ function BarGraph(props: {
               orientation: 'h',
               text: ySolution,
               textposition: 'outside',
-              marker: {color: solutionColor}
+              marker: { color: solutionColor },
             },
           ]}
           layout={{

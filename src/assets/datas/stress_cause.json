@@ -1,6 +1,6 @@
 [
     {
-        "category": "study",
+        "category": "exercise",
         "value": 10
     },
     {
@@ -8,7 +8,7 @@
         "value": 5
     },
     {
-        "category": "exercise",
+        "category": "study",
         "value": 3
     },
     {

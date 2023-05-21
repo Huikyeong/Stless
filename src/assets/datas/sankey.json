@@ -1,11 +1,11 @@
 [
     {
-        "source": "study",
+        "source": "exercise",
         "target": "exercise",
         "value": 3
     },
     {
-        "source": "study",
+        "source": "exercise",
         "target": "sleep late",
         "value": 4
     },
