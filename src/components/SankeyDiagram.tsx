@@ -1,23 +1,46 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import React from 'react';
 import Plot from 'react-plotly.js';
 import sankeyFullData from '../assets/datas/sankey.json';
-
-const effectMap = new Map<string, number>();
-sankeyFullData.forEach((v) => {
-  if (effectMap.has(v.source))
-    effectMap.set(v.source, effectMap.get(v.source)! + v.value);
-  else effectMap.set(v.source, v.value);
-});
 
 const tagList: string[] = Array.from(
   new Set(sankeyFullData.map((v) => v.source)),
 );
 
-const initTagList: string[] = Array.from(effectMap)
+const effectGetMap = new Map<string, number>();
+sankeyFullData.forEach((v) => {
+  if (effectGetMap.has(v.source))
+    effectGetMap.set(v.source, effectGetMap.get(v.source)! + v.value);
+  else effectGetMap.set(v.source, v.value);
+});
+
+const initGetTagList: string[] = Array.from(effectGetMap)
   .sort((a, b) => b[1] - a[1])
   .slice(0, 3)
   .map((item) => item[0]);
+
+const makeReleaseTagList: (getTagList: string[]) => string[] = (
+  getTagList: string[],
+) => {
+  const sankeyData =
+    getTagList.length !== 0
+      ? sankeyFullData.filter((v) => getTagList.includes(v.source))
+      : sankeyFullData;
+
+  const effectReleaseMap = new Map<string, number>();
+  sankeyData.forEach((v) => {
+    if (effectReleaseMap.has(v.target))
+      effectReleaseMap.set(v.target, effectReleaseMap.get(v.target)! + v.value);
+    else effectReleaseMap.set(v.target, v.value);
+  });
+
+  return Array.from(effectReleaseMap)
+    .sort((a, b) => b[1] - a[1])
+    .map((item) => item[0]);
+};
+
+const initReleaseTagList: string[] = makeReleaseTagList(initGetTagList);
 
 function SankeyDiagram(props: { selectedTagList: string[] }) {
   /* eslint-disable */
@@ -25,7 +48,6 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
     props.selectedTagList.length !== 0
       ? sankeyFullData.filter((v) => props.selectedTagList.includes(v.source))
       : sankeyFullData;
-
   const sources = Array.from(new Set(sankeyData.map((v) => v.source)));
   const targets = Array.from(new Set(sankeyData.map((v) => v.target)));
   const values = sankeyData.map((v) => v.value);
@@ -59,7 +81,7 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
               orientation: 'v',
               arrangement: 'fixed',
               node: {
-                pad: 75,
+                pad: 60,
                 thickness: 30,
                 line: {
                   color: '#FFFFFF',
@@ -96,4 +118,10 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
   );
 }
 
-export { SankeyDiagram, tagList, initTagList };
+export {
+  SankeyDiagram,
+  tagList,
+  makeReleaseTagList,
+  initGetTagList,
+  initReleaseTagList,
+};

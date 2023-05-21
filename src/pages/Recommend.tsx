@@ -4,7 +4,13 @@ import { ReactComponent as ArrowLeftIcon } from 'assets/icons/arrow-left.svg';
 import { ReactComponent as ClickLeftIcon } from 'assets/icons/click-left.svg';
 import DragItem from 'components/DragItem';
 import GuideBtn from 'components/GuideBtn';
-import { SankeyDiagram, tagList, initTagList } from 'components/SankeyDiagram';
+import {
+  SankeyDiagram,
+  tagList,
+  makeReleaseTagList,
+  initGetTagList,
+  initReleaseTagList,
+} from 'components/SankeyDiagram';
 import { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { colors } from 'utils/style';
@@ -12,11 +18,15 @@ import Header from '../components/Header';
 
 function Recommend() {
   const [isGuideOn, setIsGuideOn] = useState(false);
-  const [selectedTagList, setSelectedTagList] = useState<string[]>(initTagList);
+  const [selectedTagList, setSelectedTagList] =
+    useState<string[]>(initGetTagList);
+  const [releaseTagList, setReleaseTagList] =
+    useState<string[]>(initReleaseTagList);
 
   const [, drop] = useDrop(() => ({
     accept: 'cause',
     drop: (item: { text: string }) => {
+      setReleaseTagList(makeReleaseTagList([...selectedTagList, item.text]));
       setSelectedTagList((prev) => [...prev, item.text]);
     },
   }));
@@ -143,11 +153,18 @@ function Recommend() {
                           opacity: 1;
                         }
                       `}
-                      onClick={() =>
+                      onClick={() => {
+                        setReleaseTagList(
+                          makeReleaseTagList(
+                            selectedTagList.filter(
+                              (selectedTag) => selectedTag !== tag,
+                            ),
+                          ),
+                        );
                         setSelectedTagList((prev) =>
                           prev.filter((selectedTag) => selectedTag !== tag),
-                        )
-                      }
+                        );
+                      }}
                     >
                       <div
                         css={css`
@@ -255,6 +272,57 @@ function Recommend() {
             `}
           >
             you can
+            <span
+              css={css`
+                display: flex;
+                flex-wrap: wrap;
+              `}
+            >
+              {releaseTagList.map((tag, index) => (
+                <div
+                  key={tag}
+                  css={css`
+                    display: flex;
+                    margin-right: 5px;
+                  `}
+                >
+                  {releaseTagList.length - 1 === index &&
+                    releaseTagList.length > 1 && (
+                      <p
+                        css={css`
+                          margin-right: 7px;
+                        `}
+                      >
+                        and
+                      </p>
+                    )}
+                  <div
+                    css={css`
+                      position: relative;
+                      display: flex;
+                      align-items: center;
+
+                      color: #ffffff;
+                      font-weight: 600;
+                    `}
+                  >
+                    <div
+                      css={css`
+                        position: absolute;
+                        width: 0%;
+                        height: 2px;
+                        border-radius: 2px;
+                        background: #c84242;
+                        opacity: 0;
+                        transition: width 0.3s ease;
+                      `}
+                    />
+                    <p>{tag}</p>
+                  </div>
+                  {releaseTagList.length - 1 === index ? '.' : ','}
+                </div>
+              ))}
+            </span>
           </div>
         </div>
       </div>
