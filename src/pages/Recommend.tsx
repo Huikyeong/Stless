@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import { ReactComponent as ArrowLeftIcon } from 'assets/icons/arrow-left.svg';
 import { ReactComponent as ClickLeftIcon } from 'assets/icons/click-left.svg';
 import { ReactComponent as SankeyPlaceholder } from 'assets/images/placeholder_sankey.svg';
+import { ReactComponent as Guide1 } from 'assets/images/recommend-guide.svg';
 import DragItem from 'components/DragItem';
 import GuideBtn from 'components/GuideBtn';
 import {
@@ -286,6 +287,7 @@ function Recommend() {
                 flex-wrap: wrap;
               `}
             >
+              {releaseTagList.length === 0 && '...'}
               {releaseTagList.slice(0, 4).map((tag, index) => (
                 <div
                   key={tag}
@@ -349,14 +351,40 @@ function Recommend() {
       {/* guide page */}
       <div
         css={css`
+          box-sizing: border-box;
           position: fixed;
           display: ${isGuideOn ? `flex` : `none`};
+          flex-direction: column;
+          align-items: center;
           width: 100vw;
           height: 100vh;
-          background: rgba(0, 0, 0, 0.5);
+          background: rgba(0, 0, 0, 0.8);
         `}
       >
-        hi
+        <p
+          css={css`
+            font-weight: 700;
+            font-size: 25px;
+            color: white;
+            padding-top: 50px;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+              1px 1px 0 #000;
+          `}
+        >
+          Recommend
+        </p>
+        <div
+          css={css`
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 1040px;
+          `}
+        >
+          <Guide1 />
+        </div>
       </div>
       <GuideBtn
         isGuideOn={isGuideOn}
