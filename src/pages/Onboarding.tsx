@@ -171,7 +171,6 @@ function Onboarding() {
               css={css`
                 position: absolute;
                 right: -60px;
-                bottom: 20px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
