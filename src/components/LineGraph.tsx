@@ -168,7 +168,7 @@ function LineGraph(props: Props) {
           color: ${colors.black};
         `}
       >
-        Stress change over{' '}
+        <b>Stress Level</b> change over{' '}
         <b>
           2019.05.
           {dateRange[0].toString().padStart(2, '0')} ~ 2019.05.

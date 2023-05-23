@@ -278,7 +278,7 @@ function Recommend() {
               color: white;
             `}
           >
-            You were able to release stress through
+            You will able to release stress through
             <span
               css={css`
                 display: flex;
