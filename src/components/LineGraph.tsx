@@ -192,12 +192,9 @@ function LineGraph(props: Props) {
           margin: {
             l: 20,
             r: 10,
-            b: 0,
+            b: 20,
             t: 20,
             pad: 4,
-          },
-          xaxis: {
-            rangeslider: {},
           },
           yaxis: {
             fixedrange: true,
