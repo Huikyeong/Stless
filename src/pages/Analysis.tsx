@@ -22,7 +22,7 @@ function Analysis() {
   const setInitialDateRange = useRecoilCallback(({ snapshot, set }) => () => {
     const selectedRange = snapshot.getLoadable(selectedRangeAtom).getValue();
     if (selectedRange.start === undefined || selectedRange.end === undefined) {
-      set(selectedRangeAtom, { start: 7, end: 14 });
+      set(selectedRangeAtom, { start: 8, end: 14 });
     }
   });
 

@@ -14,7 +14,7 @@ function Calendar(props: { className?: string }) {
   ];
   for (let i = 1; i <= 31; i += 1) {
     if (i >= 7 && i <= 15) {
-      const stressVal = stress[i - 7];
+      const stressVal = stress[i - 8];
       dayList.push({ num: i, val: stressVal });
     } else {
       dayList.push({ num: i, val: undefined });
