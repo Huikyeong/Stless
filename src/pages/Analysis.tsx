@@ -28,7 +28,7 @@ function Analysis() {
 
   useLayoutEffect(() => {
     setInitialDateRange();
-  }, [])
+  }, []);
 
   return (
     <div
@@ -73,7 +73,12 @@ function Analysis() {
             `}
           >
             <Calendar />
-            <BarGraph hover={hover} click={click} setHover={setHover} setClick={setClick} />
+            <BarGraph
+              hover={hover}
+              click={click}
+              setHover={setHover}
+              setClick={setClick}
+            />
           </div>
           <LineGraph hover={hover} click={click} />
         </div>
@@ -81,14 +86,37 @@ function Analysis() {
       {/* guide page */}
       <div
         css={css`
+          box-sizing: border-box;
           position: fixed;
           display: ${isGuideOn ? `flex` : `none`};
+          flex-direction: column;
+          align-items: center;
+          gap: 15px;
           width: 100vw;
           height: 100vh;
           background: rgba(0, 0, 0, 0.5);
         `}
       >
-        hi
+        <p
+          css={css`
+            font-weight: 700;
+            font-size: 25px;
+            color: white;
+            padding-top: 40px;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+              1px 1px 0 #000;
+          `}
+        >
+          Analysis: 1. Calendar
+        </p>
+        <div
+          css={css`
+            display: flex;
+            width: 1040px;
+          `}
+        >
+          df
+        </div>
       </div>
       {/* floating guide button */}
       <GuideBtn

@@ -11,8 +11,6 @@ function Calendar(props: { className?: string }) {
     undefined,
     undefined,
     undefined,
-    undefined,
-    undefined,
   ];
   for (let i = 1; i <= 31; i += 1) {
     if (i >= 7 && i <= 15) {

@@ -188,7 +188,7 @@ function LineGraph(props: Props) {
         ]}
         layout={{
           width: 710,
-          height: 550,
+          height: 510,
           margin: {
             l: 20,
             r: 10,
