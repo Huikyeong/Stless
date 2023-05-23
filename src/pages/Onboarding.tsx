@@ -189,7 +189,7 @@ function Onboarding() {
                   margin-bottom: 10px;
                 `}
               >
-                low
+                high
                 <br />
                 stress
               </p>
@@ -198,23 +198,7 @@ function Onboarding() {
                   width: 30px;
                   height: 30px;
                   border-radius: 100%;
-                  background: ${colors.hitmap5};
-                `}
-              />
-              <div
-                css={css`
-                  width: 30px;
-                  height: 30px;
-                  border-radius: 100%;
-                  background: ${colors.hitmap4};
-                `}
-              />
-              <div
-                css={css`
-                  width: 30px;
-                  height: 30px;
-                  border-radius: 100%;
-                  background: ${colors.hitmap3};
+                  background: ${colors.hitmap1};
                 `}
               />
               <div
@@ -230,7 +214,23 @@ function Onboarding() {
                   width: 30px;
                   height: 30px;
                   border-radius: 100%;
-                  background: ${colors.hitmap1};
+                  background: ${colors.hitmap3};
+                `}
+              />
+              <div
+                css={css`
+                  width: 30px;
+                  height: 30px;
+                  border-radius: 100%;
+                  background: ${colors.hitmap4};
+                `}
+              />
+              <div
+                css={css`
+                  width: 30px;
+                  height: 30px;
+                  border-radius: 100%;
+                  background: ${colors.hitmap5};
                 `}
               />
               <p
@@ -238,7 +238,7 @@ function Onboarding() {
                   margin-top: 10px;
                 `}
               >
-                high
+                low
                 <br />
                 stress
               </p>
@@ -272,7 +272,10 @@ function Onboarding() {
               `}
             >
               <p>FROM</p>
-              <p>{selectedRange.start && `2022.03.${selectedRange.start}`}</p>
+              <p>
+                {selectedRange.start &&
+                  `2019.05.${selectedRange.start.toString().padStart(2, '0')}`}
+              </p>
             </div>
             <div
               css={css`
@@ -294,7 +297,10 @@ function Onboarding() {
               `}
             >
               <p>TO</p>
-              <p>{selectedRange.end && `2022.03.${selectedRange.end}`}</p>
+              <p>
+                {selectedRange.end &&
+                  `2019.05.${selectedRange.end.toString().padStart(2, '0')}`}
+              </p>
             </div>
           </div>
           <div
