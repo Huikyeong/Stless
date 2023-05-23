@@ -1,5 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import { ReactComponent as ArrowLeft } from 'assets/icons/line-arrow-left.svg';
+import { ReactComponent as ArrowRight } from 'assets/icons/line-arrow-right.svg';
+import { ReactComponent as Guide1 } from 'assets/images/analysis-guide1.svg';
+import { ReactComponent as Guide2 } from 'assets/images/analysis-guide2.svg';
 import BarGraph from 'components/BarGraph';
 import Calendar from 'components/Calendar';
 import GuideBtn from 'components/GuideBtn';
@@ -12,12 +16,14 @@ import { colors } from 'utils/style';
 
 export type Activity = 'exercise' | 'study' | 'phone' | 'sleep' | '';
 export type ActItem = { name: Activity; type?: 'release' | 'get' };
+const guideTitleList = ['1. Calendar', '2. Bar & Line graph'];
 
 function Analysis() {
   /* eslint-disable */
   const [isGuideOn, setIsGuideOn] = useState(false);
   const [hover, setHover] = useState<ActItem>({ name: '' });
   const [click, setClick] = useState<ActItem>({ name: '' });
+  const [isGuideFirst, setIsGuideFirst] = useState(true);
 
   const setInitialDateRange = useRecoilCallback(({ snapshot, set }) => () => {
     const selectedRange = snapshot.getLoadable(selectedRangeAtom).getValue();
@@ -91,10 +97,9 @@ function Analysis() {
           display: ${isGuideOn ? `flex` : `none`};
           flex-direction: column;
           align-items: center;
-          gap: 15px;
           width: 100vw;
           height: 100vh;
-          background: rgba(0, 0, 0, 0.5);
+          background: rgba(0, 0, 0, 0.8);
         `}
       >
         <p
@@ -102,21 +107,72 @@ function Analysis() {
             font-weight: 700;
             font-size: 25px;
             color: white;
-            padding-top: 40px;
+            padding-top: 50px;
             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
               1px 1px 0 #000;
           `}
         >
-          Analysis: 1. Calendar
+          Analysis: {isGuideFirst ? guideTitleList[0] : guideTitleList[1]}
         </p>
-        <div
-          css={css`
-            display: flex;
-            width: 1040px;
-          `}
-        >
-          df
-        </div>
+
+        {!isGuideFirst && (
+          <div
+            css={css`
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 1040px;
+              height: 100%;
+            `}
+          >
+            <ArrowLeft
+              css={css`
+                position: absolute;
+                left: -70px;
+
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                &: hover {
+                  opacity: 0.7;
+                }
+                transition: all 0.15s;
+              `}
+              onClick={() => setIsGuideFirst(true)}
+            />
+            <Guide2 />
+          </div>
+        )}
+
+        {isGuideFirst && (
+          <div
+            css={css`
+              position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100%;
+              width: 1040px;
+            `}
+          >
+            <Guide1 />
+            <ArrowRight
+              css={css`
+                position: absolute;
+                right: -70px;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                &: hover {
+                  opacity: 0.7;
+                }
+                transition: all 0.15s;
+              `}
+              onClick={() => setIsGuideFirst(false)}
+            />
+          </div>
+        )}
       </div>
       {/* floating guide button */}
       <GuideBtn
