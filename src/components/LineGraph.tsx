@@ -171,7 +171,7 @@ function LineGraph(props: Props) {
         Stress change over{' '}
         <b>
           2019.05.
-          {dateRange[0].toString().padStart(2, '0')} ~ 2023.05.
+          {dateRange[0].toString().padStart(2, '0')} ~ 2019.05.
           {dateRange[1].toString().padStart(2, '0')}
         </b>
       </p>
