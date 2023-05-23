@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import React from 'react';
 import Plot from 'react-plotly.js';
-import sankeyFullData from '../assets/datas/correlation_p0702_v1.json';
+import sankeyFullData from '../assets/datas/correlation_p0701_v1.json';
 
 const getSankeyData = (getTagList: string[]) => {
   return sankeyFullData.filter((v) => getTagList.includes(v.source));
