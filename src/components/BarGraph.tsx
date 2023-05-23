@@ -110,7 +110,6 @@ function BarGraph(props: {
           onClick={(data) => {
             if (data.points) {
               const point = data.points[0];
-              console.log(point.y);
               props.setClick((prev) =>
                 prev.name === point.y
                   ? { name: '' }
@@ -121,7 +120,6 @@ function BarGraph(props: {
           onHover={(data) => {
             if (data.points) {
               const point = data.points[0];
-              console.log(point.y);
               props.setHover({ name: point.y as Activity, type: 'get' });
             }
           }}
@@ -190,7 +188,6 @@ function BarGraph(props: {
           onClick={(data) => {
             if (data.points) {
               const point = data.points[0];
-              console.log(point.y);
               props.setClick((prev) =>
                 prev.name === point.y
                   ? { name: '' }
@@ -201,7 +198,6 @@ function BarGraph(props: {
           onHover={(data) => {
             if (data.points) {
               const point = data.points[0];
-              console.log(point.y);
               props.setHover({ name: point.y as Activity, type: 'release' });
             }
           }}
