@@ -1,5 +1,5 @@
 # Stless 
-> Design Project of <b>KAIST CS481: Data Visualization</b>
+> Design Project of <b>KAIST 2023 Spring CS481: Data Visualization</b>
 
 # Project Summary
 <b>[Stless](https://huikyeong.github.io/Stless/)</b> is a web service for exploring and knowing our stress.
