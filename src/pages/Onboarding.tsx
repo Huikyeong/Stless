@@ -106,7 +106,7 @@ function Onboarding() {
                     font-size: 12px;
                   `}
                 >
-                  You can only select colored background date. <br />
+                  You just select colored background date. <br />
                   First, select the start date.
                 </p>
                 <div
