@@ -85,8 +85,8 @@ function LineGraph(props: Props) {
           const shape: Partial<Shape> = {
             type: 'rect',
             layer: 'below',
-            y0: -3.5,
-            y1: 3.5,
+            y0: -0.5,
+            y1: 6.5,
             fillcolor:
               df.iloc({ rows: [i] })['type'].values[0] === 'release'
                 ? '#6496E2'
@@ -170,7 +170,7 @@ function LineGraph(props: Props) {
       >
         Stress change over{' '}
         <b>
-          2023.05.
+          2019.05.
           {dateRange[0].toString().padStart(2, '0')} ~ 2023.05.
           {dateRange[1].toString().padStart(2, '0')}
         </b>
@@ -179,7 +179,7 @@ function LineGraph(props: Props) {
         data={[
           {
             x: dfStressQuery['date']?.values,
-            y: dfStressQuery['Stress']?.values,
+            y: dfStressQuery['Stress']?.values.map((v: number) => v + 3),
             type: 'scatter',
             mode: 'lines',
             marker: { color: '#838383' },
@@ -200,7 +200,10 @@ function LineGraph(props: Props) {
             fixedrange: true,
             showgrid: false,
             zeroline: false,
-            range: [-3.5, 3.5],
+            range: [-0.5, 6.5],
+          },
+          xaxis: {
+            tickformat: '%m-%d %I:%M',
           },
           shapes: dfActivityQuery,
         }}
