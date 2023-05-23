@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import CalendarItem from 'components/CalendarItem';
 import { colors } from 'utils/style';
-import stressSummary from '../assets/datas/stress_summary.json';
+import stressSummary from '../assets/datas/stress_summary_p0701.json';
 
 function Calendar(props: { className?: string }) {
   const stress = stressSummary.map((d) => d.summary);

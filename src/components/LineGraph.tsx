@@ -53,7 +53,7 @@ function LineGraph(props: Props) {
   }, [hover, click]);
 
   if (dfStressQuery.size === 0) {
-    const rawStress = require('assets/datas/stress_p0703.csv');
+    const rawStress = require('assets/datas/stress_p0701.csv');
     dfd
       .readCSV(rawStress)
       .then((df: dfd.DataFrame) => {
@@ -76,7 +76,7 @@ function LineGraph(props: Props) {
   }
 
   if (dfActivityQuery.length === 0) {
-    const rawDetected = require('assets/datas/detected_p0703.csv');
+    const rawDetected = require('assets/datas/detected_p0701.csv');
     dfd
       .readCSV(rawDetected)
       .then((df: dfd.DataFrame) => {
