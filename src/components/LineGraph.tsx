@@ -184,6 +184,25 @@ function LineGraph(props: Props) {
             mode: 'lines',
             marker: { color: '#838383' },
             line: { shape: 'spline', smoothing: 0.2 },
+            hoverinfo: 'skip',
+          },
+          {
+            type: 'scatter',
+            mode: 'lines',
+            opacity: 0,
+            x: [
+              '2019-05-08 13:40:39',
+              '2019-05-08 13:40:39',
+              '2019-05-08 15:07:38',
+              '2019-05-08 15:07:38',
+              '2019-05-08 13:40:39',
+            ],
+            y: [-0.5, 6.5, 6.5, -0.5, -0.5],
+            name: 'exercise',
+            hoverlabel: {
+              bgcolor: '#e26464',
+            },
+            hoveron: 'fills',
           },
         ]}
         layout={{
