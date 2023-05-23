@@ -2,7 +2,7 @@
 import { css } from '@emotion/react';
 import React from 'react';
 import Plot from 'react-plotly.js';
-import sankeyFullData from '../assets/datas/sankey.json';
+import sankeyFullData from '../assets/datas/correlation_p0702_v1.json';
 
 const getSankeyData = (getTagList: string[]) => {
   return sankeyFullData.filter((v) => getTagList.includes(v.source));
@@ -61,7 +61,7 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
   const targetMap = new Map<string, number>();
   sources.forEach((key, i) => sourceMap.set(key, i));
   targets.forEach((key, i) => targetMap.set(key, i + sources.length));
-
+  console.log(sources)
   return (
     <div
       id='sankey layout'
