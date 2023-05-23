@@ -1,20 +1,25 @@
 {
   "files": {
     "main.css": "/Stless/static/css/main.ee7008df.css",
-    "main.js": "/Stless/static/js/main.bb2ce288.js",
-    "static/media/placeholder_sankey.svg": "/Stless/static/media/placeholder_sankey.097d2205c724c4ce76d23c831bfb9ca6.svg",
+    "main.js": "/Stless/static/js/main.f294aace.js",
+    "static/media/analysis-guide1.svg": "/Stless/static/media/analysis-guide1.ae74b6e1dc53f5e377dec3e26b390d9a.svg",
+    "static/media/recommend-guide.svg": "/Stless/static/media/recommend-guide.75e102ad3c0c7c0b4c56bc061b3c261d.svg",
+    "static/media/analysis-guide2.svg": "/Stless/static/media/analysis-guide2.bc2966919f4946d79edc93c31682ec6c.svg",
+    "static/media/placeholder_sankey.svg": "/Stless/static/media/placeholder_sankey.1a568cdadeb9e596dd8b14d6ae803c0f.svg",
     "static/media/stless.svg": "/Stless/static/media/stless.ae263495a121361044c1de10bcd90e83.svg",
+    "static/media/detected_p0701.csv": "/Stless/static/media/detected_p0701.9575c16cdea8336b41a6.csv",
     "static/media/click-left.svg": "/Stless/static/media/click-left.0fe9582ce39e1033c8b26990685e2f10.svg",
-    "static/media/stress_p0703.csv": "/Stless/static/media/stress_p0703.096197906e32ede226fc.csv",
+    "static/media/stress_p0701.csv": "/Stless/static/media/stress_p0701.7f5bb0577cb1c926916e.csv",
+    "static/media/line-arrow-right.svg": "/Stless/static/media/line-arrow-right.5b1777b761077fafadd3803d9b3c01c0.svg",
+    "static/media/line-arrow-left.svg": "/Stless/static/media/line-arrow-left.53f7ccd77a7c7d44974a90d5c6d86a87.svg",
     "static/media/help-circle.svg": "/Stless/static/media/help-circle.979494dbbf31d8b299ed09f6045724b0.svg",
-    "static/media/detected_p0703.csv": "/Stless/static/media/detected_p0703.a0c0e93b27b41d4d91b2.csv",
     "index.html": "/Stless/index.html",
     "static/media/arrow-left.svg": "/Stless/static/media/arrow-left.8d914ac0e19d313186d4ca4846d9144e.svg",
     "main.ee7008df.css.map": "/Stless/static/css/main.ee7008df.css.map",
-    "main.bb2ce288.js.map": "/Stless/static/js/main.bb2ce288.js.map"
+    "main.f294aace.js.map": "/Stless/static/js/main.f294aace.js.map"
   },
   "entrypoints": [
     "static/css/main.ee7008df.css",
-    "static/js/main.bb2ce288.js"
+    "static/js/main.f294aace.js"
   ]
 }
