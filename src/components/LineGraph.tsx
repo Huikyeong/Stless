@@ -28,10 +28,9 @@ function LineGraph(props: Props) {
     selectedRange.start ?? 7,
     selectedRange.end ?? 14,
   ]);
-  const [zoomRange, setZoomRange] = useState<[number, number]>([
-    dateRange[0],
-    dateRange[1],
-  ]);
+  const [zoomRange, setZoomRange] = useState<
+    [number | undefined, number | undefined]
+  >([undefined, undefined]);
   const dataList = useMemo(() => {
     return dfActivityQuery.map((shape) => {
       const data: Data = {

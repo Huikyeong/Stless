@@ -46,7 +46,7 @@ function ToggleSwitch(props: { isOn: boolean; onClickHandler: () => void }) {
             overflow: hidden;
 
             font-weight: 200;
-            font-size: 8px;
+            font-size: 10px;
             color: #666666;
           `}
         >
