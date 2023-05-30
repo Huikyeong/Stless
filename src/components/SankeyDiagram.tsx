@@ -50,7 +50,10 @@ const initGetTagList: string[] = makeGetTagList([]).slice(0, 3);
 
 const initReleaseTagList: string[] = makeReleaseTagList(initGetTagList);
 
-function SankeyDiagram(props: { selectedTagList: string[] }) {
+function SankeyDiagram(props: {
+  isHoverInfoOn: boolean;
+  selectedTagList: string[];
+}) {
   /* eslint-disable */
   const sankeyData = getSankeyData(props.selectedTagList);
   const sources = makeGetTagList(props.selectedTagList);
@@ -85,7 +88,7 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
               type: 'sankey',
               orientation: 'v',
               arrangement: 'fixed',
-              hoverinfo: 'skip',
+              hoverinfo: props.isHoverInfoOn ? 'all' : 'skip',
               node: {
                 pad: 60,
                 thickness: 30,
@@ -117,7 +120,6 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
               t: 10,
               pad: 4,
             },
-            hovermode: false,
           }}
           config={{
             displayModeBar: false,
