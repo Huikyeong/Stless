@@ -1,18 +1,18 @@
 [
     {
         "category": "study",
-        "value": 10
+        "value": 22
     },
     {
         "category": "exercise",
+        "value": 20
+    },
+    {
+        "category": "sleeping enough",
         "value": 9
     },
     {
-        "category": "sleep enough",
-        "value": 4
-    },
-    {
         "category": "phone",
-        "value": 3
+        "value": 7
     }
 ]

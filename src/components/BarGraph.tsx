@@ -97,13 +97,12 @@ function BarGraph(props: {
             xaxis: {
               visible: false,
               fixedrange: true,
-              range: [0, 15],
+              range: [0, 30],
             },
             yaxis: {
               visible: false,
               fixedrange: true,
             },
-            // colorway: ['#E26464'],
             font: { size: 10 },
           }}
           config={{
@@ -178,7 +177,7 @@ function BarGraph(props: {
             xaxis: {
               visible: false,
               fixedrange: true,
-              range: [0, 15],
+              range: [0, 40],
             },
             yaxis: {
               visible: false,

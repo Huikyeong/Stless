@@ -40,42 +40,42 @@
         "value": 9
     },
     {
-        "source": "sleep early",
+        "source": "early bedtime",
         "target": "phone",
         "value": 1
     },
     {
-        "source": "sleep early",
+        "source": "early bedtime",
         "target": "study",
         "value": 1
     },
     {
-        "source": "sleep early",
+        "source": "early bedtime",
         "target": "exercise",
         "value": 3
     },
     {
-        "source": "sleep enough",
+        "source": "sleeping enough",
         "target": "phone",
         "value": 1
     },
     {
-        "source": "sleep enough",
+        "source": "sleeping enough",
         "target": "study",
         "value": 5
     },
     {
-        "source": "sleep enough",
+        "source": "sleeping enough",
         "target": "exercise",
         "value": 3
     },
     {
-        "source": "sleep less",
+        "source": "sleeping less",
         "target": "study",
         "value": 2
     },
     {
-        "source": "sleep less",
+        "source": "sleeping less",
         "target": "exercise",
         "value": 2
     }

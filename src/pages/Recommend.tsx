@@ -109,7 +109,7 @@ function Recommend() {
                 color: ${colors.black};
               `}
             >
-              I got stress when{' '}
+              I got stress by{' '}
               {selectedTagList.length === 0 && (
                 <span
                   css={css`
