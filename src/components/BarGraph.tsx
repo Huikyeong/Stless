@@ -80,6 +80,8 @@ function BarGraph(props: {
               text: yCauses,
               textposition: 'outside',
               marker: { color: causeColor },
+              hoverinfo: 'x',
+              hovertemplate: '%{x} times<extra></extra>',
             },
           ]}
           layout={{
@@ -158,6 +160,8 @@ function BarGraph(props: {
               orientation: 'h',
               text: ySolution,
               textposition: 'outside',
+              hoverinfo: 'x',
+              hovertemplate: '%{x} times<extra></extra>',
               marker: { color: solutionColor },
             },
           ]}
