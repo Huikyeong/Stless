@@ -3,8 +3,8 @@ import { css } from '@emotion/react';
 import { ActItem, Activity } from 'pages/Analysis';
 import { Dispatch, SetStateAction } from 'react';
 import Plot from 'react-plotly.js';
-import stressCauses from '../assets/datas/stress_cause.json';
-import stressSolutions from '../assets/datas/stress_solution.json';
+import stressCauses from '../assets/datas/stress_cause_p0701.json';
+import stressSolutions from '../assets/datas/stress_solution_p0701.json';
 
 function BarGraph(props: {
   hover: ActItem;
