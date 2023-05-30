@@ -15,9 +15,8 @@ const makeGetTagList: (getTagList: string[]) => string[] = (
 
   const effectGetMap = new Map<string, number>();
   sankeyData.forEach((v) => {
-    if (effectGetMap.has(v.source))
-      effectGetMap.set(v.source, effectGetMap.get(v.source)! + v.value);
-    else effectGetMap.set(v.source, v.value);
+    const effect = effectGetMap.get(v.source);
+    effectGetMap.set(v.source, effect ? effect + v.value : v.value);
   });
 
   return Array.from(effectGetMap)
@@ -32,9 +31,8 @@ const makeReleaseTagList: (getTagList: string[]) => string[] = (
 
   const effectReleaseMap = new Map<string, number>();
   sankeyData.forEach((v) => {
-    if (effectReleaseMap.has(v.target))
-      effectReleaseMap.set(v.target, effectReleaseMap.get(v.target)! + v.value);
-    else effectReleaseMap.set(v.target, v.value);
+    const effect = effectReleaseMap.get(v.target);
+    effectReleaseMap.set(v.target, effect ? effect + v.value : v.value);
   });
 
   return Array.from(effectReleaseMap)
