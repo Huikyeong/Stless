@@ -2,8 +2,8 @@
 import { css } from '@emotion/react';
 import * as dfd from 'danfojs';
 import { ActItem } from 'pages/Analysis';
-import { Shape } from 'plotly.js';
-import { useEffect, useState } from 'react';
+import { Data, Shape } from 'plotly.js';
+import { useEffect, useMemo, useState } from 'react';
 import Plot from 'react-plotly.js';
 import { useRecoilValue } from 'recoil';
 import { selectedRangeAtom } from 'recoils';
@@ -28,6 +28,29 @@ function LineGraph(props: Props) {
     selectedRange.start ?? 7,
     selectedRange.end ?? 14,
   ]);
+  const dataList = useMemo(() => {
+    return dfActivityQuery.map((shape) => {
+      const data: Data = {
+        type: 'scatter',
+        mode: 'lines',
+        opacity: 0,
+        x: [
+          shape.x0 ? shape.x0 : '',
+          shape.x0 ? shape.x0 : '',
+          shape.x1 ? shape.x1 : '',
+          shape.x1 ? shape.x1 : '',
+          shape.x0 ? shape.x0 : '',
+        ],
+        y: [-0.5, 6.5, 6.5, -0.5, -0.5],
+        name: shape.name?.slice(0, shape.name?.indexOf('-')),
+        hoverlabel: {
+          bgcolor: shape.fillcolor,
+        },
+        hoveron: 'fills',
+      };
+      return data;
+    });
+  }, [dfActivity, dfActivityQuery]);
 
   useEffect(() => {
     setDfActivityQuery(
@@ -184,7 +207,10 @@ function LineGraph(props: Props) {
             mode: 'lines',
             marker: { color: '#838383' },
             line: { shape: 'spline', smoothing: 0.2 },
+            hoverinfo: 'skip',
+            name: 'line',
           },
+          ...dataList,
         ]}
         layout={{
           width: 710,
@@ -206,6 +232,7 @@ function LineGraph(props: Props) {
             tickformat: '%m-%d %I:%M',
           },
           shapes: dfActivityQuery,
+          showlegend: false,
         }}
       />
     </div>
