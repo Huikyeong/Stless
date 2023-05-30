@@ -28,6 +28,10 @@ function LineGraph(props: Props) {
     selectedRange.start ?? 7,
     selectedRange.end ?? 14,
   ]);
+  const [zoomRange, setZoomRange] = useState<[number, number]>([
+    dateRange[0],
+    dateRange[1],
+  ]);
   const dataList = useMemo(() => {
     return dfActivityQuery.map((shape) => {
       const data: Data = {
@@ -230,9 +234,13 @@ function LineGraph(props: Props) {
           },
           xaxis: {
             tickformat: '%m-%d %I:%M',
+            range: zoomRange,
           },
           shapes: dfActivityQuery,
           showlegend: false,
+        }}
+        onRelayout={(event) => {
+          setZoomRange([event['xaxis.range[0]']!, event['xaxis.range[1]']!]);
         }}
       />
     </div>
