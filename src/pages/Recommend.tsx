@@ -13,6 +13,7 @@ import {
   initGetTagList,
   initReleaseTagList,
 } from 'components/SankeyDiagram';
+import ToggleSwitch from 'components/ToggleSwitch';
 import { useEffect, useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { colors } from 'utils/style';
@@ -20,6 +21,7 @@ import Header from '../components/Header';
 
 function Recommend() {
   const [isGuideOn, setIsGuideOn] = useState(false);
+  const [isHoverInfoOn, setIsHoverInfoOn] = useState(false);
   const [selectedTagList, setSelectedTagList] =
     useState<string[]>(initGetTagList);
   const [releaseTagList, setReleaseTagList] =
@@ -257,94 +259,128 @@ function Recommend() {
               `}
             />
           ) : (
-            <SankeyDiagram selectedTagList={selectedTagList} />
+            <SankeyDiagram
+              isHoverInfoOn={isHoverInfoOn}
+              selectedTagList={selectedTagList}
+            />
           )}
           <div
             css={css`
-              box-sizing: border-box;
-              height: fit-content;
-              padding: 18px 25px;
               display: flex;
-              flex-direction: column;
-              jutify-content: flex-center;
-              align-items: flex-end;
-              align-self: flex-end;
-              font-weight: 300;
-              font-size: 15px;
-              line-height: 22px;
-
-              background: ${colors.black};
-              border: 1px solid #e9e9e9;
-              border-radius: 15px;
-              color: white;
+              width: 100%;
+              justify-content: space-between;
             `}
           >
-            You will able to release stress through
-            <span
+            <div
               css={css`
                 display: flex;
-                justify-content: flex-end;
-                flex-wrap: wrap;
+                gap: 10px;
+                padding: 0 30px;
+                align-items: center;
+                height: fit-content;
               `}
             >
-              {releaseTagList.length === 0 && '...'}
-              {releaseTagList.slice(0, 4).map((tag, index) => (
-                <div
-                  key={tag}
-                  css={css`
-                    display: flex;
+              <ToggleSwitch
+                isOn={isHoverInfoOn}
+                onClickHandler={() => setIsHoverInfoOn((prev) => !prev)}
+              />
+              <p
+                css={css`
+                  font-size: 12px;
+                  font-weight: 300;
+                  line-height: 110%;
+                `}
+              >
+                detailed hover info
+              </p>
+            </div>
+            <div
+              css={css`
+                box-sizing: border-box;
+                height: fit-content;
+                padding: 18px 25px;
+                display: flex;
+                flex-direction: column;
+                jutify-content: flex-center;
+                align-items: flex-end;
+                align-self: flex-end;
+                font-weight: 300;
+                font-size: 15px;
+                line-height: 22px;
 
-                    margin-right: 5px;
-                  `}
-                >
-                  {releaseTagList.length - 1 === index &&
-                    releaseTagList.length > 1 &&
-                    releaseTagList.length < 4 && (
-                      <p
-                        css={css`
-                          margin-right: 7px;
-                        `}
-                      >
-                        and
-                      </p>
-                    )}
+                background: ${colors.black};
+                border: 1px solid #e9e9e9;
+                border-radius: 15px;
+                color: white;
+              `}
+            >
+              You will able to release stress through
+              <span
+                css={css`
+                  display: flex;
+                  justify-content: flex-end;
+                  flex-wrap: wrap;
+                `}
+              >
+                {releaseTagList.length === 0 && '...'}
+                {releaseTagList.slice(0, 4).map((tag, index) => (
                   <div
+                    key={tag}
                     css={css`
-                      position: relative;
                       display: flex;
-                      align-items: center;
 
-                      color: #ffffff;
-                      font-weight: 600;
+                      margin-right: 5px;
                     `}
                   >
+                    {releaseTagList.length - 1 === index &&
+                      releaseTagList.length > 1 &&
+                      releaseTagList.length < 4 && (
+                        <p
+                          css={css`
+                            margin-right: 7px;
+                          `}
+                        >
+                          and
+                        </p>
+                      )}
                     <div
                       css={css`
-                        position: absolute;
-                        width: 0%;
-                        height: 2px;
-                        border-radius: 2px;
-                        background: #c84242;
-                        opacity: 0;
-                        transition: width 0.3s ease;
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+
+                        color: #ffffff;
+                        font-weight: 600;
                       `}
-                    />
-                    {index === 3 ? (
-                      <p
+                    >
+                      <div
                         css={css`
-                          font-weight: 400;
+                          position: absolute;
+                          width: 0%;
+                          height: 2px;
+                          border-radius: 2px;
+                          background: #c84242;
+                          opacity: 0;
+                          transition: width 0.3s ease;
                         `}
-                      >
-                        etc
-                      </p>
-                    ) : (
-                      <p>{tag}</p>
-                    )}
+                      />
+                      {index === 3 ? (
+                        <p
+                          css={css`
+                            font-weight: 400;
+                          `}
+                        >
+                          etc
+                        </p>
+                      ) : (
+                        <p>{tag}</p>
+                      )}
+                    </div>
+                    {releaseTagList.length - 1 === index ? '.' : ','}
                   </div>
-                  {releaseTagList.length - 1 === index ? '.' : ','}
-                </div>
-              ))}
-            </span>
+                ))}
+              </span>
+            </div>
           </div>
         </div>
       </div>
