@@ -356,6 +356,7 @@ function Recommend() {
           display: ${isGuideOn ? `flex` : `none`};
           flex-direction: column;
           align-items: center;
+          gap: 90px;
           width: 100vw;
           height: 100vh;
           background: rgba(0, 0, 0, 0.8);
@@ -378,7 +379,6 @@ function Recommend() {
             position: relative;
             display: flex;
             justify-content: center;
-            align-items: center;
             height: 100%;
             width: 1040px;
           `}
