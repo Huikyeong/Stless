@@ -95,84 +95,90 @@ function Analysis() {
           box-sizing: border-box;
           position: fixed;
           display: ${isGuideOn ? `flex` : `none`};
-          flex-direction: column;
           align-items: center;
           width: 100vw;
           height: 100vh;
+          gap: 20px;
           background: rgba(0, 0, 0, 0.8);
         `}
       >
-        <p
+        <div
           css={css`
-            font-weight: 700;
-            font-size: 25px;
-            color: white;
-            padding-top: 50px;
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
-              1px 1px 0 #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+
+            &: hover {
+              background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+            }
+            transition: all 0.15s;
+          `}
+          onClick={() => setIsGuideFirst((prev) => !prev)}
+        >
+          <ArrowLeft
+            css={css`
+              width: 30px;
+              height: 30px;
+            `}
+          />
+        </div>
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            gap: 50px;
           `}
         >
-          Analysis: {isGuideFirst ? guideTitleList[0] : guideTitleList[1]}
-        </p>
-
-        {!isGuideFirst && (
+          <p
+            css={css`
+              font-weight: 700;
+              font-size: 25px;
+              color: white;
+              padding-top: 50px;
+              text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+                1px 1px 0 #000;
+            `}
+          >
+            Analysis: {isGuideFirst ? guideTitleList[0] : guideTitleList[1]}
+          </p>
           <div
             css={css`
-              position: relative;
               display: flex;
               justify-content: center;
-              align-items: center;
               width: 1040px;
               height: 100%;
             `}
           >
-            <ArrowLeft
-              css={css`
-                position: absolute;
-                left: -70px;
-
-                width: 30px;
-                height: 30px;
-                cursor: pointer;
-                &: hover {
-                  opacity: 0.7;
-                }
-                transition: all 0.15s;
-              `}
-              onClick={() => setIsGuideFirst(true)}
-            />
-            <Guide2 />
+            {isGuideFirst ? <Guide1 /> : <Guide2 />}
           </div>
-        )}
-
-        {isGuideFirst && (
-          <div
+        </div>
+        <div
+          css={css`
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+            &: hover {
+              background: linear-gradient(to left, rgba(255, 255, 255, 0.2), transparent);
+            }
+            transition: all 0.25s;
+          `}
+          onClick={() => setIsGuideFirst((prev) => !prev)}
+        >
+          <ArrowRight
             css={css`
-              position: relative;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              height: 100%;
-              width: 1040px;
+              width: 30px;
+              height: 30px;
             `}
-          >
-            <Guide1 />
-            <ArrowRight
-              css={css`
-                position: absolute;
-                right: -70px;
-                width: 30px;
-                height: 30px;
-                cursor: pointer;
-                &: hover {
-                  opacity: 0.7;
-                }
-                transition: all 0.15s;
-              `}
-              onClick={() => setIsGuideFirst(false)}
-            />
-          </div>
-        )}
+          />
+        </div>
       </div>
       {/* floating guide button */}
       <GuideBtn
