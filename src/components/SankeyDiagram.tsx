@@ -15,9 +15,8 @@ const makeGetTagList: (getTagList: string[]) => string[] = (
 
   const effectGetMap = new Map<string, number>();
   sankeyData.forEach((v) => {
-    if (effectGetMap.has(v.source))
-      effectGetMap.set(v.source, effectGetMap.get(v.source)! + v.value);
-    else effectGetMap.set(v.source, v.value);
+    const effect = effectGetMap.get(v.source);
+    effectGetMap.set(v.source, effect ? effect + v.value : v.value);
   });
 
   return Array.from(effectGetMap)
@@ -32,9 +31,8 @@ const makeReleaseTagList: (getTagList: string[]) => string[] = (
 
   const effectReleaseMap = new Map<string, number>();
   sankeyData.forEach((v) => {
-    if (effectReleaseMap.has(v.target))
-      effectReleaseMap.set(v.target, effectReleaseMap.get(v.target)! + v.value);
-    else effectReleaseMap.set(v.target, v.value);
+    const effect = effectReleaseMap.get(v.target);
+    effectReleaseMap.set(v.target, effect ? effect + v.value : v.value);
   });
 
   return Array.from(effectReleaseMap)
@@ -50,7 +48,10 @@ const initGetTagList: string[] = makeGetTagList([]).slice(0, 3);
 
 const initReleaseTagList: string[] = makeReleaseTagList(initGetTagList);
 
-function SankeyDiagram(props: { selectedTagList: string[] }) {
+function SankeyDiagram(props: {
+  isHoverInfoOn: boolean;
+  selectedTagList: string[];
+}) {
   /* eslint-disable */
   const sankeyData = getSankeyData(props.selectedTagList);
   const sources = makeGetTagList(props.selectedTagList);
@@ -85,7 +86,7 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
               type: 'sankey',
               orientation: 'v',
               arrangement: 'fixed',
-              hoverinfo: 'skip',
+              hoverinfo: props.isHoverInfoOn ? 'all' : 'skip',
               node: {
                 pad: 60,
                 thickness: 30,
@@ -117,7 +118,6 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
               t: 10,
               pad: 4,
             },
-            hovermode: false,
           }}
           config={{
             displayModeBar: false,
