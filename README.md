@@ -1,46 +1,36 @@
-# Getting Started with Create React App
+# Stless 
+> Design Project of <b>KAIST 2023 Spring CS481: Data Visualization</b>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Project Summary
+<b>[Stless](https://huikyeong.github.io/Stless/)</b> is a web service for exploring and knowing our stress.
+* Summarize the user’s stress status over time and allow users to interact with this information.
+* Find the reasons why we got or released stress and give recommendations.
 
-## Available Scripts
+# Developer Information
+* [Jeongwon Kim](https://github.com/kjwon1431) (KAIST 17 CS&EE) 
+* [Cheolhwan Kim](https://github.com/kadiace) (KAIST 17 CS&EE) 
+* [Huikyeong An](https://github.com/Huikyeong) (KAIST 18 CS&ID) 
+* [Dongwon Choi](https://github.com/chlehdwon) (KAIST 18 CS&EE) 
 
-In the project directory, you can run:
+# Development Environment
+* [React](https://legacy.reactjs.org/)
+* [Typescript](https://www.typescriptlang.org/)
+* [react-plotly.js](https://github.com/plotly/react-plotly.js/)
+* [Danfo.js](https://danfo.jsdata.org/)
+* [Recoil](https://recoiljs.org/ko/)
 
-### `npm start`
+# Deployment
+This project is deployed at https://huikyeong.github.io/Stless/ by using github pages.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Representative Screenshots
+## 1. Onboarding Page (/onboard)
+![image](https://github.com/Huikyeong/Stless/assets/68576681/b25a6a86-ecf3-4520-9e4c-1b07399ff86e)
+![image](https://github.com/Huikyeong/Stless/assets/68576681/abe9cdb6-d133-4777-b388-c4cddc74ac5e)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 2. Analysis Page (/analysis)
+![image](https://github.com/Huikyeong/Stless/assets/68576681/215fcbcb-edf4-498d-ba19-b69557b30cab)
+![image](https://github.com/Huikyeong/Stless/assets/68576681/57640502-e1c0-4e45-8d3e-585f25b364a5)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 3. Recommend Page (/recommend)
+![image](https://github.com/Huikyeong/Stless/assets/68576681/06b7f046-3398-40a9-ba42-24561fa9125d)
+![image](https://github.com/Huikyeong/Stless/assets/68576681/efc4cb68-311f-4093-9d73-444769b621af)
