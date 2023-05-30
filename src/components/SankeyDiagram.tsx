@@ -61,7 +61,7 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
   const targetMap = new Map<string, number>();
   sources.forEach((key, i) => sourceMap.set(key, i));
   targets.forEach((key, i) => targetMap.set(key, i + sources.length));
-  console.log(sources)
+  console.log(sources);
   return (
     <div
       id='sankey layout'
@@ -117,6 +117,7 @@ function SankeyDiagram(props: { selectedTagList: string[] }) {
               t: 10,
               pad: 4,
             },
+            hovermode: false,
           }}
           config={{
             displayModeBar: false,
