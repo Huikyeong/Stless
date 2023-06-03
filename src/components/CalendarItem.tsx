@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useRecoilCallback, useRecoilValue } from 'recoil';
-import { selectedRangeAtom, zoomRangeAtom } from 'recoils';
+import { clickBarAtom, selectedRangeAtom, zoomRangeAtom } from 'recoils';
 import { colors } from 'utils/style';
 
 function CalendarItem(props: {
@@ -84,6 +84,7 @@ function CalendarItem(props: {
 
         set(selectedRangeAtom, { start: prevRange.start, end: date });
         set(zoomRangeAtom, [undefined, undefined]);
+        set(clickBarAtom, { name: '' });
       },
   );
 

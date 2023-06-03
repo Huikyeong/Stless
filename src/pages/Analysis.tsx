@@ -10,19 +10,20 @@ import GuideBtn from 'components/GuideBtn';
 import Header from 'components/Header';
 import LineGraph from 'components/LineGraph';
 import { useLayoutEffect, useState } from 'react';
-import { useRecoilCallback } from 'recoil';
-import { selectedRangeAtom } from 'recoils';
+import { useRecoilCallback, useRecoilState } from 'recoil';
+import { clickBarAtom, selectedRangeAtom } from 'recoils';
 import { colors } from 'utils/style';
 
 export type Activity = 'exercise' | 'study' | 'phone' | 'sleep' | '';
-export type ActItem = { name: Activity; type?: 'release' | 'get' };
+export type ActType = 'release' | 'get';
+export type ActItem = { name: Activity; type?: ActType };
 const guideTitleList = ['1. Calendar', '2. Bar & Line graph'];
 
 function Analysis() {
   /* eslint-disable */
   const [isGuideOn, setIsGuideOn] = useState(false);
   const [hover, setHover] = useState<ActItem>({ name: '' });
-  const [click, setClick] = useState<ActItem>({ name: '' });
+  const [click, setClick] = useRecoilState(clickBarAtom);
   const [isGuideFirst, setIsGuideFirst] = useState(true);
 
   const setInitialDateRange = useRecoilCallback(({ snapshot, set }) => () => {
@@ -112,7 +113,11 @@ function Analysis() {
             cursor: pointer;
 
             &: hover {
-              background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+              background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0.2),
+                transparent
+              );
             }
             transition: all 0.15s;
           `}
@@ -166,7 +171,11 @@ function Analysis() {
             width: 100%;
             cursor: pointer;
             &: hover {
-              background: linear-gradient(to left, rgba(255, 255, 255, 0.2), transparent);
+              background: linear-gradient(
+                to left,
+                rgba(255, 255, 255, 0.2),
+                transparent
+              );
             }
             transition: all 0.25s;
           `}
