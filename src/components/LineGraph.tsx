@@ -29,6 +29,9 @@ function LineGraph(props: Props) {
     selectedRange.end ?? 14,
   ]);
   const [zoomRange, setZoomRange] = useRecoilState(zoomRangeAtom);
+  const [dragMode, setDragMode] = useState<
+    'zoom' | 'pan' | 'select' | 'lasso' | 'orbit' | 'turntable' | false
+  >('zoom');
   const dataList = useMemo(() => {
     return dfActivityQuery.map((shape) => {
       const data: Data = {
@@ -231,14 +234,18 @@ function LineGraph(props: Props) {
           },
           xaxis: {
             tickformat: '%m-%d %I:%M',
-            range: zoomRange,
+            range: [...zoomRange],
           },
           shapes: dfActivityQuery,
           showlegend: false,
+          dragmode: dragMode,
         }}
         onRelayout={(event) => {
-          if (event.dragmode === undefined)
-            setZoomRange([event['xaxis.range[0]']!, event['xaxis.range[1]']!]);
+          if (event.dragmode === undefined) {
+            setZoomRange([event['xaxis.range[0]'], event['xaxis.range[1]']]);
+          } else {
+            setDragMode(event.dragmode);
+          }
         }}
       />
     </div>
