@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/Stless/static/css/main.ee7008df.css",
-    "main.js": "/Stless/static/js/main.01f9fdf5.js",
+    "main.js": "/Stless/static/js/main.caf8d86b.js",
     "static/media/analysis-guide1.svg": "/Stless/static/media/analysis-guide1.ae74b6e1dc53f5e377dec3e26b390d9a.svg",
-    "static/media/recommend-guide.svg": "/Stless/static/media/recommend-guide.75e102ad3c0c7c0b4c56bc061b3c261d.svg",
     "static/media/analysis-guide2.svg": "/Stless/static/media/analysis-guide2.bc2966919f4946d79edc93c31682ec6c.svg",
+    "static/media/recommend-guide.svg": "/Stless/static/media/recommend-guide.b6fdc01c017cea220eb993726a27dab8.svg",
     "static/media/placeholder_sankey.svg": "/Stless/static/media/placeholder_sankey.1a568cdadeb9e596dd8b14d6ae803c0f.svg",
     "static/media/stless.svg": "/Stless/static/media/stless.ae263495a121361044c1de10bcd90e83.svg",
     "static/media/detected_p0701.csv": "/Stless/static/media/detected_p0701.9575c16cdea8336b41a6.csv",
@@ -16,10 +16,10 @@
     "index.html": "/Stless/index.html",
     "static/media/arrow-left.svg": "/Stless/static/media/arrow-left.8d914ac0e19d313186d4ca4846d9144e.svg",
     "main.ee7008df.css.map": "/Stless/static/css/main.ee7008df.css.map",
-    "main.01f9fdf5.js.map": "/Stless/static/js/main.01f9fdf5.js.map"
+    "main.caf8d86b.js.map": "/Stless/static/js/main.caf8d86b.js.map"
   },
   "entrypoints": [
     "static/css/main.ee7008df.css",
-    "static/js/main.01f9fdf5.js"
+    "static/js/main.caf8d86b.js"
   ]
 }
