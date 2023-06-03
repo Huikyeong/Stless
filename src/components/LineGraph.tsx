@@ -237,7 +237,8 @@ function LineGraph(props: Props) {
           showlegend: false,
         }}
         onRelayout={(event) => {
-          setZoomRange([event['xaxis.range[0]']!, event['xaxis.range[1]']!]);
+          if (event.dragmode === undefined)
+            setZoomRange([event['xaxis.range[0]']!, event['xaxis.range[1]']!]);
         }}
       />
     </div>
