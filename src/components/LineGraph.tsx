@@ -5,8 +5,8 @@ import { ActItem } from 'pages/Analysis';
 import { Data, Shape } from 'plotly.js';
 import { useEffect, useMemo, useState } from 'react';
 import Plot from 'react-plotly.js';
-import { useRecoilValue } from 'recoil';
-import { selectedRangeAtom } from 'recoils';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { selectedRangeAtom, zoomRangeAtom } from 'recoils';
 import { colors } from 'utils/style';
 
 interface Props {
@@ -28,9 +28,7 @@ function LineGraph(props: Props) {
     selectedRange.start ?? 7,
     selectedRange.end ?? 14,
   ]);
-  const [zoomRange, setZoomRange] = useState<
-    [number | undefined, number | undefined]
-  >([undefined, undefined]);
+  const [zoomRange, setZoomRange] = useRecoilState(zoomRangeAtom);
   const dataList = useMemo(() => {
     return dfActivityQuery.map((shape) => {
       const data: Data = {
