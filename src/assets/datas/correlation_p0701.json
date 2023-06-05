@@ -1,82 +1,12 @@
 [
     {
-        "source": "phone",
-        "target": "phone",
-        "value": 2
-    },
-    {
-        "source": "phone",
-        "target": "exercise",
-        "value": 5
-    },
-    {
         "source": "study",
-        "target": "phone",
-        "value": 2
+        "target": "sleeping enough",
+        "value": 6
     },
     {
-        "source": "study",
-        "target": "study",
-        "value": 16
-    },
-    {
-        "source": "study",
-        "target": "exercise",
+        "source": "late bedtime",
+        "target": "sleeping enough",
         "value": 4
-    },
-    {
-        "source": "exercise",
-        "target": "phone",
-        "value": 1
-    },
-    {
-        "source": "exercise",
-        "target": "study",
-        "value": 10
-    },
-    {
-        "source": "exercise",
-        "target": "exercise",
-        "value": 9
-    },
-    {
-        "source": "early bedtime",
-        "target": "phone",
-        "value": 1
-    },
-    {
-        "source": "early bedtime",
-        "target": "study",
-        "value": 1
-    },
-    {
-        "source": "early bedtime",
-        "target": "exercise",
-        "value": 3
-    },
-    {
-        "source": "sleeping enough",
-        "target": "phone",
-        "value": 1
-    },
-    {
-        "source": "sleeping enough",
-        "target": "study",
-        "value": 5
-    },
-    {
-        "source": "sleeping enough",
-        "target": "exercise",
-        "value": 3
-    },
-    {
-        "source": "sleeping less",
-        "target": "study",
-        "value": 2
-    },
-    {
-        "source": "sleeping less",
-        "target": "exercise",
-        "value": 2
     }
 ]

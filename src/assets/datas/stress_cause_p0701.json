@@ -4,15 +4,15 @@
         "value": 22
     },
     {
-        "category": "exercise",
+        "category": "late bedtime",
         "value": 20
     },
     {
-        "category": "sleeping enough",
-        "value": 9
+        "category": "sleeping less",
+        "value": 0
     },
     {
-        "category": "phone",
-        "value": 7
+        "category": "",
+        "value": 0
     }
 ]
